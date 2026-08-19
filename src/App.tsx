@@ -8,6 +8,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MadeWithDyad } from "@/components/made-with-dyad";
 import { AuditBookingModal } from "@/components/AuditBookingModal";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 // Pages
 import Index from "@/pages/Index";
@@ -18,6 +19,7 @@ import { Industries } from "@/pages/Industries";
 import { SuccessStories } from "@/pages/SuccessStories";
 import { CalculatorPage } from "@/pages/CalculatorPage";
 import { Blog } from "@/pages/Blog";
+import { BlogPost } from "@/pages/BlogPost";
 import { Contact } from "@/pages/Contact";
 import NotFound from "@/pages/NotFound";
 
@@ -45,6 +47,8 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter basename={cleanBasename === "/" ? undefined : cleanBasename}>
+          {/* Automatically scroll to top on every navigation */}
+          <ScrollToTop />
           <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-amber-400 selection:text-slate-950">
             {/* Header Navbar */}
             <Navbar onOpenAudit={() => handleOpenAudit()} />
@@ -60,6 +64,7 @@ const App = () => {
                 <Route path="/success-stories" element={<SuccessStories onOpenAudit={() => handleOpenAudit()} />} />
                 <Route path="/calculator" element={<CalculatorPage onOpenAudit={() => handleOpenAudit()} />} />
                 <Route path="/blog" element={<Blog onOpenAudit={() => handleOpenAudit()} />} />
+                <Route path="/blog/:id" element={<BlogPost onOpenAudit={() => handleOpenAudit()} />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

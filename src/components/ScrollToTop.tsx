@@ -5,20 +5,25 @@ export const ScrollToTop = () => {
   const { pathname, search, hash } = useLocation();
 
   useEffect(() => {
-    // If there's an anchor hash (like #services), smooth scroll to it
     if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-        return;
-      }
+      // Delay slightly for DOM render, then smoothly scroll to element
+      const timer = setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          const yOffset = -90; // offset for sticky navbar
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        } else {
+          window.scrollTo(0, 0);
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      // Immediate jump straight to top of page
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
     }
-    // Otherwise, immediately scroll to the top of the page
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "instant",
-    });
   }, [pathname, search, hash]);
 
   return null;

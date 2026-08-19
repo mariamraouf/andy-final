@@ -40,7 +40,7 @@ export const blogPostsData: BlogPostItem[] = [
             "Top-tier local service providers actively identify decision-makers in their local geographic area rather than waiting for leads to wander in.",
           ],
           bulletPoints: [
-            "Identify commercial property managers, medical directors, and key owners.",
+            "Identify commercial property managers, medical directors, and key owners in your area.",
             "Enrich direct contact data with mobile and LinkedIn coordinates.",
             "Run continuous outreach that guarantees a steady stream of new conversations every week.",
           ],
@@ -85,9 +85,9 @@ export const blogPostsData: BlogPostItem[] = [
             "High-converting campaigns direct traffic to dedicated, distraction-free landing pages that address the exact search query with a single, clear call-to-action.",
           ],
           bulletPoints: [
-            "Remove all top navigation menus to prevent distraction.",
+            "Remove all top navigation menus to prevent distraction on ad landers.",
             "Match the exact search headline to the landing page banner.",
-            "Feature verified local reviews, badges, and instant booking forms.",
+            "Feature verified local reviews, trust badges, and instant booking forms.",
           ],
         },
         {

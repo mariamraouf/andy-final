@@ -22,6 +22,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
     { name: "Contact", path: "/contact" },
   ];
 
+  const handleLinkClick = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    setMobileMenuOpen(false);
+  };
+
   const isActive = (path: string) => location.pathname === path;
 
   return (
@@ -29,7 +34,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo with Dark Pill for High Contrast */}
-        <Link to="/" className="flex items-center group">
+        <Link to="/" onClick={handleLinkClick} className="flex items-center group">
           <Logo size="md" variant="badge" />
         </Link>
 
@@ -39,6 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
             <Link
               key={link.path}
               to={link.path}
+              onClick={handleLinkClick}
               className={`px-3.5 py-2 rounded-xl text-sm font-semibold transition-all ${
                 isActive(link.path)
                   ? "text-[#0B1B3D] bg-amber-50 font-bold border border-amber-200"
@@ -89,10 +95,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
               <Link
                 key={link.path}
                 to={link.path}
-                onClick={() => setMobileMenuOpen(false)}
+                onClick={handleLinkClick}
                 className={`block px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                   isActive(link.path)
-                    ? "bg-[#0B1B3D] text-amber-400"
+                    ? "bg-[#0B1B3D] text-amber-400 font-bold"
                     : "text-slate-700 hover:bg-slate-50"
                 }`}
               >

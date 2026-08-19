@@ -1,45 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { BookOpen, Calendar, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { blogPostsData } from "@/data/blogData";
 
 interface BlogProps {
   onOpenAudit: () => void;
 }
 
 export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
-  const posts = [
-    {
-      id: "how-local-b2b-captures-high-ticket-clients",
-      title: "How Local B2B Companies Can Capture High-Ticket Clients in 90 Days",
-      category: "B2B Lead Generation",
-      date: "May 2026",
-      readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-      excerpt:
-        "Relying on word-of-mouth creates revenue rollercoasters. Learn the 3-step outbound and paid acquisition framework that creates predictable monthly pipeline.",
-      points: [
-        "Why passive referral networks fail when scaling past $50k/month",
-        "Targeting verified decision-makers using local intent signals",
-        "How automated follow-up sequences double your booked sales calls",
-      ],
-    },
-    {
-      id: "why-most-paid-ad-retainers-burn-cash",
-      title: "Why Most Paid Ad Retainers Burn Cash (And The Full-Funnel Fix)",
-      category: "Paid Advertising & SEO",
-      date: "May 2026",
-      readTime: "6 min read",
-      image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
-      excerpt:
-        "Running Google or Meta ads without a dedicated landing page and rapid lead response wastes up to 74% of ad spend. Here is the architecture that delivers positive ROI.",
-      points: [
-        "The critical flaw of sending paid traffic directly to generic homepages",
-        "Speed-to-lead: why responding in under 5 minutes triples conversions",
-        "Connecting CRM pipelines to track real revenue, not vanity impressions",
-      ],
-    },
-  ];
-
   return (
     <div className="bg-white py-16 text-slate-900 space-y-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -60,13 +29,13 @@ export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
 
         {/* 2 Featured Blog Posts */}
         <div className="grid md:grid-cols-2 gap-10">
-          {posts.map((post) => (
+          {blogPostsData.map((post) => (
             <article
               key={post.id}
               className="bg-slate-50 rounded-3xl overflow-hidden border border-slate-200 hover:border-amber-400 hover:shadow-xl transition-all flex flex-col justify-between group"
             >
               <div>
-                <div className="relative h-64 overflow-hidden">
+                <Link to={`/blog/${post.id}`} className="block relative h-64 overflow-hidden">
                   <img
                     src={post.image}
                     alt={post.title}
@@ -75,7 +44,7 @@ export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
                   <div className="absolute top-4 left-4 bg-[#0B1B3D] text-amber-400 text-xs font-mono font-bold px-3 py-1.5 rounded-full shadow-md">
                     {post.category}
                   </div>
-                </div>
+                </Link>
 
                 <div className="p-8 space-y-4">
                   <div className="flex items-center gap-4 text-xs text-slate-500 font-mono">
@@ -89,9 +58,11 @@ export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
                     </span>
                   </div>
 
-                  <h2 className="text-2xl font-black text-[#0B1B3D] group-hover:text-amber-600 transition-colors leading-snug">
-                    {post.title}
-                  </h2>
+                  <Link to={`/blog/${post.id}`} className="block">
+                    <h2 className="text-2xl font-black text-[#0B1B3D] group-hover:text-amber-600 transition-colors leading-snug">
+                      {post.title}
+                    </h2>
+                  </Link>
 
                   <p className="text-slate-600 text-sm leading-relaxed">
                     {post.excerpt}
@@ -100,10 +71,10 @@ export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
                   <div className="pt-3 border-t border-slate-200 space-y-2">
                     <p className="text-xs font-bold text-[#0B1B3D] uppercase font-mono">Key Takeaways:</p>
                     <div className="space-y-1.5">
-                      {post.points.map((pt, idx) => (
+                      {post.content.sections.map((sec, idx) => (
                         <div key={idx} className="flex items-start gap-2 text-xs font-medium text-slate-700">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                          <span>{pt}</span>
+                          <span>{sec.heading}</span>
                         </div>
                       ))}
                     </div>
@@ -111,13 +82,22 @@ export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
                 </div>
               </div>
 
-              <div className="p-8 pt-0">
+              <div className="p-8 pt-0 flex flex-col sm:flex-row gap-3">
+                <Link to={`/blog/${post.id}`} className="flex-1">
+                  <Button
+                    variant="outline"
+                    className="w-full bg-white hover:bg-slate-100 text-[#0B1B3D] font-bold py-5 rounded-xl text-xs flex items-center justify-center gap-2 border-slate-300"
+                  >
+                    <span>Read Full Article</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Button>
+                </Link>
+
                 <Button
                   onClick={onOpenAudit}
-                  className="w-full bg-[#0B1B3D] hover:bg-slate-800 text-amber-400 font-bold py-5 rounded-xl text-xs flex items-center justify-center gap-2"
+                  className="bg-[#0B1B3D] hover:bg-slate-800 text-amber-400 font-bold py-5 rounded-xl text-xs px-5"
                 >
-                  <span>Apply This Strategy To Your Business</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  Apply Strategy
                 </Button>
               </div>
             </article>

@@ -4,6 +4,10 @@ import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/Logo";
 
 export const Footer: React.FC = () => {
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  };
+
   return (
     <footer className="bg-[#0B1B3D] text-white py-16 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 space-y-12">
@@ -13,7 +17,7 @@ export const Footer: React.FC = () => {
           
           {/* Brand & Mission */}
           <div className="md:col-span-5 space-y-4">
-            <Link to="/" className="inline-block">
+            <Link to="/" onClick={handleScrollTop} className="inline-block">
               <Logo size="lg" variant="plain" />
             </Link>
 
@@ -34,13 +38,13 @@ export const Footer: React.FC = () => {
               Company
             </h4>
             <ul className="space-y-2 text-sm text-slate-300 font-medium">
-              <li><Link to="/about" className="hover:text-amber-400 transition-colors">About</Link></li>
-              <li><Link to="/services" className="hover:text-amber-400 transition-colors">Services</Link></li>
-              <li><Link to="/packages" className="hover:text-amber-400 transition-colors">Packages</Link></li>
-              <li><Link to="/industries" className="hover:text-amber-400 transition-colors">Industries We Serve</Link></li>
-              <li><Link to="/success-stories" className="hover:text-amber-400 transition-colors">Success Stories</Link></li>
-              <li><Link to="/blog" className="hover:text-amber-400 transition-colors">Blog</Link></li>
-              <li><Link to="/contact" className="hover:text-amber-400 transition-colors">Contact</Link></li>
+              <li><Link to="/about" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">About</Link></li>
+              <li><Link to="/services" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Services</Link></li>
+              <li><Link to="/packages" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Packages</Link></li>
+              <li><Link to="/industries" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Industries We Serve</Link></li>
+              <li><Link to="/success-stories" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Success Stories</Link></li>
+              <li><Link to="/blog" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Blog</Link></li>
+              <li><Link to="/contact" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -95,6 +99,7 @@ export const Footer: React.FC = () => {
               <div className="pt-2">
                 <Link
                   to="/contact"
+                  onClick={handleScrollTop}
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 underline underline-offset-4"
                 >
                   <span>Book a Strategy Call</span>
@@ -110,8 +115,8 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <p>© 2026 Cruzian. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link to="/contact" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/contact" className="hover:text-white transition-colors">Terms of Use</Link>
+            <Link to="/contact" onClick={handleScrollTop} className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/contact" onClick={handleScrollTop} className="hover:text-white transition-colors">Terms of Use</Link>
           </div>
         </div>
 
