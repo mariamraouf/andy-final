@@ -1,57 +1,58 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title?: string;
   description?: string;
   keywords?: string;
   canonical?: string;
+  ogImage?: string;
+  articleSchema?: Record<string, any>;
 }
 
+const DEFAULT_TITLE = "Cruzian | B2B Lead Generation & Growth Systems";
+const DEFAULT_DESCRIPTION =
+  "We help overlooked businesses become impossible to ignore. Predictable lead pipelines, modern websites, and paid ads in Jacksonville, FL.";
+const DEFAULT_CANONICAL = "https://www.thecruzian.com/";
+const DEFAULT_OG_IMAGE = "https://www.thecruzian.com/og-image.jpg";
+
 export const SEO: React.FC<SEOProps> = ({
-  title = "Cruzian | B2B Growth, Lead Generation & Digital Systems",
-  description = "Cruzian helps overlooked businesses become impossible to ignore with predictable lead pipelines, conversion websites, SEO, and paid advertising in Jacksonville, FL.",
-  keywords = "B2B lead generation, Jacksonville marketing agency, SEO, GoHighLevel CRM setup, missed call recovery, Cruzian",
-  canonical,
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  keywords = "B2B lead generation, Jacksonville marketing agency, SEO services, local business growth, GoHighLevel CRM setup, Apollo lead sourcing, missed call recovery, paid ads management, digital marketing Jacksonville",
+  canonical = DEFAULT_CANONICAL,
+  ogImage = DEFAULT_OG_IMAGE,
+  articleSchema,
 }) => {
-  useEffect(() => {
-    document.title = title;
+  return (
+    <Helmet>
+      <title>{title}</title>
+      <meta name="title" content={title} />
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      <link rel="canonical" href={canonical} />
 
-    // Update Meta Description
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta");
-      metaDesc.setAttribute("name", "description");
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute("content", description);
+      {/* Open Graph / Facebook */}
+      <meta property="og:site_name" content="Cruzian" />
+      <meta property="og:type" content={articleSchema ? "article" : "website"} />
+      <meta property="og:url" content={canonical} />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={ogImage} />
 
-    // Update Meta Keywords
-    let metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (!metaKeywords) {
-      metaKeywords = document.createElement("meta");
-      metaKeywords.setAttribute("name", "keywords");
-      document.head.appendChild(metaKeywords);
-    }
-    metaKeywords.setAttribute("content", keywords);
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={canonical} />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={ogImage} />
 
-    // Update OG Title & Description
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute("content", title);
-
-    const ogDesc = document.querySelector('meta[property="og:description"]');
-    if (ogDesc) ogDesc.setAttribute("content", description);
-
-    // Update Canonical URL
-    if (canonical) {
-      let linkCanonical = document.querySelector('link[rel="canonical"]');
-      if (!linkCanonical) {
-        linkCanonical = document.createElement("link");
-        linkCanonical.setAttribute("rel", "canonical");
-        document.head.appendChild(linkCanonical);
-      }
-      linkCanonical.setAttribute("href", canonical);
-    }
-  }, [title, description, keywords, canonical]);
-
-  return null;
+      {/* Optional Article Structured Data */}
+      {articleSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(articleSchema)}
+        </script>
+      )}
+    </Helmet>
+  );
 };
