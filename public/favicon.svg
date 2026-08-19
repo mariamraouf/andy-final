@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="28" fill="#0B1B3D"/>
+  <!-- Gold Palm Tree Icon -->
+  <g fill="#D9A028" stroke="#D9A028" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Trunk -->
+    <path d="M58 108 C58 84 66 54 74 38 C71 38 68 52 50 108 Z" fill="#D9A028" stroke="none"/>
+    <!-- Fronds -->
+    <path d="M72 38 C54 22 28 28 20 40 C34 40 50 38 72 38 Z" fill="#D9A028" stroke="none"/>
+    <path d="M72 38 C58 12 80 8 98 16 C88 24 80 32 72 38 Z" fill="#D9A028" stroke="none"/>
+    <path d="M72 38 C88 20 112 26 116 38 C102 40 88 38 72 38 Z" fill="#D9A028" stroke="none"/>
+    <path d="M72 38 C90 48 106 62 108 72 C96 64 84 52 72 38 Z" fill="#D9A028" stroke="none"/>
+    <path d="M72 38 C56 50 40 64 36 74 C48 64 62 52 72 38 Z" fill="#D9A028" stroke="none"/>
+    <!-- Coconuts -->
+    <circle cx="67" cy="42" r="5" fill="#C58F20"/>
+    <circle cx="76" cy="46" r="4.5" fill="#B37E18"/>
+  </g>
+</svg>
