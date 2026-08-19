@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
+import { SEO } from "@/components/SEO";
 import { blogPostsData } from "@/data/blogData";
 import { ArrowLeft, Calendar, Clock, User, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,12 @@ export const BlogPost: React.FC<BlogPostProps> = ({ onOpenAudit }) => {
 
   return (
     <article className="bg-white text-slate-900 py-16">
+      <SEO
+        title={`${post.title} | Cruzian Blog`}
+        description={post.excerpt}
+        canonical={`https://cruzian.com/blog/${post.id}`}
+      />
+
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Back Link */}

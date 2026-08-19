@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SEO } from "@/components/SEO";
 import { HeroSection } from "@/components/HeroSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { OurProcessSection } from "@/components/OurProcessSection";
@@ -30,7 +31,12 @@ const Index: React.FC = () => {
 
   return (
     <div className="bg-white text-slate-900 font-sans selection:bg-amber-400 selection:text-slate-950">
-      
+      <SEO
+        title="Cruzian | B2B Growth, Lead Generation & Digital Systems"
+        description="We help overlooked businesses become impossible to ignore. Predictable lead pipelines, modern websites, and paid ads in Jacksonville, FL."
+        canonical="https://cruzian.com/"
+      />
+
       {/* Hero Section with Interactive Desk */}
       <HeroSection
         onOpenAudit={() => handleOpenAudit()}
