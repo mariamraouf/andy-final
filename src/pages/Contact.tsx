@@ -2,22 +2,53 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, Phone, Mail, User, Building, MessageSquare, ShieldCheck, Sparkles, MapPin, Clock, Calendar } from "lucide-react";
-import { showSuccess } from "@/utils/toast";
+import { CheckCircle2, Phone, Mail, User, Building, ShieldCheck, Sparkles, MapPin, Clock, Calendar, Loader2 } from "lucide-react";
+import { showSuccess, showError } from "@/utils/toast";
 
 export const Contact: React.FC = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const [packageInterest, setPackageInterest] = useState("Growth — $1,500/month");
   const [businessName, setBusinessName] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [packageInterest, setPackageInterest] = useState("Growth — $1,500/mo");
   const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    showSuccess("Strategy Call Request Received! Our team will reach out directly within 12 hours.");
+    setSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xrpzrqkg", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          source: "Contact Page Form",
+          packageInterest,
+          businessName,
+          ownerName,
+          email,
+          phone,
+          message,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        showSuccess("Strategy Call Request Received! Our team will reach out directly within 12 hours.");
+      } else {
+        const data = await response.json().catch(() => ({}));
+        showError(data?.error || "There was an issue submitting your message. Please try again.");
+      }
+    } catch (err) {
+      showError("Connection error. Please try again or call us at +1 888-619-3580.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -39,7 +70,7 @@ export const Contact: React.FC = () => {
 
         <div className="grid lg:grid-cols-12 gap-12">
           
-          {/* Left Info Column with Rich Visual Details */}
+          {/* Left Info Column */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 space-y-6">
               <div className="space-y-3">
@@ -138,7 +169,7 @@ export const Contact: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-[#0B1B3D]">Strategy Call Request Received!</h3>
                 <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
-                  Thank you <strong className="text-amber-700">{ownerName || "Business Owner"}</strong>. Our team is reviewing <strong className="text-[#0B1B3D]">{businessName}</strong> and will reach out via phone or email within 12 hours.
+                  Thank you, <strong className="text-amber-700">{ownerName || "Business Owner"}</strong>. Our team is reviewing <strong className="text-[#0B1B3D]">{businessName}</strong> and will reach out via phone or email within 12 hours.
                 </p>
                 <Button
                   onClick={() => setSubmitted(false)}
@@ -148,10 +179,10 @@ export const Contact: React.FC = () => {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Package of Interest</label>
+                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Package / Service of Interest</label>
                   <select
                     value={packageInterest}
                     onChange={(e) => setPackageInterest(e.target.value)}
@@ -168,7 +199,7 @@ export const Contact: React.FC = () => {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Business Name</label>
+                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Company / Business Name</label>
                     <div className="relative">
                       <Building className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                       <Input
@@ -187,7 +218,7 @@ export const Contact: React.FC = () => {
                       <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                       <Input
                         required
-                        placeholder="Dr. John Smith"
+                        placeholder="Sarah Miller"
                         value={ownerName}
                         onChange={(e) => setOwnerName(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -204,7 +235,7 @@ export const Contact: React.FC = () => {
                       <Input
                         required
                         type="email"
-                        placeholder="john@clinic.com"
+                        placeholder="you@business.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -218,7 +249,7 @@ export const Contact: React.FC = () => {
                       <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                       <Input
                         required
-                        placeholder="(904) 000-0000"
+                        placeholder="(904) 555-0192"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -239,11 +270,26 @@ export const Contact: React.FC = () => {
 
                 <Button
                   type="submit"
+                  disabled={submitting}
                   className="w-full bg-[#0B1B3D] hover:bg-slate-800 text-amber-400 font-black py-6 rounded-xl shadow-md flex items-center justify-center gap-2 text-base"
                 >
-                  <Sparkles className="w-5 h-5 text-amber-400" />
-                  <span>Book Free 45-Minute Strategy Call</span>
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin text-amber-400" />
+                      <span>Sending Request...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-5 h-5 text-amber-400" />
+                      <span>Book Free 45-Minute Strategy Call</span>
+                    </>
+                  )}
                 </Button>
+
+                <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1 font-medium">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>100% Confidential. We never sell or spam client contact information.</span>
+                </p>
               </form>
             )}
           </div>
