@@ -1,33 +1,6 @@
 import React from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { blogPostsData } from "@/data/blogData";
-import { ArrowLeft, Calendar, Clock, User, CheckCircle2, Sparkles, ArrowRight, Share2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-interface BlogPostProps {
-  onOpenAudit: () => void;
-}
-
-export const BlogPost: React.FC<BlogPostProps> = ({ onOpenAudit }) => {
-  const { id } = useParams<{ id: string }>();
-  const post = blogPostsData.find((p) => p.id === id);
-
-  if (!post) {
-    return <Navigate to="/blog" replace />;
-  }
-
-  return (
-    <article className="bg-white text-slate-900 py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
-        {/* Back Link */}
-        <div>
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-<dyad-write path="src/pages/BlogPost.tsx" description="Dedicated full article reader page">
-import React from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
-import { blogPostsData } from "@/data/blogData";
 import { ArrowLeft, Calendar, Clock, User, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
