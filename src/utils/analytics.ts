@@ -25,34 +25,6 @@ export const trackEvent = (
   }
 };
 
-//<dyad-write path="src/utils/analytics.ts" description="GA4 event tracking utilities for SPA route changes and key conversion events">
-// Global GA4 helper declaration
-declare global {
-  interface Window {
-    dataLayer?: any[];
-    gtag?: (...args: any[]) => void;
-  }
-}
-
-export const trackPageView = (path: string, title?: string) => {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", "page_view", {
-      page_path: path,
-      page_location: window.location.href,
-      page_title: title || document.title,
-    });
-  }
-};
-
-export const trackEvent = (
-  eventName: string,
-  eventParams?: Record<string, any>,
-) => {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", eventName, eventParams);
-  }
-};
-
 export const trackLeadGeneration = (location: string) => {
   trackEvent("generate_lead", {
     form_location: location,
