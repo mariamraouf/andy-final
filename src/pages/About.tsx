@@ -1,6 +1,7 @@
 import React from "react";
 import { Quote, Flame, Heart, Target, ShieldCheck, Award, ArrowRight, MapPin, Phone, Users, BarChart3, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 
 interface AboutProps {
   onOpenAudit: () => void;
@@ -8,7 +9,13 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ onOpenAudit }) => {
   return (
-    <div className="bg-white text-slate-900 py-16 space-y-20">
+    <>
+      <SEO
+        title="About Cruzian | B2B Growth Company in Jacksonville, FL"
+        description="Cruzian is a B2B growth and marketing company in Jacksonville, FL. We help overlooked businesses become impossible to ignore with integrated, high-converting digital systems."
+        canonical="https://www.thecruzian.com/about"
+      />
+      <div className="bg-white text-slate-900 py-16 space-y-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}
@@ -123,5 +130,6 @@ export const About: React.FC<AboutProps> = ({ onOpenAudit }) => {
 
       </div>
     </div>
+    </>
   );
 };

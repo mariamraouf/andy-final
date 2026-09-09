@@ -13,7 +13,7 @@ export const PackagesPage: React.FC<PackagesPageProps> = ({ onOpenAudit }) => {
       <SEO
         title="Pricing & Packages | Cruzian B2B Growth"
         description="Simple, transparent marketing packages: Business Boost ($399), Visibility ($750/mo), Growth ($1,500/mo), and Dominance ($3,000+/mo). Positive ROI from day one."
-        canonical="https://cruzian.com/packages"
+        canonical="https://www.thecruzian.com/packages"
       />
       <PackagesSection onOpenAudit={onOpenAudit} />
       <OurProcessSection onOpenAudit={onOpenAudit} />

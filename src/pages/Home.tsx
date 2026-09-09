@@ -114,7 +114,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
                 </div>
 
                 <div className="pt-2 text-xs text-slate-400 italic">
-                  "I play to win and I want to be the last one standing for our clients." — Andy
+                  "I play to win and I want to be the last one standing for our clients." — The Cruzian
                 </div>
 
               </div>
@@ -124,7 +124,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
         </div>
       </section>
 
-      {/* QUICK VALUE STATEMENT & ANDY'S QUOTE */}
+      {/* QUICK VALUE STATEMENT & FOUNDER QUOTE */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-slate-900 rounded-3xl border border-amber-500/30 p-8 sm:p-12 relative overflow-hidden shadow-2xl">
           <Quote className="w-16 h-16 text-amber-500/20 absolute top-6 right-6 pointer-events-none" />
@@ -142,7 +142,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
             <div>
               <Link to="/about">
                 <Button className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-4 rounded-xl flex items-center gap-2">
-                  <span>Read Andy's Full Story & Manifesto</span>
+                  <span>Read The Cruzian Story & Manifesto</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
@@ -190,7 +190,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
           <div className="space-y-2">
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight">Ready to Win Your Market?</h2>
             <p className="font-medium text-slate-900 max-w-xl text-sm sm:text-base">
-              Get a personalized 30-day customer acquisition blueprint directly from Andy. No pressure, no generic sales pitch.
+              Get a personalized 30-day customer acquisition blueprint directly from the Cruzian team. No pressure, no generic sales pitch.
             </p>
           </div>
           <Button

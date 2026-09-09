@@ -34,7 +34,7 @@ const Index: React.FC = () => {
       <SEO
         title="Cruzian | B2B Growth, Lead Generation & Digital Systems"
         description="We help overlooked businesses become impossible to ignore. Predictable lead pipelines, modern websites, and paid ads in Jacksonville, FL."
-        canonical="https://cruzian.com/"
+        canonical="https://www.thecruzian.com/"
       />
 
       {/* Hero Section with Interactive Desk */}
@@ -74,7 +74,7 @@ const Index: React.FC = () => {
                 Ready to Make Your Business Impossible to Ignore?
               </h2>
               <p className="text-slate-600 max-w-xl text-sm sm:text-base font-normal">
-                Book a free strategy call with Andy. We'll identify the highest-impact services for your specific business in Jacksonville and beyond.
+                Book a free strategy call with the Cruzian team. We'll identify the highest-impact services for your specific business in Jacksonville and beyond.
               </p>
             </div>
 

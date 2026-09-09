@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowRight, TrendingUp, CheckCircle2, Star, Quote, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 
 interface SuccessStoriesProps {
   onOpenAudit: () => void;
@@ -50,7 +51,13 @@ export const SuccessStories: React.FC<SuccessStoriesProps> = ({ onOpenAudit }) =
   ];
 
   return (
-    <div className="bg-white py-20 text-slate-900 space-y-16">
+    <>
+      <SEO
+        title="Client Results & Case Studies | Cruzian"
+        description="Real outcomes from Cruzian growth systems — recovered missed calls, booked sales calls, and pipelines built for local B2B businesses."
+        canonical="https://www.thecruzian.com/success-stories"
+      />
+      <div className="bg-white py-20 text-slate-900 space-y-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}
@@ -132,5 +139,6 @@ export const SuccessStories: React.FC<SuccessStoriesProps> = ({ onOpenAudit }) =
 
       </div>
     </div>
+    </>
   );
 };

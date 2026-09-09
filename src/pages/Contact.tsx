@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, Phone, Mail, User, Building, ShieldCheck, Sparkles, MapPin, Clock, Calendar, Loader2, Lock } from "lucide-react";
 import { showSuccess, showError } from "@/utils/toast";
+import { SEO } from "@/components/SEO";
 
 export const Contact: React.FC = () => {
   const [packageInterest, setPackageInterest] = useState("Growth — $1,500/month");
@@ -82,7 +83,13 @@ export const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-white py-16 text-slate-900 space-y-16">
+    <>
+      <SEO
+        title="Contact Cruzian | Book a Free 45-Minute Growth Audit"
+        description="Talk to Cruzian about lead generation, paid ads and growth systems for your business. Book a free 45-minute audit — no pressure, no generic pitch."
+        canonical="https://www.thecruzian.com/contact"
+      />
+      <div className="bg-white py-16 text-slate-900 space-y-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
@@ -355,5 +362,6 @@ export const Contact: React.FC = () => {
 
       </div>
     </div>
+    </>
   );
 };

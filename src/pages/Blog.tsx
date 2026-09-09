@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { BookOpen, Calendar, Clock, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { blogPostsData } from "@/data/blogData";
+import { SEO } from "@/components/SEO";
 
 interface BlogProps {
   onOpenAudit: () => void;
@@ -10,7 +11,13 @@ interface BlogProps {
 
 export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
   return (
-    <div className="bg-white py-16 text-slate-900 space-y-16">
+    <>
+      <SEO
+        title="Insights on B2B Lead Generation & Growth | Cruzian Blog"
+        description="Practical writing on speed-to-lead, paid ads, missed-call recovery and local search for B2B businesses that need pipeline, not impressions."
+        canonical="https://www.thecruzian.com/blog"
+      />
+      <div className="bg-white py-16 text-slate-900 space-y-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Header */}
@@ -122,5 +129,6 @@ export const Blog: React.FC<BlogProps> = ({ onOpenAudit }) => {
 
       </div>
     </div>
+    </>
   );
 };

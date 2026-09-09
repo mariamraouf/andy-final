@@ -5,7 +5,7 @@ export const ComparisonSection: React.FC = () => {
   const comparisons = [
     {
       feature: "Client Care & Owner Mindset",
-      cruzian: "Andy treats your business like his own. Driven by Cruzian pride & client loyalty.",
+      cruzian: "We treat your business like our own. Driven by Cruzian pride & client loyalty.",
       typical: "Treats you like invoice #402. Hands you off to a junior intern.",
     },
     {

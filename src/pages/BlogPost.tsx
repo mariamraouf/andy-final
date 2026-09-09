@@ -22,7 +22,7 @@ export const BlogPost: React.FC<BlogPostProps> = ({ onOpenAudit }) => {
       <SEO
         title={`${post.title} | Cruzian Blog`}
         description={post.excerpt}
-        canonical={`https://cruzian.com/blog/${post.id}`}
+        canonical={`https://www.thecruzian.com/blog/${post.id}`}
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">

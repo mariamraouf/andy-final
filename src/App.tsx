@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -84,19 +84,35 @@ const AppContent = () => {
   );
 };
 
+// Providers shared by the browser entry and the build-time prerender entry.
+// `helmetContext` is only passed on the server.
+export const AppProviders = ({
+  children,
+  helmetContext,
+}: {
+  children: React.ReactNode;
+  helmetContext?: Record<string, unknown>;
+}) => (
+  <HelmetProvider context={helmetContext}>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        {children}
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
+);
+
+export { AppContent, cleanBasename };
+
 const App = () => {
   return (
-    <HelmetProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter basename={cleanBasename === "/" ? undefined : cleanBasename}>
-            <AppContent />
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </HelmetProvider>
+    <AppProviders>
+      <BrowserRouter basename={cleanBasename === "/" ? undefined : cleanBasename}>
+        <AppContent />
+      </BrowserRouter>
+    </AppProviders>
   );
 };
 

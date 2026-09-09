@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Stethoscope, Home, Trees, Utensils, Rocket, ArrowRight, CheckCircle2, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 
 interface IndustriesProps {
   onOpenAudit: (industry?: string) => void;
@@ -85,7 +86,13 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
   const current = playbooks.find((p) => p.id === selected) || playbooks[0];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 text-white">
+    <>
+      <SEO
+        title="Industries We Serve | B2B Lead Generation by Sector | Cruzian"
+        description="Lead generation and growth systems built for contractors, specialty clinics, professional services and local B2B companies in Jacksonville and across the US."
+        canonical="https://www.thecruzian.com/industries"
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12 text-white">
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -174,5 +181,6 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
       </div>
 
     </div>
+    </>
   );
 };

@@ -14,7 +14,7 @@ export const Services: React.FC<ServicesProps> = ({ onOpenAudit }) => {
       <SEO
         title="Services | Cruzian B2B Growth & Lead Systems"
         description="Explore Cruzian's 9 integrated growth services: B2B Lead Generation, Sales Systems, Digital Marketing, Brand Authority, Web Design, SEO, Paid Ads, Social Media, and Consulting."
-        canonical="https://cruzian.com/services"
+        canonical="https://www.thecruzian.com/services"
       />
       <ServicesSection onOpenAudit={onOpenAudit} />
       <OurProcessSection onOpenAudit={onOpenAudit} />

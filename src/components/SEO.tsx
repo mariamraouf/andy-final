@@ -7,7 +7,8 @@ interface SEOProps {
   keywords?: string;
   canonical?: string;
   ogImage?: string;
-  articleSchema?: Record<string, any>;
+  articleSchema?: Record<string, unknown>;
+  noindex?: boolean;
 }
 
 const DEFAULT_TITLE = "Cruzian | B2B Lead Generation & Growth Systems";
@@ -23,6 +24,7 @@ export const SEO: React.FC<SEOProps> = ({
   canonical = DEFAULT_CANONICAL,
   ogImage = DEFAULT_OG_IMAGE,
   articleSchema,
+  noindex = false,
 }) => {
   return (
     <Helmet>
@@ -31,6 +33,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <link rel="canonical" href={canonical} />
+      {noindex && <meta name="robots" content="noindex, follow" />}
 
       {/* Open Graph / Facebook */}
       <meta property="og:site_name" content="Cruzian" />
