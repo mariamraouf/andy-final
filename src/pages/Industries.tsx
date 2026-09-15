@@ -33,7 +33,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
       overview:
         "Roofing contractors need speed. When property owners request quote estimates or storm reports, our instant missed-call text-back locks them in before they call a rival contractor.",
       points: [
-        "High-ticket inspection bookings ($10,000–$40,000 job potential)",
+        "High-ticket inspection bookings",
         "Direct outreach to commercial property managers & HOAs",
         "Instant text-back when crews are busy on a roof",
         "Meta Lead Form Ads built for emergency inspection requests",

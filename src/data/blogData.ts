@@ -55,7 +55,7 @@ export const blogPostsData: BlogPostItem[] = [
         {
           heading: "3. Speed-to-Lead and Automated Missed-Call Recovery",
           body: [
-            "Research consistently proves that responding to an inbound inquiry within 5 minutes increases conversion rates by up to 391%. If your team is on a job site, in surgery, or consulting with a client, every missed phone call is money lost directly to a competitor.",
+            "Responding within minutes rather than hours is consistently the single largest controllable factor in whether an enquiry becomes a conversation. If your team is on a job site, in surgery, or consulting with a client, every missed phone call is money lost directly to a competitor.",
             "Deploying instant automated SMS text-back ensures you capture the lead within seconds, offering them a direct link to book on your calendar.",
           ],
         },
@@ -73,7 +73,7 @@ export const blogPostsData: BlogPostItem[] = [
     author: "Cruzian Growth Strategy Team",
     image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
     excerpt:
-      "Running Google or Meta ads without a dedicated landing page and rapid lead response wastes up to 74% of ad spend. Here is the architecture that delivers positive ROI.",
+      "Running Google or Meta ads without a dedicated landing page and rapid lead response wastes a large share of the budget. Here is the architecture that delivers positive ROI.",
     content: {
       introduction:
         "Too many business owners have hired digital marketing agencies only to receive glossy PDF reports filled with 'impressions' and 'clicks' while their bank accounts show zero new paying customers. Here is why standard retainer models fail and how to fix your acquisition architecture.",
@@ -81,7 +81,7 @@ export const blogPostsData: BlogPostItem[] = [
         {
           heading: "1. The Flaw of Sending Paid Traffic to Generic Homepages",
           body: [
-            "A website homepage is designed for general exploration: it has navigation links, company bios, multiple services, and distractions. When you pay $15 to $45 per click on Google Ads, sending that high-intent prospect to a generic homepage leads to a 90%+ bounce rate.",
+            "A website homepage is designed for general exploration: it has navigation links, company bios, multiple services, and distractions. When you are paying real money per click, sending that high-intent prospect to a generic homepage is what makes most of them leave without acting.",
             "High-converting campaigns direct traffic to dedicated, distraction-free landing pages that address the exact search query with a single, clear call-to-action.",
           ],
           bulletPoints: [
@@ -98,9 +98,9 @@ export const blogPostsData: BlogPostItem[] = [
           ],
         },
         {
-          heading: "3. Retargeting the 97% Who Don't Convert on Day One",
+          heading: "3. Retargeting the Visitors Who Don't Convert on Day One",
           body: [
-            "Only 3% of your target market is ready to buy today. The remaining 97% are researching, comparing options, or waiting for the right moment. If you don't run automated retargeting ads and follow-up email sequences, you lose all the awareness you paid for.",
+            "Only a small fraction of your market is ready to buy today. The rest are researching, comparing options, or waiting for the right moment. If you don't run automated retargeting ads and follow-up email sequences, you lose all the awareness you paid for.",
           ],
         },
       ],

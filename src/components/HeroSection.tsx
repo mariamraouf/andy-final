@@ -112,15 +112,15 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenAudit, onExploreSolutio
                   <div className="grid grid-cols-3 gap-3 pt-2">
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
                       <p className="text-[11px] text-slate-500 font-medium">Qualified Leads</p>
-                      <p className="text-xl font-black text-[#0B1B3D] font-mono mt-0.5">142+</p>
+                      <p className="text-[13px] font-bold text-[#0B1B3D] mt-0.5 leading-tight">Tracked to source</p>
                     </div>
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
-                      <p className="text-[11px] text-slate-500 font-medium">Cost per Lead</p>
-                      <p className="text-xl font-black text-emerald-600 font-mono mt-0.5">-38%</p>
+                      <p className="text-[11px] text-slate-500 font-medium">Cost per Client</p>
+                      <p className="text-[13px] font-bold text-emerald-700 mt-0.5 leading-tight">Not cost per click</p>
                     </div>
                     <div className="bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
-                      <p className="text-[11px] text-slate-500 font-medium">Close Rate</p>
-                      <p className="text-xl font-black text-amber-600 font-mono mt-0.5">3.4x</p>
+                      <p className="text-[11px] text-slate-500 font-medium">Follow-up</p>
+                      <p className="text-[13px] font-bold text-amber-700 mt-0.5 leading-tight">Automated, not manual</p>
                     </div>
                   </div>
                 </div>
@@ -132,8 +132,8 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenAudit, onExploreSolutio
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-[#0B1B3D]">$320K Added Pipeline</p>
-                  <p className="text-[10px] text-slate-500">Commercial Contractor Client</p>
+                  <p className="text-xs font-bold text-[#0B1B3D]">Missed-Call Recovery</p>
+                  <p className="text-[10px] text-slate-500">Instant text-back, day one</p>
                 </div>
               </div>
 

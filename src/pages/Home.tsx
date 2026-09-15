@@ -89,7 +89,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
                   <div className="bg-slate-900/90 rounded-xl p-4 border border-slate-800 flex items-center justify-between">
                     <div>
                       <p className="text-xs text-slate-400 font-medium">Monthly Verified Prospect Pool</p>
-                      <p className="text-2xl font-black text-amber-400 font-mono mt-0.5">2,450+ High Intent</p>
+                      <p className="text-lg font-black text-amber-400 mt-0.5">Built per campaign</p>
                     </div>
                     <TrendingUp className="w-6 h-6 text-amber-400" />
                   </div>

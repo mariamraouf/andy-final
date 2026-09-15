@@ -31,7 +31,7 @@ export const IndustrySolutions: React.FC<SolutionsProps> = ({ onSelectIndustry }
       description:
         "Contractors need rapid response. When roof replacement requests come in, our instant text-back locks them in before they reach out to another contractor.",
       deliverables: [
-        "High-ticket estimate bookings ($10k-$40k scope)",
+        "High-ticket estimate bookings",
         "Direct outreach to commercial property managers",
         "Instant call text-back when crews are on job sites",
       ],

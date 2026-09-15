@@ -115,7 +115,7 @@ export const RevenueCalculator: React.FC<CalculatorProps> = ({ onOpenAudit }) =>
 
             <div className="pt-2 text-xs text-slate-600 flex items-center gap-2 font-medium">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Estimates based on Apollo lead enrichment + human phone outreach conversion metrics.</span>
+              <span>Illustrative only. These are your own inputs, not a forecast or a guarantee of results.</span>
             </div>
 
           </div>
