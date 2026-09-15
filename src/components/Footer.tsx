@@ -73,9 +73,9 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-sm text-slate-300">
               <div className="space-y-1">
                 <span className="text-xs text-slate-400 block font-mono">Email</span>
-                <a href="mailto:hello@cruzian.com" className="font-bold text-white hover:text-amber-400 flex items-center gap-2">
+                <a href="mailto:hello@thecruzian.com" className="font-bold text-white hover:text-amber-400 flex items-center gap-2">
                   <Mail className="w-4 h-4 text-amber-400" />
-                  <span>hello@cruzian.com</span>
+                  <span>hello@thecruzian.com</span>
                 </a>
               </div>
 

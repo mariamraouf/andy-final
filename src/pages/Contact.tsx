@@ -124,8 +124,8 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-bold text-[#0B1B3D] text-sm">Email Inquiries</p>
-                    <a href="mailto:hello@cruzian.com" className="text-sm font-mono text-slate-700 hover:text-amber-600 font-bold">
-                      hello@cruzian.com
+                    <a href="mailto:hello@thecruzian.com" className="text-sm font-mono text-slate-700 hover:text-amber-600 font-bold">
+                      hello@thecruzian.com
                     </a>
                   </div>
                 </div>
