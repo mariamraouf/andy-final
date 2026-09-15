@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, ShieldCheck, Phone, Mail, User, Building, Sparkles, Loader2 } from "lucide-react";
 import { showSuccess, showError } from "@/utils/toast";
 import { Recaptcha, recaptchaConfigured } from "@/components/Recaptcha";
+import { trackLeadGeneration } from "@/utils/analytics";
 
 interface ModalProps {
   isOpen: boolean;
@@ -67,6 +68,9 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
       });
 
       if (response.ok) {
+        // GA4 conversion. Same reason as the contact page: preventDefault plus a
+        // fetch post means GA4 enhanced measurement never sees a submit event.
+        trackLeadGeneration("popup_modal");
         setSubmitted(true);
         showSuccess("Strategy Call Request Received! Our team will reach out within 12 hours.");
       } else {
@@ -199,12 +203,11 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
 
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-slate-700 uppercase font-mono">
-                  Phone Number
+                  Phone Number (Optional)
                 </label>
                 <div className="relative">
                   <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                   <Input
-                    required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="pl-10 bg-slate-50 border-slate-200 text-slate-900 rounded-xl py-5 text-sm"

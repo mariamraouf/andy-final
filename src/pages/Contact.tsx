@@ -6,9 +6,10 @@ import { CheckCircle2, Phone, Mail, User, Building, ShieldCheck, Sparkles, MapPi
 import { showSuccess, showError } from "@/utils/toast";
 import { SEO } from "@/components/SEO";
 import { Recaptcha, recaptchaConfigured } from "@/components/Recaptcha";
+import { trackLeadGeneration } from "@/utils/analytics";
 
 export const Contact: React.FC = () => {
-  const [packageInterest, setPackageInterest] = useState("Growth — $1,500/month");
+  const [packageInterest, setPackageInterest] = useState("Not Sure — Need Recommendations");
   const [businessName, setBusinessName] = useState("");
   const [ownerName, setOwnerName] = useState("");
   const [email, setEmail] = useState("");
@@ -55,6 +56,11 @@ export const Contact: React.FC = () => {
       });
 
       if (response.ok) {
+        // GA4 conversion. This form calls preventDefault and posts over fetch,
+        // so the browser's native submit event never fires and GA4 enhanced
+        // measurement cannot detect it. Fire the event explicitly, and only
+        // after Formspree has confirmed the write.
+        trackLeadGeneration("contact_page");
         setSubmitted(true);
         showSuccess("Strategy Call Request Received! Our team will reach out directly within 12 hours.");
       } else {
@@ -206,20 +212,42 @@ export const Contact: React.FC = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Your Name</label>
+                    <div className="relative">
+                      <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+                      <Input
+                        required
+                        value={ownerName}
+                        onChange={(e) => setOwnerName(e.target.value)}
+                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Email Address</label>
+                    <div className="relative">
+                      <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+                      <Input
+                        required
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Package / Service of Interest</label>
-                  <select
-                    value={packageInterest}
-                    onChange={(e) => setPackageInterest(e.target.value)}
-                    className="w-full bg-white border border-slate-200 text-slate-900 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-500"
-                  >
-                    <option value="Business Boost (One-Time) — $399">Business Boost (One-Time) — $399</option>
-                    <option value="Visibility — $750/month">Visibility — $750/month</option>
-                    <option value="Growth — $1,500/month">Growth — $1,500/month (Most Popular)</option>
-                    <option value="Dominance — Starting at $3,000/month">Dominance — Starting at $3,000/month</option>
-                    <option value="Custom Project / Add-On">Custom Project / Add-On</option>
-                    <option value="Not Sure — Need Recommendations">Not Sure — Need Recommendations</option>
-                  </select>
+                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Current Business Challenge / Goals</label>
+                  <Textarea
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="bg-white border-slate-200 text-slate-900 rounded-xl text-sm h-24"
+                  />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -237,40 +265,10 @@ export const Contact: React.FC = () => {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Your Name</label>
-                    <div className="relative">
-                      <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <Input
-                        required
-                        value={ownerName}
-                        onChange={(e) => setOwnerName(e.target.value)}
-                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Email Address</label>
-                    <div className="relative">
-                      <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <Input
-                        required
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Phone Number</label>
+                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Phone Number (Optional)</label>
                     <div className="relative">
                       <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                       <Input
-                        required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -280,12 +278,19 @@ export const Contact: React.FC = () => {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Current Business Challenge / Goals</label>
-                  <Textarea
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="bg-white border-slate-200 text-slate-900 rounded-xl text-sm h-24"
-                  />
+                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Package / Service of Interest (Optional)</label>
+                  <select
+                    value={packageInterest}
+                    onChange={(e) => setPackageInterest(e.target.value)}
+                    className="w-full bg-white border border-slate-200 text-slate-900 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-500"
+                  >
+                    <option value="Not Sure — Need Recommendations">Not Sure — Need Recommendations</option>
+                    <option value="Business Boost (One-Time) — $399">Business Boost (One-Time) — $399</option>
+                    <option value="Visibility — $750/month">Visibility — $750/month</option>
+                    <option value="Growth — $1,500/month">Growth — $1,500/month (Most Popular)</option>
+                    <option value="Dominance — Starting at $3,000/month">Dominance — Starting at $3,000/month</option>
+                    <option value="Custom Project / Add-On">Custom Project / Add-On</option>
+                  </select>
                 </div>
 
                 {/* Hidden honeypot — real people never see or fill this */}
