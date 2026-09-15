@@ -3,8 +3,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, ShieldCheck, Phone, Mail, User, Building, Sparkles, Loader2, Lock } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Phone, Mail, User, Building, Sparkles, Loader2 } from "lucide-react";
 import { showSuccess, showError } from "@/utils/toast";
+import { Recaptcha, recaptchaConfigured } from "@/components/Recaptcha";
 
 interface ModalProps {
   isOpen: boolean;
@@ -22,26 +23,11 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  // Human Verification State
-  const [num1, setNum1] = useState(4);
-  const [num2, setNum2] = useState(3);
-  const [userMathAnswer, setUserMathAnswer] = useState("");
-  const [mathError, setMathError] = useState(false);
-
-  const generateCaptcha = () => {
-    const n1 = Math.floor(Math.random() * 8) + 2;
-    const n2 = Math.floor(Math.random() * 8) + 1;
-    setNum1(n1);
-    setNum2(n2);
-    setUserMathAnswer("");
-    setMathError(false);
-  };
-
-  useEffect(() => {
-    if (isOpen) {
-      generateCaptcha();
-    }
-  }, [isOpen]);
+  // Spam protection: reCAPTCHA v2 token + hidden honeypot field
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReset, setCaptchaReset] = useState(0);
+  const [botField, setBotField] = useState("");
+  const [captchaUnavailable, setCaptchaUnavailable] = useState(false);
 
   useEffect(() => {
     if (preselectedIndustry) {
@@ -52,15 +38,13 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Verify Math Answer
-    const correctAnswer = num1 + num2;
-    if (parseInt(userMathAnswer.trim(), 10) !== correctAnswer) {
-      setMathError(true);
-      showError("Human verification answer is incorrect. Please try again.");
+    // Honeypot: real people never see this field, bots fill it in.
+    if (botField.trim() !== "") return;
+
+    if (recaptchaConfigured && !captchaUnavailable && !captchaToken) {
+      showError("Please complete the verification below before submitting.");
       return;
     }
-
-    setMathError(false);
     setSubmitting(true);
 
     try {
@@ -78,7 +62,7 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
           email,
           phone,
           message,
-          verificationPassed: true,
+          "g-recaptcha-response": captchaToken,
         }),
       });
 
@@ -93,6 +77,8 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
       showError("Connection error. Please try again or call us at +1 888-619-3580.");
     } finally {
       setSubmitting(false);
+      setCaptchaToken("");
+      setCaptchaReset((n) => n + 1);
     }
   };
 
@@ -238,31 +224,25 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
               />
             </div>
 
-            {/* Human Verification Box */}
-            <div className="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
-              <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-[#0B1B3D] uppercase font-mono flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-amber-600" />
-                  <span>Human Verification: What is {num1} + {num2}?</span>
-                </label>
-                <button
-                  type="button"
-                  onClick={generateCaptcha}
-                  className="text-[10px] text-slate-500 hover:text-[#0B1B3D] underline"
-                >
-                  New Question
-                </button>
-              </div>
-              <Input
-                required
-                type="number"
-                value={userMathAnswer}
-                onChange={(e) => setUserMathAnswer(e.target.value)}
-                className={`bg-white border text-sm rounded-xl py-4 ${
-                  mathError ? "border-rose-500 text-rose-600" : "border-slate-300 text-slate-900"
-                }`}
-              />
-            </div>
+            {/* Hidden honeypot — real people never see or fill this */}
+            <input
+              type="text"
+              name="company_website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              value={botField}
+              onChange={(e) => setBotField(e.target.value)}
+              className="absolute left-[-9999px] w-px h-px opacity-0"
+            />
+
+            {recaptchaConfigured && (
+              <Recaptcha
+                  onChange={setCaptchaToken}
+                  onUnavailable={() => setCaptchaUnavailable(true)}
+                  resetSignal={captchaReset}
+                />
+            )}
 
             <Button
               type="submit"
