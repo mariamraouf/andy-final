@@ -10,7 +10,7 @@ const DIST = path.join(__dirname, "dist");
 // Keep in sync with the <Route> list in src/App.tsx and public/sitemap.xml.
 const staticRoutes = [
   "/", "/about", "/services", "/packages", "/industries",
-  "/success-stories", "/calculator", "/blog", "/contact",
+  "/calculator", "/blog", "/contact",
 ];
 
 // Blog detail pages, read straight from the same source the app uses.

@@ -42,7 +42,6 @@ export const Footer: React.FC = () => {
               <li><Link to="/services" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Services</Link></li>
               <li><Link to="/packages" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Packages</Link></li>
               <li><Link to="/industries" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Industries We Serve</Link></li>
-              <li><Link to="/success-stories" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Success Stories</Link></li>
               <li><Link to="/blog" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Blog</Link></li>
               <li><Link to="/contact" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Contact</Link></li>
             </ul>

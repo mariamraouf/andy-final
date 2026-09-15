@@ -171,7 +171,6 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
                   <Building className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                   <Input
                     required
-                    placeholder="e.g. Coastal Roofing"
                     value={businessName}
                     onChange={(e) => setBusinessName(e.target.value)}
                     className="pl-10 bg-slate-50 border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -187,7 +186,6 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
                   <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                   <Input
                     required
-                    placeholder="e.g. Sarah Miller"
                     value={ownerName}
                     onChange={(e) => setOwnerName(e.target.value)}
                     className="pl-10 bg-slate-50 border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -206,7 +204,6 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
                   <Input
                     required
                     type="email"
-                    placeholder="you@business.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10 bg-slate-50 border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -222,7 +219,6 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
                   <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                   <Input
                     required
-                    placeholder="(904) 555-0192"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="pl-10 bg-slate-50 border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -236,7 +232,6 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
                 What is your primary marketing goal or bottleneck?
               </label>
               <Textarea
-                placeholder="Tell us what you'd like to improve (e.g. consistent inbound inquiries, SEO rankings, automated follow-ups)..."
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="bg-slate-50 border-slate-200 text-slate-900 rounded-xl text-sm h-20"
@@ -261,7 +256,6 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
               <Input
                 required
                 type="number"
-                placeholder="Enter answer"
                 value={userMathAnswer}
                 onChange={(e) => setUserMathAnswer(e.target.value)}
                 className={`bg-white border text-sm rounded-xl py-4 ${

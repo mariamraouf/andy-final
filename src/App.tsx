@@ -7,7 +7,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { MadeWithDyad } from "@/components/made-with-dyad";
 import { AuditBookingModal } from "@/components/AuditBookingModal";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { usePageTracking } from "@/hooks/usePageTracking";
@@ -18,7 +17,6 @@ import { About } from "@/pages/About";
 import { Services } from "@/pages/Services";
 import { PackagesPage } from "@/pages/PackagesPage";
 import { Industries } from "@/pages/Industries";
-import { SuccessStories } from "@/pages/SuccessStories";
 import { CalculatorPage } from "@/pages/CalculatorPage";
 import { Blog } from "@/pages/Blog";
 import { BlogPost } from "@/pages/BlogPost";
@@ -58,7 +56,6 @@ const AppContent = () => {
           <Route path="/services" element={<Services onOpenAudit={(pkg) => handleOpenAudit(pkg)} />} />
           <Route path="/packages" element={<PackagesPage onOpenAudit={(pkg) => handleOpenAudit(pkg)} />} />
           <Route path="/industries" element={<Industries onOpenAudit={(ind) => handleOpenAudit(ind)} />} />
-          <Route path="/success-stories" element={<SuccessStories onOpenAudit={() => handleOpenAudit()} />} />
           <Route path="/calculator" element={<CalculatorPage onOpenAudit={() => handleOpenAudit()} />} />
           <Route path="/blog" element={<Blog onOpenAudit={() => handleOpenAudit()} />} />
           <Route path="/blog/:id" element={<BlogPost onOpenAudit={() => handleOpenAudit()} />} />
@@ -69,10 +66,6 @@ const AppContent = () => {
 
       {/* Global Footer */}
       <Footer />
-
-      <div className="bg-slate-50 border-t border-slate-200">
-        <MadeWithDyad />
-      </div>
 
       {/* Strategy Call Booking Dialog Modal */}
       <AuditBookingModal

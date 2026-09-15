@@ -241,7 +241,6 @@ export const Contact: React.FC = () => {
                       <Building className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                       <Input
                         required
-                        placeholder="e.g. Apex Health Clinic"
                         value={businessName}
                         onChange={(e) => setBusinessName(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -255,7 +254,6 @@ export const Contact: React.FC = () => {
                       <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                       <Input
                         required
-                        placeholder="Sarah Miller"
                         value={ownerName}
                         onChange={(e) => setOwnerName(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -272,7 +270,6 @@ export const Contact: React.FC = () => {
                       <Input
                         required
                         type="email"
-                        placeholder="you@business.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -286,7 +283,6 @@ export const Contact: React.FC = () => {
                       <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
                       <Input
                         required
-                        placeholder="(904) 555-0192"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
@@ -298,7 +294,6 @@ export const Contact: React.FC = () => {
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700 uppercase font-mono">Current Business Challenge / Goals</label>
                   <Textarea
-                    placeholder="Tell us what you're looking to achieve (e.g., more B2B leads, local SEO visibility, Google Ads scaling)..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="bg-white border-slate-200 text-slate-900 rounded-xl text-sm h-24"
@@ -323,7 +318,6 @@ export const Contact: React.FC = () => {
                   <Input
                     required
                     type="number"
-                    placeholder="Enter answer"
                     value={userMathAnswer}
                     onChange={(e) => setUserMathAnswer(e.target.value)}
                     className={`bg-slate-50 border text-sm rounded-xl py-4 ${

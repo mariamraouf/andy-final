@@ -17,7 +17,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
     { name: "Services", path: "/services" },
     { name: "Packages", path: "/packages" },
     { name: "Industries", path: "/industries" },
-    { name: "Success Stories", path: "/success-stories" },
     { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
