@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/Logo";
+import { SocialIcons } from "@/components/SocialIcons";
 
 export const Footer: React.FC = () => {
   const handleScrollTop = () => {
@@ -29,6 +30,16 @@ export const Footer: React.FC = () => {
               <span className="inline-block text-amber-400 font-mono text-xs font-bold uppercase tracking-widest bg-amber-500/10 px-3.5 py-1 rounded-full border border-amber-500/20">
                 Growth. Authority. Results.
               </span>
+            </div>
+
+            <div className="pt-3">
+              <p className="text-xs font-mono font-bold uppercase text-amber-400 tracking-wider mb-2.5">
+                Follow Cruzian
+              </p>
+              <SocialIcons
+                itemClassName="w-9 h-9 rounded-xl bg-white/10 hover:bg-amber-500 text-slate-200 hover:text-[#0B1B3D] flex items-center justify-center transition-colors"
+                iconClassName="w-4 h-4"
+              />
             </div>
           </div>
 

@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
+import { TopBar } from "@/components/TopBar";
 import { Footer } from "@/components/Footer";
 import { AuditBookingModal } from "@/components/AuditBookingModal";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -45,7 +46,8 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-amber-400 selection:text-slate-950">
       <ScrollToTop />
-      {/* Header Navbar */}
+      {/* Contact bar + header */}
+      <TopBar />
       <Navbar onOpenAudit={() => handleOpenAudit()} />
 
       {/* Route Content Pages */}

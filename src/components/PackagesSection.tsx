@@ -124,14 +124,14 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
               key={idx}
               className={`rounded-3xl p-7 flex flex-col justify-between transition-all relative ${
                 pkg.popular
-                  ? "bg-[#0B1B3D] text-white shadow-2xl scale-105 border-2 border-amber-400 z-10"
+                  ? "bg-[#0B1B3D] text-white shadow-2xl lg:scale-105 border-2 border-amber-400 z-10 mt-5 lg:mt-0 pt-9"
                   : "bg-slate-50 text-slate-900 border border-slate-200 hover:shadow-lg hover:bg-white"
               }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-500 to-amber-400 text-[#0B1B3D] font-mono text-[11px] font-black uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md flex items-center gap-1.5">
-                  <Star className="w-3.5 h-3.5 fill-[#0B1B3D]" />
-                  <span>Most Popular</span>
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-max max-w-[92%] bg-gradient-to-r from-amber-500 to-amber-400 text-[#0B1B3D] font-mono text-[12px] sm:text-[13px] font-black uppercase tracking-wider px-5 py-2 rounded-full shadow-lg border-2 border-white flex items-center gap-2">
+                  <Star className="w-4 h-4 fill-[#0B1B3D] shrink-0" />
+                  <span>We Recommend This</span>
                 </div>
               )}
 

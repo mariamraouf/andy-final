@@ -34,3 +34,7 @@ dist-ssr
 .dyad/
 # Scratch files staged for manual deletion (not part of the app)
 _to_delete/
+
+# Build tarballs used for verification
+*.tgz
+_tmpclean/

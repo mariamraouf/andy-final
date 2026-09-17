@@ -57,19 +57,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
 
         {/* Phone & Strategy Call CTA */}
         <div className="hidden lg:flex items-center gap-5">
-          <a
-            href="tel:18886193580"
-            className="flex items-center gap-2 text-sm font-bold text-slate-800 hover:text-amber-600 transition-colors"
-          >
-            <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-700">
-              <Phone className="w-4 h-4" />
-            </div>
-            <span>+1 888-619-3580</span>
-          </a>
-
           <Button
             onClick={onOpenAudit}
-            className="bg-[#0B1B3D] hover:bg-[#132752] text-amber-400 hover:text-amber-300 font-bold px-5 py-2.5 rounded-xl text-xs shadow-sm flex items-center gap-2"
+            className="bg-[#0B1B3D] hover:bg-[#132752] text-amber-400 hover:text-amber-300 font-black px-6 py-3 rounded-xl text-sm shadow-md flex items-center gap-2"
           >
             <span>Book a Free Strategy Call</span>
             <ArrowRight className="w-3.5 h-3.5" />
