@@ -20,6 +20,6 @@ export const SOCIALS: SocialLink[] = [
   { name: "LinkedIn", url: "https://www.linkedin.com/company/thecruzian" },
   { name: "Instagram", url: "https://www.instagram.com/cruzian__" },
   // { name: "X", url: "https://x.com/<handle>" },
-  // { name: "TikTok", url: "https://www.tiktok.com/@<handle>" },
+  { name: "TikTok", url: "https://www.tiktok.com/@thecruzian" },
   // { name: "Facebook", url: "https://www.facebook.com/<page>" },
 ];
