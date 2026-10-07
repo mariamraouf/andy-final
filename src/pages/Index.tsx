@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SEO } from "@/components/SEO";
 import { HeroSection } from "@/components/HeroSection";
+import { ClearNextStep } from "@/components/ClearNextStep";
 import { ServicesSection } from "@/components/ServicesSection";
 import { OurProcessSection } from "@/components/OurProcessSection";
 import { PackagesSection } from "@/components/PackagesSection";
@@ -43,6 +44,12 @@ const Index: React.FC = () => {
         onExploreSolutions={scrollToServices}
       />
 
+      {/* The three priorities a visitor usually arrives with */}
+      <ClearNextStep />
+
+      {/* Growth goal in perspective */}
+      <RevenueCalculator onOpenAudit={() => handleOpenAudit()} />
+
       {/* Complete 01-09 Cruzian Growth Services */}
       <ServicesSection onOpenAudit={() => handleOpenAudit()} />
 
@@ -54,9 +61,6 @@ const Index: React.FC = () => {
 
       {/* Founder Manifesto & Cruzian Heritage */}
       <FounderManifesto />
-
-      {/* Interactive Revenue Yield Simulator */}
-      <RevenueCalculator onOpenAudit={() => handleOpenAudit()} />
 
       {/* Side-by-Side Comparison Table */}
       <ComparisonSection />
