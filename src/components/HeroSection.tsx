@@ -16,6 +16,8 @@ const GOALS = [
     id: "customers",
     icon: Users,
     label: "More customers",
+    // id of the matching card in ServicesSection
+    target: "lead-generation",
     answer:
       "Lead generation and paid acquisition, set up so every inquiry is traceable to the ad, page or post that produced it.",
   },
@@ -23,6 +25,7 @@ const GOALS = [
     id: "visibility",
     icon: Search,
     label: "Better Google visibility",
+    target: "seo",
     answer:
       "Local SEO, Google Business Profile and the technical work that gets your pages indexed, ranked and clicked.",
   },
@@ -30,6 +33,7 @@ const GOALS = [
     id: "website",
     icon: LayoutTemplate,
     label: "A website that converts",
+    target: "website-design",
     answer:
       "A site designed around one conversion goal per page — fast on a phone and obvious to contact from.",
   },
@@ -38,6 +42,17 @@ const GOALS = [
 export const HeroSection: React.FC<HeroProps> = ({ onOpenAudit, onExploreSolutions }) => {
   const [activeGoal, setActiveGoal] = useState<string>("customers");
   const current = GOALS.find((g) => g.id === activeGoal) ?? GOALS[0];
+
+  // Picking a goal is a navigation, not just a label swap: it takes the
+  // visitor straight to the service that answers it. The offset clears the
+  // sticky top bar and navbar so the card heading is not hidden under them.
+  const goToService = (goal: (typeof GOALS)[number]) => {
+    setActiveGoal(goal.id);
+    const el = document.getElementById(goal.target);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 120;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
 
   return (
     <section className="relative isolate overflow-hidden bg-[#0B1B3D] text-white">
@@ -108,7 +123,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenAudit, onExploreSolutio
                     key={goal.id}
                     type="button"
                     aria-pressed={selected}
-                    onClick={() => setActiveGoal(goal.id)}
+                    onClick={() => goToService(goal)}
                     className={`w-full grid grid-cols-[auto_1fr_auto] items-center gap-3.5 text-left rounded-md px-4 py-3.5 transition-colors ${
                       selected
                         ? "border-2 border-amber-500 bg-white"
