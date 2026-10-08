@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, ShieldCheck, Phone, Mail, User, Building, Sparkles, Loader2 } from "lucide-react";
 import { showSuccess, showError } from "@/utils/toast";
 import { Recaptcha, recaptchaConfigured } from "@/components/Recaptcha";
-import { trackLeadGeneration } from "@/utils/analytics";
+import { trackLeadGeneration, trackBookCall } from "@/utils/analytics";
 
 interface ModalProps {
   isOpen: boolean;
@@ -71,6 +71,9 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
         // GA4 conversion. Same reason as the contact page: preventDefault plus a
         // fetch post means GA4 enhanced measurement never sees a submit event.
         trackLeadGeneration("popup_modal");
+        // This modal IS the appointment request, so it also satisfies the
+        // book_appointment conversion action in Google Ads.
+        trackBookCall("audit_modal");
         setSubmitted(true);
         showSuccess("Strategy Call Request Received! Our team will reach out within 12 hours.");
       } else {

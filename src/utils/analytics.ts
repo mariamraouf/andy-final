@@ -1,27 +1,27 @@
 // Analytics helpers.
 //
-// gtag.js is loaded once in index.html for GA4 (G-5LYS1V3QKB). Google Ads
-// rides on that same script: it needs its own gtag('config', 'AW-…') call and
-// its own conversion events, which is what the block below handles.
+// index.html loads gtag.js once and configures two accounts on it:
+//   GA4           G-5LYS1V3QKB
+//   Google Ads    AW-18436643903   ("Cruzian" Google tag, also GT-MQJRBF37)
 //
-// ─────────────────────────────────────────────────────────────────────────────
-// TO SWITCH GOOGLE ADS ON: paste the conversion ID into GOOGLE_ADS_ID, and the
-// conversion labels into ADS_CONVERSIONS. Both are in Google Ads under
-// Tools → Conversions → (your action) → Tag setup → Install the tag yourself.
+// ─── How conversions actually work in this account ──────────────────────────
+// There are no conversion labels to paste. All three conversion actions in
+// Google Ads are driven by EVENT NAMES rather than by a per-action snippet:
 //
-// The ID looks like "AW-123456789". A label looks like "AbC-D_efGhIjKlMnOp".
-// Leave them empty and every Ads call below becomes a no-op — nothing breaks,
-// nothing fires, and GA4 carries on exactly as it does now.
+//   book_appointment   source: Website  — fires on a gtag event "book_appointment"
+//   contact            source: Website  — fires on a gtag event "contact"
+//   generate_lead      source: GA4      — imported from the GA4 property
+//
+// So the job of this file is to emit those three exact event names at the
+// right moments. Renaming them breaks conversion tracking; the Google Ads
+// conversion actions are matched on the string.
+//
+// The descriptive events below (book_call, contact_click_phone,
+// contact_click_email) are kept alongside because GA4 already has history
+// under those names and they carry more detail than the Ads ones.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const GOOGLE_ADS_ID = "AW-18436643903";
-
-export const ADS_CONVERSIONS = {
-  // Someone submitted the audit or contact form.
-  lead: "",
-  // Someone tapped the phone number.
-  phoneCall: "",
-} as const;
 
 export const adsConfigured = GOOGLE_ADS_ID.startsWith("AW-");
 
@@ -34,21 +34,12 @@ declare global {
 
 const hasGtag = () => typeof window !== "undefined" && typeof window.gtag === "function";
 
-// Registers the Ads account with the already-loaded gtag.js. Safe to call more
-// than once; gtag de-duplicates its own config calls. Does nothing until an ID
-// is set, so this is inert on the live site right now.
+// index.html already calls gtag('config', …) for both accounts on first load.
+// This re-asserts the Ads account for client-side route changes and is a
+// no-op if gtag has not loaded. Safe to call repeatedly.
 export const initGoogleAds = () => {
   if (!adsConfigured || !hasGtag()) return;
-  window.gtag!("config", GOOGLE_ADS_ID);
-};
-
-// Fires a Google Ads conversion. `label` is one of ADS_CONVERSIONS.
-const trackAdsConversion = (label: string, params?: Record<string, any>) => {
-  if (!adsConfigured || !label || !hasGtag()) return;
-  window.gtag!("event", "conversion", {
-    send_to: `${GOOGLE_ADS_ID}/${label}`,
-    ...params,
-  });
+  window.gtag!("config", GOOGLE_ADS_ID, { send_page_view: false });
 };
 
 export const trackPageView = (path: string, title?: string) => {
@@ -65,37 +56,40 @@ export const trackEvent = (eventName: string, eventParams?: Record<string, any>)
   window.gtag!("event", eventName, eventParams);
 };
 
-// A form submission. Reports to GA4 always, and to Google Ads once configured.
+// ─── Conversions ────────────────────────────────────────────────────────────
+
+// A form was submitted. "generate_lead" is the name the GA4 property records
+// and Google Ads imports, so it has to stay exactly this.
 export const trackLeadGeneration = (location: string) => {
   trackEvent("generate_lead", {
     form_location: location,
     value: 0,
     currency: "USD",
   });
-  trackAdsConversion(ADS_CONVERSIONS.lead, { value: 0, currency: "USD" });
 };
 
+// Someone booked a call. Emits the Ads conversion name and the richer GA4 one.
+export const trackBookCall = (ctaLocation: string) => {
+  trackEvent("book_appointment", { cta_location: ctaLocation });
+  trackEvent("book_call", { cta_location: ctaLocation });
+};
+
+// Someone reached out by phone. "contact" is the Ads conversion name.
 export const trackPhoneClick = () => {
-  trackEvent("contact_click_phone", {
-    phone_number: "+18886193580",
-  });
-  trackAdsConversion(ADS_CONVERSIONS.phoneCall);
+  trackEvent("contact", { method: "phone" });
+  trackEvent("contact_click_phone", { phone_number: "+18886193580" });
 };
 
+// Someone reached out by email. Same "contact" conversion, different method.
 export const trackEmailClick = () => {
-  trackEvent("contact_click_email", {
-    email_address: "hello@thecruzian.com",
-  });
+  trackEvent("contact", { method: "email" });
+  trackEvent("contact_click_email", { email_address: "hello@thecruzian.com" });
 };
+
+// ─── Engagement (GA4 only, not a conversion) ────────────────────────────────
 
 export const trackCalculatorComplete = (projectedRevenue: number) => {
   trackEvent("calculator_complete", {
     projected_revenue: projectedRevenue,
-  });
-};
-
-export const trackBookCall = (ctaLocation: string) => {
-  trackEvent("book_call", {
-    cta_location: ctaLocation,
   });
 };
