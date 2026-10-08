@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-sm text-slate-300 font-medium">
               <li><Link to="/about" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">About</Link></li>
               <li><Link to="/services" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Services</Link></li>
-              <li><Link to="/packages" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Packages</Link></li>
+              <li><Link to="/packages" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Pricing</Link></li>
               <li><Link to="/industries" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Industries We Serve</Link></li>
               <li><Link to="/blog" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Blog</Link></li>
               <li><Link to="/contact" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Contact</Link></li>

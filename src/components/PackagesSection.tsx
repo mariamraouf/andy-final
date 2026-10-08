@@ -45,7 +45,7 @@ export const packagesData = [
   },
   {
     name: "Growth",
-    badge: "Most Popular",
+    badge: "Ready to Scale",
     price: "$1,500",
     billing: "per month",
     description: "For businesses ready to aggressively grow.",
@@ -131,7 +131,7 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
               {pkg.popular && (
                 <div className="absolute -top-5 left-1/2 -translate-x-1/2 w-max max-w-[92%] bg-gradient-to-r from-amber-500 to-amber-400 text-[#0B1B3D] font-mono text-[12px] sm:text-[13px] font-black uppercase tracking-wider px-5 py-2 rounded-full shadow-lg border-2 border-white flex items-center gap-2">
                   <Star className="w-4 h-4 fill-[#0B1B3D] shrink-0" />
-                  <span>We Recommend This</span>
+                  <span>Most Popular</span>
                 </div>
               )}
 
