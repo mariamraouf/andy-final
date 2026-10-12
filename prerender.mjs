@@ -11,6 +11,7 @@ const DIST = path.join(__dirname, "dist");
 const staticRoutes = [
   "/", "/about", "/services", "/packages", "/industries",
   "/calculator", "/blog", "/contact",
+  "/billing", "/privacy", "/terms",
 ];
 
 // Blog detail pages, read straight from the same source the app uses.

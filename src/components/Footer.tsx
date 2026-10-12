@@ -55,6 +55,7 @@ export const Footer: React.FC = () => {
               <li><Link to="/industries" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Industries We Serve</Link></li>
               <li><Link to="/blog" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Blog</Link></li>
               <li><Link to="/contact" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Contact</Link></li>
+              <li><Link to="/billing" onClick={handleScrollTop} className="hover:text-amber-400 transition-colors">Billing &amp; Terms</Link></li>
             </ul>
           </div>
 
@@ -125,8 +126,9 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <p>© 2026 Cruzian. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link to="/contact" onClick={handleScrollTop} className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/contact" onClick={handleScrollTop} className="hover:text-white transition-colors">Terms of Use</Link>
+            <Link to="/privacy" onClick={handleScrollTop} className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms" onClick={handleScrollTop} className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link to="/billing" onClick={handleScrollTop} className="hover:text-white transition-colors">Billing Terms</Link>
           </div>
         </div>
 

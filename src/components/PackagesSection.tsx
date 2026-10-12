@@ -1,6 +1,7 @@
 import React from "react";
 import { Check, ArrowRight, Zap, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 interface PackagesProps {
   onOpenAudit: (packageName?: string) => void;
@@ -12,6 +13,7 @@ export const packagesData = [
     badge: "One-Time Jumpstart",
     price: "$399",
     billing: "One-Time",
+    setup: null,
     description: "Perfect for businesses that need a quick jumpstart.",
     features: [
       "Marketing and online presence audit",
@@ -30,6 +32,7 @@ export const packagesData = [
     badge: "Consistent Inbound",
     price: "$750",
     billing: "per month",
+    setup: "$500",
     description: "For businesses that need consistent visibility and lead generation.",
     features: [
       "Local SEO management",
@@ -48,6 +51,7 @@ export const packagesData = [
     badge: "Ready to Scale",
     price: "$1,500",
     billing: "per month",
+    setup: "$1,000",
     description: "For businesses ready to aggressively grow.",
     features: [
       "Everything in Visibility, plus:",
@@ -69,11 +73,12 @@ export const packagesData = [
     badge: "Full Partnership",
     price: "$3,000+",
     billing: "per month (starting at)",
+    setup: "$1,500",
     description: "A fully managed growth partnership.",
     features: [
       "Everything in Growth, plus:",
       "Complete marketing management",
-      "Multi-platform advertising",
+      "Multi-platform advertising management (ad spend not included)",
       "Advanced lead generation systems",
       "CRM optimization and automation",
       "Reputation management",
@@ -161,6 +166,11 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
                       {pkg.billing}
                     </span>
                   </div>
+                  <p className={`mt-1.5 text-[11px] font-mono font-bold uppercase tracking-wider ${
+                    pkg.popular ? "text-amber-400" : "text-amber-700"
+                  }`}>
+                    {pkg.setup ? `+ ${pkg.setup} one-time setup` : "No setup fee"}
+                  </p>
                 </div>
 
                 <div className="space-y-2.5 pt-3">
@@ -199,6 +209,50 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* What the price covers, and what it doesn't */}
+        <div className="grid md:grid-cols-3 gap-5">
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-2">
+            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700">
+              One-time setup fee
+            </p>
+            <h4 className="text-base font-black text-[#0B1B3D]">Charged once, with your first month</h4>
+            <p className="text-slate-600 text-xs leading-relaxed">
+              The setup fee covers onboarding, account and platform access, tracking and reporting
+              setup, and the first build of your campaigns. It is billed one time at the start of the
+              engagement and never again. Business Boost is a one-time project and has no setup fee.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-2">
+            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700">
+              Advertising budget
+            </p>
+            <h4 className="text-base font-black text-[#0B1B3D]">Separate, and entirely yours</h4>
+            <p className="text-slate-600 text-xs leading-relaxed">
+              Where a package includes ad management, your advertising budget is not part of the fee.
+              You set the amount, it is paid directly to Google or Meta, and every dollar of it goes to
+              the platforms. Cruzian takes no percentage of ad spend.
+            </p>
+          </div>
+
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-2">
+            <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700">
+              How billing works
+            </p>
+            <h4 className="text-base font-black text-[#0B1B3D]">Setup plus first month, then monthly</h4>
+            <p className="text-slate-600 text-xs leading-relaxed">
+              The setup fee and your first month are collected together before work begins. Monthly
+              billing then recurs on the same date, with your authorization, until you cancel.
+            </p>
+            <Link
+              to="/billing"
+              className="inline-block text-xs font-bold text-[#0B1B3D] underline decoration-amber-500 decoration-2 underline-offset-4 hover:text-amber-700 transition-colors"
+            >
+              Billing, cancellation &amp; refund terms
+            </Link>
+          </div>
         </div>
 
         {/* Optional Add-On Services */}

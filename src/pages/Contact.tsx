@@ -286,9 +286,9 @@ export const Contact: React.FC = () => {
                   >
                     <option value="Not Sure — Need Recommendations">Not Sure — Need Recommendations</option>
                     <option value="Business Boost (One-Time) — $399">Business Boost (One-Time) — $399</option>
-                    <option value="Visibility — $750/month">Visibility — $750/month</option>
-                    <option value="Growth — $1,500/month">Growth — $1,500/month (Most Popular)</option>
-                    <option value="Dominance — Starting at $3,000/month">Dominance — Starting at $3,000/month</option>
+                    <option value="Visibility — $750/month + $500 setup">Visibility — $750/month + $500 setup</option>
+                    <option value="Growth — $1,500/month + $1,000 setup">Growth — $1,500/month + $1,000 setup (Most Popular)</option>
+                    <option value="Dominance — From $3,000/month + $1,500 setup">Dominance — From $3,000/month + $1,500 setup</option>
                     <option value="Custom Project / Add-On">Custom Project / Add-On</option>
                   </select>
                 </div>

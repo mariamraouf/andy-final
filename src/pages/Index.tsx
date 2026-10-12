@@ -56,7 +56,7 @@ const Index: React.FC = () => {
       {/* How We Deliver Results 4-Step Process */}
       <OurProcessSection onOpenAudit={() => handleOpenAudit()} />
 
-      {/* All 4 Packages & Add-Ons ($399, $750/mo, $1,500/mo, $3,000/mo) */}
+      {/* All 4 Packages & Add-Ons — $399 one-time, then $750 / $1,500 / $3,000+ per month plus setup */}
       <PackagesSection onOpenAudit={(pkg) => handleOpenAudit(pkg)} />
 
       {/* Founder Manifesto & Cruzian Heritage */}
