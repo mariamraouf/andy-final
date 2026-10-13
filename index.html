@@ -1,15 +1,38 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LYS1V3QKB"></script>
+    <!-- Google tag (gtag.js) — PRODUCTION HOST ONLY.
+         The same code is deployed to staging and preview URLs. Firing GA4 and
+         Google Ads conversions from those would put fake leads into the numbers
+         Cruzian judges its ad spend on, so the tag is only loaded on the real
+         domain. Everywhere else gtag is simply never defined, and the helpers in
+         src/utils/analytics.ts no-op on their own because they check for it. -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-5LYS1V3QKB');
-      // Google Ads — same gtag.js, its own account.
-      gtag('config', 'AW-18436643903');
+      window.CRUZIAN_IS_PRODUCTION =
+        location.hostname === 'thecruzian.com' ||
+        location.hostname === 'www.thecruzian.com';
+
+      if (window.CRUZIAN_IS_PRODUCTION) {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-5LYS1V3QKB';
+        document.head.appendChild(s);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function(){ dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'G-5LYS1V3QKB');
+        // Google Ads — same gtag.js, its own account.
+        gtag('config', 'AW-18436643903');
+      } else {
+        // Staging / preview host. Flip the robots meta below to noindex so a
+        // copy of the site can never compete with thecruzian.com in search or
+        // leak unapproved pricing into a search result.
+        document.addEventListener('DOMContentLoaded', function () {
+          var m = document.querySelector('meta[name="robots"]');
+          if (m) m.setAttribute('content', 'noindex, nofollow');
+        });
+      }
     </script>
 
     <meta charset="UTF-8" />
