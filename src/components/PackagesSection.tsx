@@ -15,6 +15,7 @@ interface PackagesProps {
 export const packagesData = [
   {
     name: "Business Boost",
+    payNow: "$399",
     paySlug: "business-boost",
     badge: "One-Time Jumpstart",
     price: "$399",
@@ -35,6 +36,7 @@ export const packagesData = [
   },
   {
     name: "Visibility",
+    payNow: "$1,250",
     paySlug: "visibility-start",
     badge: "Consistent Inbound",
     price: "$750",
@@ -55,6 +57,7 @@ export const packagesData = [
   },
   {
     name: "Growth",
+    payNow: "$2,500",
     paySlug: "growth-start",
     badge: "Ready to Scale",
     price: "$1,500",
@@ -78,6 +81,7 @@ export const packagesData = [
   },
   {
     name: "Dominance",
+    payNow: "$4,500",
     paySlug: "dominance-start",
     badge: "Full Partnership",
     price: "$3,000+",
@@ -99,7 +103,7 @@ export const packagesData = [
       "Dedicated account manager",
     ],
     popular: false,
-    cta: "Partner for Dominance",
+    cta: "Start Dominance",
   },
 ];
 
@@ -204,32 +208,34 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
               </div>
 
               <div className="pt-6 space-y-2.5">
-                <Button
-                  onClick={() => onOpenAudit(pkg.name)}
-                  className={`w-full font-bold text-xs py-5 rounded-xl transition-all flex items-center justify-center gap-2 ${
+                {/* Straight to checkout. The amount is on the button because the
+                    monthly tiers charge setup + first month together, and nobody
+                    should meet that number for the first time on a payment page. */}
+                <a
+                  href={`${PAY_BASE}/${pkg.paySlug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-full font-bold text-xs py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
                     pkg.popular
                       ? "bg-amber-500 hover:bg-amber-600 text-[#0B1B3D]"
                       : "bg-[#0B1B3D] hover:bg-slate-800 text-white"
                   }`}
                 >
-                  <span>{pkg.cta}</span>
+                  <span>{pkg.cta} &mdash; {pkg.payNow}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </Button>
+                </a>
 
-                {/* For clients who have already had the call and agreed terms.
-                    New visitors book first - nobody pays $2,500 to a stranger. */}
-                <a
-                  href={`${PAY_BASE}/${pkg.paySlug}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block text-center text-[11px] font-semibold underline underline-offset-4 transition-colors ${
+                <button
+                  type="button"
+                  onClick={() => onOpenAudit(pkg.name)}
+                  className={`block w-full text-center text-[11px] font-semibold underline underline-offset-4 transition-colors ${
                     pkg.popular
                       ? "text-slate-300 hover:text-amber-400"
                       : "text-slate-500 hover:text-amber-700"
                   }`}
                 >
-                  Already agreed terms? Pay &amp; start
-                </a>
+                  Not sure yet? Book a free call first
+                </button>
               </div>
             </div>
           ))}
