@@ -1,5 +1,5 @@
 import React from "react";
-import { Check, ArrowRight, Zap, Star } from "lucide-react";
+import { Check, ArrowRight, Zap, Star, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,7 @@ interface PackagesProps {
 export const packagesData = [
   {
     name: "Business Boost",
+    guarantee: false,
     payNow: "$399",
     paySlug: "business-boost",
     badge: "One-Time Jumpstart",
@@ -36,6 +37,7 @@ export const packagesData = [
   },
   {
     name: "Visibility",
+    guarantee: true,
     payNow: "$1,250",
     paySlug: "visibility-start",
     badge: "Consistent Inbound",
@@ -57,6 +59,7 @@ export const packagesData = [
   },
   {
     name: "Growth",
+    guarantee: true,
     payNow: "$2,500",
     paySlug: "growth-start",
     badge: "Ready to Scale",
@@ -81,6 +84,7 @@ export const packagesData = [
   },
   {
     name: "Dominance",
+    guarantee: true,
     payNow: "$4,500",
     paySlug: "dominance-start",
     badge: "Full Partnership",
@@ -236,6 +240,17 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
                 >
                   Not sure yet? Book a free call first
                 </button>
+
+                {pkg.guarantee && (
+                  <p
+                    className={`flex items-start justify-center gap-1.5 text-center text-[11px] leading-snug pt-1 ${
+                      pkg.popular ? "text-amber-400" : "text-emerald-700"
+                    }`}
+                  >
+                    <ShieldCheck className="w-3.5 h-3.5 shrink-0 mt-px" />
+                    <span>7 days to change your mind &mdash; full refund</span>
+                  </p>
+                )}
               </div>
             </div>
           ))}
@@ -274,7 +289,9 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
             <h4 className="text-base font-black text-[#0B1B3D]">Setup plus first month, then monthly</h4>
             <p className="text-slate-600 text-xs leading-relaxed">
               The setup fee and your first month are collected together before work begins. Monthly
-              billing then recurs on the same date, with your authorization, until you cancel.
+              billing then recurs on the same date, with your authorization, until you cancel. If a
+              monthly package is not right for you, cancel within 7 days of that first payment and we
+              refund it in full &mdash; setup fee included.
             </p>
             <Link
               to="/billing"

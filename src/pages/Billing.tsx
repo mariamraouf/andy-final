@@ -119,10 +119,16 @@ export const Billing: React.FC = () => (
       </LegalSection>
 
       <LegalSection heading="Refunds">
+        <p>
+          <strong>The first seven days are risk-free.</strong> If you start a monthly package and
+          decide within seven days of that first payment that it is not right, tell us and we refund
+          it in full &mdash; the first month and the setup fee. No questions, no notice period, and
+          we hand over anything we have already built. After those seven days the terms below apply.
+        </p>
         <LegalList
           items={[
-            <><strong>Setup fee:</strong> refundable in full until onboarding begins. Once we have started that work it is non-refundable, because the time has been spent.</>,
-            <><strong>Monthly fees:</strong> the current month is non-refundable once it has started. We do not pro-rate part-months, and we do not charge for months you have cancelled out of.</>,
+            <><strong>Setup fee:</strong> covered by the seven-day guarantee above. After that it is non-refundable, because the work has been done.</>,
+            <><strong>Monthly fees:</strong> outside the first seven days, the current month is non-refundable once it has started. We do not pro-rate part-months, and we do not charge for months you have cancelled out of.</>,
             <><strong>Business Boost:</strong> refundable in full any time before the strategy session takes place. After the session, it is non-refundable — the audit and action plan are yours to keep.</>,
             <><strong>Advertising spend:</strong> paid to the platforms, not to us, so refunds are governed by their policies, not ours.</>,
           ]}
