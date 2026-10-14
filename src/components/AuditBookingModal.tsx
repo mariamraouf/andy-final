@@ -2,6 +2,7 @@ import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Sparkles } from "lucide-react";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
+import { NoCommitment } from "@/components/NoCommitment";
 
 interface ModalProps {
   isOpen: boolean;
@@ -40,6 +41,8 @@ export const AuditBookingModal: React.FC<ModalProps> = ({ isOpen, onClose, prese
           ) : null}
         </DialogDescription>
       </DialogHeader>
+
+      <NoCommitment className="pt-1 pb-1" />
 
       <div className="pt-2">
         <CalendlyEmbed location="audit_modal" context={preselectedIndustry} height={660} />

@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { GrowthAssessment } from "@/components/GrowthAssessment";
+import { NoCommitment } from "@/components/NoCommitment";
 
 interface HeroProps {
   onOpenAudit: () => void;
@@ -61,6 +62,8 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenAudit, onExploreSolutio
                 See Our Services
               </button>
             </div>
+
+            <NoCommitment tone="dark" className="mt-7 pt-6 border-t border-white/15 max-w-xl" />
           </div>
 
           {/* Right: the growth assessment */}

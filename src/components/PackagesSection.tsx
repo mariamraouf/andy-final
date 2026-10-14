@@ -2,6 +2,7 @@ import React from "react";
 import { Check, ArrowRight, Zap, Star, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { NoCommitment } from "@/components/NoCommitment";
 
 // GoDaddy Payments links. The three monthly tiers charge the one-time setup fee
 // and the first month together, which is why the amounts differ from the
@@ -135,8 +136,10 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
             Simple, Scalable Packages
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
-            Straightforward pricing that fits your stage of growth. Built to deliver positive ROI from day one.
+            Straightforward pricing that fits your stage of growth. Every monthly package comes with
+            seven days to change your mind.
           </p>
+          <NoCommitment className="justify-center pt-1" />
         </div>
 
         {/* 4 Core Packages Grid */}

@@ -2,6 +2,7 @@ import React from "react";
 import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle2 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
+import { NoCommitment } from "@/components/NoCommitment";
 
 export const Contact: React.FC = () => {
 
@@ -131,6 +132,7 @@ export const Contact: React.FC = () => {
                 lost today, and the fastest route to more of them. No obligation, and no
                 pressure on the call.
               </p>
+              <NoCommitment className="pt-1" />
             </div>
 
             <CalendlyEmbed location="contact_page" height={700} />

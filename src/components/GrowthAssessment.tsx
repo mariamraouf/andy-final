@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ArrowRight, ArrowLeft, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { trackEvent } from "@/utils/analytics";
+import { NoCommitmentLine } from "@/components/NoCommitment";
 
 /**
  * Three questions that end in a recommendation.
@@ -215,6 +216,8 @@ export const GrowthAssessment: React.FC<Props> = ({ onOpenAudit }) => {
               See what {result.pkg} includes
             </Link>
           </div>
+
+          {result.pkg !== "Business Boost" && <NoCommitmentLine className="mt-3.5 justify-center" />}
 
           <div className="mt-4 pt-3.5 border-t border-slate-200 flex items-center justify-between">
             <button
