@@ -47,7 +47,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
       overview:
         "Build a predictable recurring revenue engine. We help landscaping companies win lucrative commercial property maintenance retainers and high-end neighborhood clusters.",
       points: [
-        "Commercial HOA & Property Decision Maker enrichment via Apollo",
+        "Commercial HOA & property decision-maker data enrichment",
         "Route-density lead generation (targeting neighbors of current jobs)",
         "Predictable monthly retainer service agreements",
         "Automated estimate request scheduling",
@@ -73,11 +73,11 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
       icon: Rocket,
       subtitle: "0-to-1 Customer Engine & Sales Scripting",
       overview:
-        "Starting a business without leads is terrifying. We set up your entire sales machine—from lead sourcing in Apollo to sales scripts and GoHighLevel CRM setup.",
+        "Starting a business without leads is terrifying. We set up your entire sales machine\u2014from outbound lead sourcing to sales scripts and a configured CRM.",
       points: [
         "First 500-1,000 verified decision maker target list",
         "Custom, non-robotic cold call scripts written by sales leads",
-        "Full GoHighLevel & ClickUp operational setup",
+        "Full CRM and project management setup",
         "Founder-led strategy to close your initial 10 paying clients",
       ],
     },
@@ -167,7 +167,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
           <span className="text-xs font-mono font-bold text-amber-400 uppercase">Growth Engine Workflow</span>
           <div className="space-y-3 text-xs text-slate-300">
             <div className="p-3 bg-slate-900 rounded-lg border border-slate-800">
-              <span className="font-bold text-amber-300">1. Sourcing:</span> Apollo enrichment filters verified local decision makers.
+              <span className="font-bold text-amber-300">1. Sourcing:</span> Data enrichment filters verified local decision makers.
             </div>
             <div className="p-3 bg-slate-900 rounded-lg border border-slate-800">
               <span className="font-bold text-orange-300">2. Outreach:</span> Human sales leads execute calls & LinkedIn outreach.

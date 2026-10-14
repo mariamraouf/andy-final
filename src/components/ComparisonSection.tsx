@@ -10,7 +10,7 @@ export const ComparisonSection: React.FC = () => {
     },
     {
       feature: "Outreach Execution",
-      cruzian: "Skilled human phone calls + verified Apollo prospect data + custom scripts.",
+      cruzian: "Skilled human phone calls + verified decision-maker data + custom scripts.",
       typical: "Mass spammed automated emails that land in spam folders.",
     },
     {
@@ -20,7 +20,7 @@ export const ComparisonSection: React.FC = () => {
     },
     {
       feature: "Communication & Tools",
-      cruzian: "Direct WhatsApp & ClickUp access. Real-time updates & no gatekeeping.",
+      cruzian: "Direct messaging and a shared project board. Real-time updates & no gatekeeping.",
       typical: "Slow email ticketing system that takes 5 business days to reply.",
     },
     {

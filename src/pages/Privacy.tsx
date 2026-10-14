@@ -57,8 +57,8 @@ export const Privacy: React.FC = () => (
           items={[
             <><strong>Google Analytics 4</strong> — to see which pages and traffic sources work. It sets cookies and records the activity described above.</>,
             <><strong>Google Ads</strong> — to measure which ads produce enquiries, and for remarketing. This means Google may show you Cruzian ads elsewhere after you have visited this site.</>,
-            <><strong>Formspree</strong> — delivers form submissions to our inbox and stores them briefly in transit.</>,
-            <><strong>Vercel</strong> — hosts the website and keeps standard server logs.</>,
+            <><strong>Our form delivery provider</strong> — passes anything you submit through a form to our inbox, and stores it briefly in transit.</>,
+            <><strong>Our hosting provider</strong> — serves the website and keeps standard server logs.</>,
             <><strong>Our payment processor</strong> — handles card and bank payments for clients. They receive your payment details directly; we never see or store full card numbers.</>,
           ]}
         />

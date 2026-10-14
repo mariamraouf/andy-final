@@ -1,80 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, Phone, Mail, User, Building, ShieldCheck, Sparkles, MapPin, Clock, Calendar, Loader2 } from "lucide-react";
-import { showSuccess, showError } from "@/utils/toast";
+import React from "react";
+import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle2 } from "lucide-react";
 import { SEO } from "@/components/SEO";
-import { Recaptcha, recaptchaConfigured } from "@/components/Recaptcha";
-import { trackLeadGeneration } from "@/utils/analytics";
+import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 
 export const Contact: React.FC = () => {
-  const [packageInterest, setPackageInterest] = useState("Not Sure — Need Recommendations");
-  const [businessName, setBusinessName] = useState("");
-  const [ownerName, setOwnerName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  // Spam protection: reCAPTCHA v2 token + hidden honeypot field
-  const [captchaToken, setCaptchaToken] = useState("");
-  const [captchaReset, setCaptchaReset] = useState(0);
-  const [botField, setBotField] = useState("");
-  const [captchaUnavailable, setCaptchaUnavailable] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    // Honeypot: real people never see this field, bots fill it in.
-    if (botField.trim() !== "") return;
-
-    if (recaptchaConfigured && !captchaUnavailable && !captchaToken) {
-      showError("Please complete the verification below before submitting.");
-      return;
-    }
-    setSubmitting(true);
-
-    try {
-      const response = await fetch("https://formspree.io/f/xrpzrqkg", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          source: "Contact Page Form",
-          packageInterest,
-          businessName,
-          ownerName,
-          email,
-          phone,
-          message,
-          "g-recaptcha-response": captchaToken,
-        }),
-      });
-
-      if (response.ok) {
-        // GA4 conversion. This form calls preventDefault and posts over fetch,
-        // so the browser's native submit event never fires and GA4 enhanced
-        // measurement cannot detect it. Fire the event explicitly, and only
-        // after Formspree has confirmed the write.
-        trackLeadGeneration("contact_page");
-        setSubmitted(true);
-        showSuccess("Strategy Call Request Received! Our team will reach out directly within 12 hours.");
-      } else {
-        const data = await response.json().catch(() => ({}));
-        showError(data?.error || "There was an issue submitting your message. Please try again.");
-      }
-    } catch (err) {
-      showError("Connection error. Please try again or call us at +1 888-619-3580.");
-    } finally {
-      setSubmitting(false);
-      setCaptchaToken("");
-      setCaptchaReset((n) => n + 1);
-    }
-  };
 
   return (
     <>
@@ -191,152 +120,32 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Form */}
-          <div className="lg:col-span-7 bg-slate-50 p-8 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
-            {submitted ? (
-              <div className="py-12 text-center space-y-6">
-                <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-200">
-                  <CheckCircle2 className="w-10 h-10" />
-                </div>
-                <h3 className="text-2xl font-bold text-[#0B1B3D]">Strategy Call Request Received!</h3>
-                <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
-                  Thank you, <strong className="text-amber-700">{ownerName || "Business Owner"}</strong>. Our team is reviewing <strong className="text-[#0B1B3D]">{businessName}</strong> and will reach out via phone or email within 12 hours.
-                </p>
-                <Button
-                  onClick={() => setSubmitted(false)}
-                  className="bg-amber-500 hover:bg-amber-600 text-[#0B1B3D] font-bold px-6 py-3 rounded-xl"
-                >
-                  Submit Another Request
-                </Button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Your Name</label>
-                    <div className="relative">
-                      <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <Input
-                        required
-                        value={ownerName}
-                        onChange={(e) => setOwnerName(e.target.value)}
-                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
-                      />
-                    </div>
-                  </div>
+          {/* Right: booking calendar */}
+          <div className="lg:col-span-7 bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+            <div className="mb-5 space-y-1.5">
+              <h2 className="text-2xl font-black text-[#0B1B3D] tracking-tight">
+                Pick a time that suits you
+              </h2>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                A free 45-minute call. We look at your local market, where inquiries are being
+                lost today, and the fastest route to more of them. No obligation, and no
+                pressure on the call.
+              </p>
+            </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Email Address</label>
-                    <div className="relative">
-                      <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <Input
-                        required
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
+            <CalendlyEmbed location="contact_page" height={700} />
 
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Current Business Challenge / Goals</label>
-                  <Textarea
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    className="bg-white border-slate-200 text-slate-900 rounded-xl text-sm h-24"
-                  />
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Company / Business Name</label>
-                    <div className="relative">
-                      <Building className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <Input
-                        required
-                        value={businessName}
-                        onChange={(e) => setBusinessName(e.target.value)}
-                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-700 uppercase font-mono">Phone Number (Optional)</label>
-                    <div className="relative">
-                      <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
-                      <Input
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="pl-10 bg-white border-slate-200 text-slate-900 rounded-xl py-5 text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 uppercase font-mono">Package / Service of Interest (Optional)</label>
-                  <select
-                    value={packageInterest}
-                    onChange={(e) => setPackageInterest(e.target.value)}
-                    className="w-full bg-white border border-slate-200 text-slate-900 rounded-xl p-3 text-sm focus:outline-none focus:border-amber-500"
-                  >
-                    <option value="Not Sure — Need Recommendations">Not Sure — Need Recommendations</option>
-                    <option value="Business Boost (One-Time) — $399">Business Boost (One-Time) — $399</option>
-                    <option value="Visibility — $750/month + $500 setup">Visibility — $750/month + $500 setup</option>
-                    <option value="Growth — $1,500/month + $1,000 setup">Growth — $1,500/month + $1,000 setup (Most Popular)</option>
-                    <option value="Dominance — From $3,000/month + $1,500 setup">Dominance — From $3,000/month + $1,500 setup</option>
-                    <option value="Custom Project / Add-On">Custom Project / Add-On</option>
-                  </select>
-                </div>
-
-                {/* Hidden honeypot — real people never see or fill this */}
-                <input
-                  type="text"
-                  name="company_website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  value={botField}
-                  onChange={(e) => setBotField(e.target.value)}
-                  className="absolute left-[-9999px] w-px h-px opacity-0"
-                />
-
-                {recaptchaConfigured && (
-                  <Recaptcha
-                  onChange={setCaptchaToken}
-                  onUnavailable={() => setCaptchaUnavailable(true)}
-                  resetSignal={captchaReset}
-                />
-                )}
-
-                <Button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full bg-[#0B1B3D] hover:bg-slate-800 text-amber-400 font-black py-6 rounded-xl shadow-md flex items-center justify-center gap-2 text-base"
-                >
-                  {submitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin text-amber-400" />
-                      <span>Sending Request...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-5 h-5 text-amber-400" />
-                      <span>Book Free 45-Minute Strategy Call</span>
-                    </>
-                  )}
-                </Button>
-
-                <p className="text-[11px] text-slate-500 text-center flex items-center justify-center gap-1 font-medium">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>100% Confidential. We never sell or spam client contact information.</span>
-                </p>
-              </form>
-            )}
+            <p className="mt-5 pt-4 border-t border-slate-200 text-xs text-slate-500 leading-relaxed">
+              Prefer to write first? Email{" "}
+              <a href="mailto:hello@thecruzian.com" className="font-semibold text-amber-700 underline underline-offset-4">
+                hello@thecruzian.com
+              </a>{" "}
+              or call{" "}
+              <a href="tel:+18886193580" className="font-semibold text-amber-700 underline underline-offset-4">
+                +1 888-619-3580
+              </a>
+              . We never sell or share your details.
+            </p>
           </div>
 
         </div>

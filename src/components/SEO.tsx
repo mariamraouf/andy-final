@@ -20,7 +20,7 @@ const DEFAULT_OG_IMAGE = "https://www.thecruzian.com/og-image.jpg";
 export const SEO: React.FC<SEOProps> = ({
   title = DEFAULT_TITLE,
   description = DEFAULT_DESCRIPTION,
-  keywords = "B2B lead generation, Jacksonville marketing agency, SEO services, local business growth, GoHighLevel CRM setup, Apollo lead sourcing, missed call recovery, paid ads management, digital marketing Jacksonville",
+  keywords = "B2B lead generation, Jacksonville marketing agency, SEO services, local business growth, CRM setup and automation, outbound lead sourcing, missed call recovery, paid ads management, digital marketing Jacksonville",
   canonical = DEFAULT_CANONICAL,
   ogImage = DEFAULT_OG_IMAGE,
   articleSchema,

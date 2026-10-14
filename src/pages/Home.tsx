@@ -37,10 +37,10 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
 
               <div className="grid sm:grid-cols-2 gap-3 pt-2">
                 {[
-                  "Apollo Precision Lead Sourcing",
+                  "Precision Lead Sourcing",
                   "Human Cold Calling That Converts",
                   "Smart AI Missed-Call Recovery",
-                  "Direct WhatsApp & ClickUp Access",
+                  "Direct Messaging & Shared Project Board",
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2.5 text-slate-200 font-medium text-sm">
                     <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
@@ -166,7 +166,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
             { name: "Roofing & Construction", desc: "Inspection quotes & instant missed-call text backs while on job sites.", link: "/industries" },
             { name: "Landscaping & Grounds", desc: "Commercial grounds retainers & HOA decision maker outreach.", link: "/industries" },
             { name: "Restaurants & Dining", desc: "Corporate catering outreach & SMS VIP dining clubs.", link: "/industries" },
-            { name: "Startups & Local SMBs", desc: "0-to-1 customer acquisition, Apollo lead sourcing, & GoHighLevel.", link: "/industries" },
+            { name: "Startups & Local SMBs", desc: "0-to-1 customer acquisition, outbound lead sourcing, & CRM automation.", link: "/industries" },
             { name: "Custom B2B & Services", desc: "Tailored cold calling & LinkedIn decision maker prospecting.", link: "/contact" },
           ].map((item, idx) => (
             <div key={idx} className="bg-slate-900/80 rounded-2xl p-6 border border-slate-800 hover:border-amber-500/50 transition-all space-y-3 group">

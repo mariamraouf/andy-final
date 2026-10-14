@@ -3,6 +3,11 @@ import { Check, ArrowRight, Zap, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
+// GoDaddy Payments links. The three monthly tiers charge the one-time setup fee
+// and the first month together, which is why the amounts differ from the
+// monthly price shown on the card.
+const PAY_BASE = "https://6485926f-23fe-4f60-9256-f96a24d10999.paylinks.godaddy.com";
+
 interface PackagesProps {
   onOpenAudit: (packageName?: string) => void;
 }
@@ -10,6 +15,7 @@ interface PackagesProps {
 export const packagesData = [
   {
     name: "Business Boost",
+    paySlug: "business-boost",
     badge: "One-Time Jumpstart",
     price: "$399",
     billing: "One-Time",
@@ -29,6 +35,7 @@ export const packagesData = [
   },
   {
     name: "Visibility",
+    paySlug: "visibility-start",
     badge: "Consistent Inbound",
     price: "$750",
     billing: "per month",
@@ -48,6 +55,7 @@ export const packagesData = [
   },
   {
     name: "Growth",
+    paySlug: "growth-start",
     badge: "Ready to Scale",
     price: "$1,500",
     billing: "per month",
@@ -70,6 +78,7 @@ export const packagesData = [
   },
   {
     name: "Dominance",
+    paySlug: "dominance-start",
     badge: "Full Partnership",
     price: "$3,000+",
     billing: "per month (starting at)",
@@ -98,7 +107,7 @@ export const addOnsData = [
   { name: "Website Design / Redesign", price: "Starting at $1,500", desc: "Custom, conversion-focused responsive website." },
   { name: "Branding Package", price: "Starting at $1,000", desc: "Full visual identity, typography, guidelines, and assets." },
   { name: "Logo Design", price: "Starting at $500", desc: "Professional high-resolution logo with vectors and variations." },
-  { name: "CRM Setup and Automation", price: "Starting at $750", desc: "HubSpot or GoHighLevel pipeline configuration with SMS and email flows." },
+  { name: "CRM Setup and Automation", price: "Starting at $750", desc: "Sales pipeline configuration in your CRM, with automated SMS and email follow-up." },
   { name: "Custom Landing Pages", price: "Starting at $500 / page", desc: "High-converting standalone landing pages for campaigns." },
   { name: "Professional Photography and Video", price: "Custom Quote", desc: "On-site local photo and video production if needed." },
 ];
@@ -194,7 +203,7 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
                 </div>
               </div>
 
-              <div className="pt-6">
+              <div className="pt-6 space-y-2.5">
                 <Button
                   onClick={() => onOpenAudit(pkg.name)}
                   className={`w-full font-bold text-xs py-5 rounded-xl transition-all flex items-center justify-center gap-2 ${
@@ -206,6 +215,21 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
                   <span>{pkg.cta}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Button>
+
+                {/* For clients who have already had the call and agreed terms.
+                    New visitors book first - nobody pays $2,500 to a stranger. */}
+                <a
+                  href={`${PAY_BASE}/${pkg.paySlug}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`block text-center text-[11px] font-semibold underline underline-offset-4 transition-colors ${
+                    pkg.popular
+                      ? "text-slate-300 hover:text-amber-400"
+                      : "text-slate-500 hover:text-amber-700"
+                  }`}
+                >
+                  Already agreed terms? Pay &amp; start
+                </a>
               </div>
             </div>
           ))}

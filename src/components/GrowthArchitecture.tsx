@@ -67,7 +67,7 @@ export const GrowthArchitecture: React.FC = () => {
             <div className="pt-4 border-t border-slate-200 text-xs font-semibold text-slate-800 space-y-2">
               <div className="flex items-center gap-2 text-emerald-700">
                 <ShieldCheck className="w-4 h-4" />
-                <span>Daily call recordings & logs via WhatsApp</span>
+                <span>Daily call recordings &amp; logs shared with you</span>
               </div>
             </div>
           </div>
