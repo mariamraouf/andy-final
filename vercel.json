@@ -16,6 +16,7 @@
     { "source": "/blog/:slug", "destination": "/index.html" },
     { "source": "/contact", "destination": "/index.html" },
     { "source": "/billing", "destination": "/index.html" },
+    { "source": "/home-services", "destination": "/index.html" },
     { "source": "/privacy", "destination": "/index.html" },
     { "source": "/terms", "destination": "/index.html" }
   ]
