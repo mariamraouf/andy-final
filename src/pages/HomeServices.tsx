@@ -6,6 +6,7 @@ import {
   MapPin, Phone, Mail, CheckCircle2, Loader2, ArrowRight, ShieldCheck,
 } from "lucide-react";
 import { showError } from "@/utils/toast";
+import { submitForm } from "@/utils/forms";
 import { trackLeadGeneration } from "@/utils/analytics";
 
 const SERVICES = [
@@ -58,20 +59,15 @@ export const HomeServices: React.FC = () => {
     if (botField) return; // honeypot: only a bot fills this
     setSending(true);
     try {
-      const res = await fetch("https://formspree.io/f/xrpzrqkg", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          source: "Personal services quote request",
-          service,
-          ownerName: name,
-          email,
-          phone,
-          area,
-          message: details,
-        }),
+      await submitForm(`Quote request — ${service}`, {
+        source: "Personal services quote request",
+        service,
+        ownerName: name,
+        email,
+        phone,
+        area,
+        message: details,
       });
-      if (!res.ok) throw new Error(String(res.status));
       trackLeadGeneration("home_services_quote");
       setSent(true);
     } catch {

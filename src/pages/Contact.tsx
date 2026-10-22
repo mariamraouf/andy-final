@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, Calendar, CheckCircle2 } from "lucide-react
 import { SEO } from "@/components/SEO";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { NoCommitment } from "@/components/NoCommitment";
+import { MessageForm } from "@/components/MessageForm";
 
 export const Contact: React.FC = () => {
 
@@ -137,17 +138,21 @@ export const Contact: React.FC = () => {
 
             <CalendlyEmbed location="contact_page" height={700} />
 
-            <p className="mt-5 pt-4 border-t border-slate-200 text-xs text-slate-500 leading-relaxed">
-              Prefer to write first? Email{" "}
-              <a href="mailto:hello@thecruzian.com" className="font-semibold text-amber-700 underline underline-offset-4">
-                hello@thecruzian.com
-              </a>{" "}
-              or call{" "}
-              <a href="tel:+18886193580" className="font-semibold text-amber-700 underline underline-offset-4">
-                +1 888-619-3580
-              </a>
-              . We never sell or share your details.
-            </p>
+            {/* Not everyone is ready to give up 45 minutes to a stranger. */}
+            <div className="mt-7 pt-7 border-t border-slate-200">
+              <h3 className="text-lg font-black text-[#0B1B3D] tracking-tight">
+                Not ready for a call? Write instead.
+              </h3>
+              <p className="mt-1.5 mb-5 text-sm text-slate-600 leading-relaxed">
+                Tell us roughly what you're after and we'll come back to you — no call needed
+                unless you want one. Or ring{" "}
+                <a href="tel:+18886193580" className="font-semibold text-amber-700 underline underline-offset-4">
+                  +1 888-619-3580
+                </a>
+                .
+              </p>
+              <MessageForm location="contact_page" />
+            </div>
           </div>
 
         </div>
