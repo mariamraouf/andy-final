@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import {
   Leaf, Droplets, Car, Wrench, Home as HomeIcon,
   MapPin, Phone, Mail, CheckCircle2, Loader2, ArrowRight, ShieldCheck,
 } from "lucide-react";
-import { showError } from "@/utils/toast";
-import { submitForm } from "@/utils/forms";
+import { FORM_ID } from "@/utils/forms";
 import { trackLeadGeneration } from "@/utils/analytics";
+
+const errorClass = "block mt-1 text-[12px] font-semibold text-red-600";
 
 const SERVICES = [
   {
@@ -44,37 +46,25 @@ const HOW = [
 ];
 
 export const HomeServices: React.FC = () => {
+  const [state, handleSubmit] = useForm(FORM_ID);
   const [service, setService] = useState("Not sure — need advice");
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [area, setArea] = useState("");
-  const [details, setDetails] = useState("");
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
   const [botField, setBotField] = useState("");
+  const counted = useRef(false);
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (botField) return; // honeypot: only a bot fills this
-    setSending(true);
-    try {
-      await submitForm(`Quote request — ${service}`, {
-        source: "Personal services quote request",
-        service,
-        ownerName: name,
-        email,
-        phone,
-        area,
-        message: details,
-      });
+  // Fire the conversion once and only once, however often this re-renders.
+  useEffect(() => {
+    if (state.succeeded && !counted.current) {
+      counted.current = true;
       trackLeadGeneration("home_services_quote");
-      setSent(true);
-    } catch {
-      showError("That didn't send. Please call +1 888-619-3580 and we'll sort it out.");
-    } finally {
-      setSending(false);
     }
+  }, [state.succeeded]);
+
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (botField) {
+      e.preventDefault(); // honeypot: only a bot fills this
+      return;
+    }
+    handleSubmit(e);
   };
 
   const field =
@@ -175,7 +165,7 @@ export const HomeServices: React.FC = () => {
       {/* Quote form */}
       <section id="quote" className="bg-white py-14 sm:py-16 scroll-mt-24">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          {sent ? (
+          {state.succeeded ? (
             <div className="text-center space-y-5 py-10">
               <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 grid place-items-center mx-auto border border-emerald-200">
                 <CheckCircle2 className="w-8 h-8" />
@@ -201,12 +191,17 @@ export const HomeServices: React.FC = () => {
               </p>
 
               <form onSubmit={submit} className="mt-7 space-y-4">
+                {/* Makes the notification email readable without opening it */}
+                <input type="hidden" name="_subject" value={`Quote request — ${service}`} />
+                <input type="hidden" name="source" value="Personal services quote request" />
+
                 <div>
                   <label htmlFor="hs-service" className="block text-sm font-semibold text-[#0B1B3D] mb-1.5">
                     What do you need?
                   </label>
                   <select
                     id="hs-service"
+                    name="service"
                     value={service}
                     onChange={(e) => setService(e.target.value)}
                     className={field}
@@ -226,13 +221,15 @@ export const HomeServices: React.FC = () => {
                     <label htmlFor="hs-name" className="block text-sm font-semibold text-[#0B1B3D] mb-1.5">
                       Your name
                     </label>
-                    <input id="hs-name" required value={name} onChange={(e) => setName(e.target.value)} className={field} />
+                    <input id="hs-name" name="ownerName" required autoComplete="name" className={field} />
+                    <ValidationError prefix="Name" field="ownerName" errors={state.errors} className={errorClass} />
                   </div>
                   <div>
                     <label htmlFor="hs-area" className="block text-sm font-semibold text-[#0B1B3D] mb-1.5">
                       Neighborhood or ZIP
                     </label>
-                    <input id="hs-area" required value={area} onChange={(e) => setArea(e.target.value)} placeholder="e.g. Orange Park, 32073" className={field} />
+                    <input id="hs-area" name="area" required placeholder="e.g. Orange Park, 32073" className={field} />
+                    <ValidationError prefix="Area" field="area" errors={state.errors} className={errorClass} />
                   </div>
                 </div>
 
@@ -241,13 +238,15 @@ export const HomeServices: React.FC = () => {
                     <label htmlFor="hs-email" className="block text-sm font-semibold text-[#0B1B3D] mb-1.5">
                       Email
                     </label>
-                    <input id="hs-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className={field} />
+                    <input id="hs-email" name="email" type="email" required autoComplete="email" className={field} />
+                    <ValidationError prefix="Email" field="email" errors={state.errors} className={errorClass} />
                   </div>
                   <div>
                     <label htmlFor="hs-phone" className="block text-sm font-semibold text-[#0B1B3D] mb-1.5">
                       Phone
                     </label>
-                    <input id="hs-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Optional" className={field} />
+                    <input id="hs-phone" name="phone" type="tel" autoComplete="tel" placeholder="Optional" className={field} />
+                    <ValidationError prefix="Phone" field="phone" errors={state.errors} className={errorClass} />
                   </div>
                 </div>
 
@@ -255,7 +254,8 @@ export const HomeServices: React.FC = () => {
                   <label htmlFor="hs-details" className="block text-sm font-semibold text-[#0B1B3D] mb-1.5">
                     Anything we should know?
                   </label>
-                  <textarea id="hs-details" rows={4} value={details} onChange={(e) => setDetails(e.target.value)} placeholder="Size of the yard, how often, when suits you…" className={field} />
+                  <textarea id="hs-details" name="message" rows={4} placeholder="Size of the yard, how often, when suits you…" className={field} />
+                  <ValidationError prefix="Details" field="message" errors={state.errors} className={errorClass} />
                 </div>
 
                 {/* Honeypot — hidden from people, irresistible to bots */}
@@ -269,12 +269,15 @@ export const HomeServices: React.FC = () => {
                   className="hidden"
                 />
 
+                {/* Anything the server rejected that wasn't tied to a single field */}
+                <ValidationError errors={state.errors} className={errorClass} />
+
                 <button
                   type="submit"
-                  disabled={sending}
+                  disabled={state.submitting}
                   className="w-full bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-[#0B1B3D] font-bold text-sm py-3.5 rounded-md flex items-center justify-center gap-2 transition-colors"
                 >
-                  {sending ? (
+                  {state.submitting ? (
                     <>
                       <Loader2 className="w-4 h-4 animate-spin" /> Sending…
                     </>

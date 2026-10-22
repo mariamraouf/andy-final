@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
-import { showError } from "@/utils/toast";
-import { submitForm } from "@/utils/forms";
+import { FORM_ID } from "@/utils/forms";
 import { trackLeadGeneration } from "@/utils/analytics";
 
 interface MessageFormProps {
   /** Passed to GA4 so enquiries can be told apart by where they came from. */
   location: string;
 }
+
+const errorClass = "block mt-1 text-[12px] font-semibold text-red-600";
 
 /**
  * For the visitor who wants to write rather than book a 45-minute call.
@@ -17,42 +19,32 @@ interface MessageFormProps {
  * every time someone is on a phone with no mail client set up.
  */
 export const MessageForm: React.FC<MessageFormProps> = ({ location }) => {
+  const [state, handleSubmit] = useForm(FORM_ID);
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [business, setBusiness] = useState("");
-  const [message, setMessage] = useState("");
-  const [sending, setSending] = useState(false);
-  const [sent, setSent] = useState(false);
   const [botField, setBotField] = useState("");
+  const counted = useRef(false);
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (botField) return; // honeypot: only a bot fills this in
-    setSending(true);
-    try {
-      await submitForm(`New enquiry from ${name || "the website"}`, {
-        source: "Website enquiry",
-        ownerName: name,
-        email,
-        phone,
-        business,
-        message,
-      });
+  // Fire the conversion once and only once, however often this re-renders.
+  useEffect(() => {
+    if (state.succeeded && !counted.current) {
+      counted.current = true;
       trackLeadGeneration(location);
-      setSent(true);
-    } catch {
-      showError("That didn't send. Please call +1 888-619-3580 and we'll sort it out.");
-    } finally {
-      setSending(false);
     }
+  }, [state.succeeded, location]);
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (botField) {
+      e.preventDefault(); // honeypot: only a bot fills this in
+      return;
+    }
+    handleSubmit(e);
   };
 
   const field =
     "w-full bg-white border border-slate-300 rounded-md px-3.5 py-2.5 text-[15px] text-slate-900 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30 transition";
   const label = "block text-[13px] font-bold text-[#0B1B3D] mb-1.5";
 
-  if (sent) {
+  if (state.succeeded) {
     return (
       <div className="bg-white border border-emerald-300 rounded-lg p-6 text-center">
         <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
@@ -70,7 +62,11 @@ export const MessageForm: React.FC<MessageFormProps> = ({ location }) => {
   }
 
   return (
-    <form onSubmit={submit} className="space-y-4" noValidate={false}>
+    <form onSubmit={onSubmit} className="space-y-4">
+      {/* Makes the notification email readable without opening it */}
+      <input type="hidden" name="_subject" value={`New enquiry from ${name || "the website"}`} />
+      <input type="hidden" name="source" value="Website enquiry" />
+
       {/* Honeypot — hidden from people, irresistible to bots */}
       <input
         type="text"
@@ -87,23 +83,25 @@ export const MessageForm: React.FC<MessageFormProps> = ({ location }) => {
           <label className={label} htmlFor="mf-name">Your name</label>
           <input
             id="mf-name"
+            name="ownerName"
             className={field}
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
             autoComplete="name"
           />
+          <ValidationError prefix="Name" field="ownerName" errors={state.errors} className={errorClass} />
         </div>
         <div>
           <label className={label} htmlFor="mf-business">Business name</label>
           <input
             id="mf-business"
+            name="business"
             className={field}
-            value={business}
-            onChange={(e) => setBusiness(e.target.value)}
             autoComplete="organization"
             placeholder="Optional"
           />
+          <ValidationError prefix="Business" field="business" errors={state.errors} className={errorClass} />
         </div>
       </div>
 
@@ -112,25 +110,25 @@ export const MessageForm: React.FC<MessageFormProps> = ({ location }) => {
           <label className={label} htmlFor="mf-email">Email</label>
           <input
             id="mf-email"
+            name="email"
             type="email"
             className={field}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             required
             autoComplete="email"
           />
+          <ValidationError prefix="Email" field="email" errors={state.errors} className={errorClass} />
         </div>
         <div>
           <label className={label} htmlFor="mf-phone">Phone</label>
           <input
             id="mf-phone"
+            name="phone"
             type="tel"
             className={field}
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
             autoComplete="tel"
             placeholder="Optional"
           />
+          <ValidationError prefix="Phone" field="phone" errors={state.errors} className={errorClass} />
         </div>
       </div>
 
@@ -138,21 +136,24 @@ export const MessageForm: React.FC<MessageFormProps> = ({ location }) => {
         <label className={label} htmlFor="mf-message">What do you need help with?</label>
         <textarea
           id="mf-message"
+          name="message"
           className={`${field} min-h-[110px] resize-y`}
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
           required
           placeholder="A sentence or two is plenty — where leads are coming from today, and what you wish was different."
         />
+        <ValidationError prefix="Message" field="message" errors={state.errors} className={errorClass} />
       </div>
+
+      {/* Anything the server rejected that wasn't tied to a single field */}
+      <ValidationError errors={state.errors} className={errorClass} />
 
       <button
         type="submit"
-        disabled={sending}
+        disabled={state.submitting}
         className="w-full bg-[#0B1B3D] hover:bg-slate-800 disabled:opacity-60 text-white font-bold text-sm px-6 py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors"
       >
-        {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-        {sending ? "Sending…" : "Send message"}
+        {state.submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+        {state.submitting ? "Sending…" : "Send message"}
       </button>
 
       <p className="text-[11px] text-slate-500 leading-relaxed">
