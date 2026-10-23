@@ -12,13 +12,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Personal services leads the list: it is the half of the business people
+  // are least likely to know Cruzian does, so it gains most from being first.
   const navLinks = [
+    { name: "Personal Services", path: "/personal-services" },
     { name: "About", path: "/about" },
     { name: "Services", path: "/services" },
     { name: "Pricing", path: "/packages" },
     { name: "Industries", path: "/industries" },
     { name: "Blog", path: "/blog" },
-    { name: "Personal Services", path: "/personal-services" },
     { name: "Contact", path: "/contact" },
   ];
 
