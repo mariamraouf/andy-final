@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { SEO } from "@/components/SEO";
 import { HeroSection } from "@/components/HeroSection";
-import { AudienceSplit } from "@/components/AudienceSplit";
 import { ClearNextStep } from "@/components/ClearNextStep";
 import { ServicesSection } from "@/components/ServicesSection";
 import { OurProcessSection } from "@/components/OurProcessSection";
@@ -34,16 +33,12 @@ const Index: React.FC = () => {
   return (
     <div className="bg-white text-slate-900 font-sans selection:bg-amber-400 selection:text-slate-950">
       <SEO
-        title="Cruzian | Business Marketing & Home Services, Jacksonville FL"
-        description="Two sides of Cruzian: marketing, lead generation and websites for businesses nationwide, and lawn care, pressure washing and vehicle care around Jacksonville and Orange Park."
+        title="Cruzian | B2B Growth, Lead Generation & Digital Systems"
+        description="We help overlooked businesses become impossible to ignore. Predictable lead pipelines, modern websites, and paid ads in Jacksonville, FL."
         canonical="https://www.thecruzian.com/"
       />
 
-      {/* Front door: two audiences, two journeys */}
-      <AudienceSplit />
-
       {/* Hero Section with Interactive Desk */}
-      <div id="business" className="scroll-mt-20" />
       <HeroSection
         onOpenAudit={() => handleOpenAudit()}
         onExploreSolutions={scrollToServices}

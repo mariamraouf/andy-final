@@ -45,7 +45,7 @@ const HOW = [
   { n: "3", t: "You get a quote", d: "Usually the same day. You decide whether to go ahead." },
 ];
 
-export const HomeServices: React.FC = () => {
+export const PersonalServices: React.FC = () => {
   const [state, handleSubmit] = useForm(FORM_ID);
   const [service, setService] = useState("Not sure — need advice");
   const [botField, setBotField] = useState("");
@@ -73,9 +73,9 @@ export const HomeServices: React.FC = () => {
   return (
     <>
       <SEO
-        title="Home & Vehicle Services in Jacksonville | Cruzian"
+        title="Personal Services in Jacksonville | Lawn, Washing & Vehicle Care | Cruzian"
         description="Lawn care, pressure washing, car detailing and vehicle maintenance in Jacksonville and Orange Park. Tell us what you need and we'll match you with a vetted local provider."
-        canonical="https://www.thecruzian.com/home-services"
+        canonical="https://www.thecruzian.com/personal-services"
         keywords="lawn care Jacksonville, pressure washing Jacksonville, car detailing Orange Park, vehicle maintenance Jacksonville, home services Jacksonville FL"
       />
 
