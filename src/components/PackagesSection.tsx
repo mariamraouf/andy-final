@@ -331,7 +331,7 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
           <div className="text-center pt-4">
             <Button
               onClick={() => onOpenAudit("Custom Add-On Package")}
-              className="bg-amber-500 hover:bg-amber-600 text-[#0B1B3D] font-bold px-8 py-5 rounded-xl text-sm"
+              className="bg-amber-500 hover:bg-amber-600 text-[#0B1B3D] font-bold px-6 sm:px-8 py-5 rounded-xl text-sm max-w-full whitespace-normal h-auto"
             >
               Discuss Custom Add-Ons on Strategy Call
             </Button>

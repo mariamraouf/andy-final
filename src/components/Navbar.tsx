@@ -34,8 +34,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo with Dark Pill for High Contrast */}
-        <Link to="/" onClick={handleLinkClick} className="flex items-center group">
-          <Logo size="md" variant="badge" />
+        {/* Smaller on phones, so the labelled menu button has room beside it */}
+        <Link to="/" onClick={handleLinkClick} className="flex items-center group shrink-0">
+          <Logo size="sm" variant="badge" className="lg:hidden" />
+          <Logo size="md" variant="badge" className="hidden lg:inline-flex" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -67,19 +69,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Button — labelled, because a bare icon hides the whole
+            site behind a symbol people do not reliably read as a control */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="lg:hidden p-2.5 rounded-xl bg-slate-50 text-slate-700 border border-slate-200"
-          aria-label="Toggle Menu"
+          className="lg:hidden shrink-0 flex items-center gap-1.5 pl-3.5 pr-2.5 py-2 rounded-xl bg-[#0B1B3D] text-amber-400 font-bold text-[13px] shadow-md"
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-menu"
         >
+          <span>{mobileMenuOpen ? "Close" : "Menu"}</span>
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl">
+        <div id="mobile-menu" className="lg:hidden bg-white border-b border-slate-200 px-6 py-6 space-y-4 shadow-xl">
+          <p className="text-[11px] font-mono font-bold uppercase tracking-[.16em] text-amber-700">
+            Everything we do
+          </p>
           <div className="space-y-1">
             {navLinks.map((link) => (
               <Link
