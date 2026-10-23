@@ -34,7 +34,7 @@ export const Contact: React.FC = () => {
           
           {/* Left Info Column */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 space-y-6">
+            <div className="bg-slate-50 p-6 sm:p-8 rounded-3xl border border-slate-200 space-y-6">
               <div className="space-y-3">
                 <h3 className="text-2xl font-bold text-[#0B1B3D]">Direct Contact Details</h3>
                 <p className="text-slate-600 text-sm leading-relaxed">

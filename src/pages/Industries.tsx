@@ -130,10 +130,10 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
       </div>
 
       {/* Active Blueprint View */}
-      <div className="bg-slate-900/90 rounded-3xl border border-amber-500/30 p-8 sm:p-12 shadow-2xl grid lg:grid-cols-12 gap-8 items-center">
+      <div className="bg-slate-900/90 rounded-3xl border border-amber-500/30 p-6 sm:p-12 shadow-2xl grid lg:grid-cols-12 gap-8 items-center">
         
-        <div className="lg:col-span-7 space-y-6">
-          <div className="inline-block bg-amber-500/20 text-amber-300 text-xs font-mono font-bold px-3 py-1 rounded-full border border-amber-500/30">
+        <div className="min-w-0 lg:col-span-7 space-y-6">
+          <div className="inline-block max-w-full bg-amber-500/20 text-amber-300 text-xs font-mono font-bold px-3 py-1 rounded-full border border-amber-500/30">
             {current.subtitle}
           </div>
 
@@ -155,7 +155,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
           <div className="pt-4">
             <Button
               onClick={() => onOpenAudit(current.title)}
-              className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black px-8 py-5 rounded-xl shadow-lg flex items-center gap-2"
+              className="max-w-full whitespace-normal h-auto text-left bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-black px-6 sm:px-8 py-5 rounded-xl shadow-lg flex items-center gap-2"
             >
               <span>Build My {current.title} Blueprint</span>
               <ArrowRight className="w-4 h-4" />
@@ -163,7 +163,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onOpenAudit }) => {
           </div>
         </div>
 
-        <div className="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
+        <div className="min-w-0 lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-4">
           <span className="text-xs font-mono font-bold text-amber-400 uppercase">Growth Engine Workflow</span>
           <div className="space-y-3 text-xs text-slate-300">
             <div className="p-3 bg-slate-900 rounded-lg border border-slate-800">

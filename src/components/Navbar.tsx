@@ -74,11 +74,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="lg:hidden shrink-0 flex items-center gap-1.5 pl-3.5 pr-2.5 py-2 rounded-xl bg-[#0B1B3D] text-amber-400 font-bold text-[13px] shadow-md"
-          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu: all services and pages"}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-menu"
         >
-          <span>{mobileMenuOpen ? "Close" : "Menu"}</span>
+          <span>{mobileMenuOpen ? "Close" : "All Services"}</span>
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>

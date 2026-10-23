@@ -102,10 +102,10 @@ export const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({
   }, [location, context]);
 
   return (
-    <div className="w-full">
+    <div className="w-full min-w-0">
       <div
         ref={holder}
-        style={{ minWidth: 320, height: ready ? height : 0 }}
+        style={{ height: ready ? height : 0 }}
         className="rounded-xl overflow-hidden"
         aria-label="Booking calendar"
       />

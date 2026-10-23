@@ -107,7 +107,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenAudit })
               <div
                 key={service.num}
                 id={service.id}
-                className="bg-slate-50/80 rounded-3xl p-8 border border-slate-200 hover:border-amber-400 hover:bg-white hover:shadow-xl transition-all flex flex-col justify-between space-y-6 group"
+                className="min-w-0 bg-slate-50/80 rounded-3xl p-8 border border-slate-200 hover:border-amber-400 hover:bg-white hover:shadow-xl transition-all flex flex-col justify-between space-y-6 group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -145,7 +145,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenAudit })
                 <Button
                   onClick={onOpenAudit}
                   variant="outline"
-                  className="w-full bg-white border-slate-200 text-slate-800 hover:bg-[#0B1B3D] hover:text-amber-400 font-bold text-xs py-5 rounded-xl transition-colors flex items-center justify-center gap-2"
+                  className="w-full min-w-0 whitespace-normal h-auto bg-white border-slate-200 text-slate-800 hover:bg-[#0B1B3D] hover:text-amber-400 font-bold text-xs py-5 rounded-xl transition-colors flex items-center justify-center gap-2"
                 >
                   <span>Inquire About {service.title}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
