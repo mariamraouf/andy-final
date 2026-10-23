@@ -6,6 +6,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { OurProcessSection } from "@/components/OurProcessSection";
 import { PackagesSection } from "@/components/PackagesSection";
 import { FounderManifesto } from "@/components/FounderManifesto";
+import { PersonalServicesBand } from "@/components/PersonalServicesBand";
 import { RevenueCalculator } from "@/components/RevenueCalculator";
 import { ComparisonSection } from "@/components/ComparisonSection";
 import { AuditBookingModal } from "@/components/AuditBookingModal";
@@ -60,6 +61,9 @@ const Index: React.FC = () => {
       <PackagesSection onOpenAudit={(pkg) => handleOpenAudit(pkg)} />
 
       {/* Founder Manifesto & Cruzian Heritage */}
+      {/* The other half of Cruzian, after the business pitch has had its say */}
+      <PersonalServicesBand />
+
       <FounderManifesto />
 
       {/* Side-by-Side Comparison Table */}
