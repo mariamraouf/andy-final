@@ -70,3 +70,15 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* A gentle nudge for the mobile menu hint — never a distraction, and
+   nothing at all for anyone who has asked for reduced motion. */
+@keyframes cruzian-nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.animate-nudge {
+  animation: cruzian-nudge 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-nudge { animation: none; }
+}
