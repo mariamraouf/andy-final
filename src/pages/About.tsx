@@ -19,6 +19,9 @@ export const About: React.FC<AboutProps> = ({ onOpenAudit }) => {
       <div className="bg-white text-slate-900 py-16 space-y-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
+        {/* The three people, before anything else on the page */}
+        <TeamSection />
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 text-[#0B1B3D] font-mono text-xs uppercase tracking-widest bg-amber-100 px-3.5 py-1 rounded-full border border-amber-300">
@@ -114,9 +117,6 @@ export const About: React.FC<AboutProps> = ({ onOpenAudit }) => {
           </div>
 
         </div>
-
-        {/* Who the client actually ends up talking to */}
-        <TeamSection />
 
         {/* CTA Section */}
         <div className="text-center bg-[#0B1B3D] text-white rounded-3xl p-10 sm:p-14 space-y-6 shadow-xl">
