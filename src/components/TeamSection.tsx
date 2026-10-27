@@ -2,24 +2,9 @@ import React from "react";
 import { Users } from "lucide-react";
 
 const TEAM = [
-  {
-    name: "Andy",
-    role: "Managing Director",
-    photo: "/team/andy.jpg",
-    line: "Sets the strategy and stays on the account — not just the first call.",
-  },
-  {
-    name: "Mariam",
-    role: "Head of Client Services & Operations",
-    photo: "/team/mariam.jpg",
-    line: "Runs the work day to day, so nothing waits on a handover.",
-  },
-  {
-    name: "Marcy",
-    role: "Client Care Lead",
-    photo: "/team/marcy.jpg",
-    line: "Picks up the phone and answers the email. Usually the same day.",
-  },
+  { name: "Andy", role: "Managing Director", photo: "/team/andy.jpg" },
+  { name: "Mariam", role: "Head of Client Services & Operations", photo: "/team/mariam.jpg" },
+  { name: "Marcy", role: "Client Care Lead", photo: "/team/marcy.jpg" },
 ];
 
 /**
@@ -39,10 +24,6 @@ export const TeamSection: React.FC = () => (
       <h2 className="text-3xl sm:text-4xl font-black text-[#0B1B3D] tracking-tight">
         The people you'll actually deal with.
       </h2>
-      <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-        Not a call centre and not a rotating cast. The same three people who answer the
-        phone are the ones doing the work.
-      </p>
     </div>
 
     <div className="grid sm:grid-cols-3 gap-8 sm:gap-6 max-w-4xl mx-auto">
@@ -62,9 +43,6 @@ export const TeamSection: React.FC = () => (
           </h3>
           <p className="mt-0.5 text-[12px] font-mono font-bold uppercase tracking-[.12em] text-amber-700">
             {person.role}
-          </p>
-          <p className="mt-2.5 text-[13.5px] text-slate-600 leading-relaxed">
-            {person.line}
           </p>
         </div>
       ))}
