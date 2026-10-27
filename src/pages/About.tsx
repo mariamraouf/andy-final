@@ -2,6 +2,7 @@ import React from "react";
 import { Quote, Flame, Heart, Target, ShieldCheck, Award, ArrowRight, MapPin, Phone, Users, BarChart3, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SEO } from "@/components/SEO";
+import { TeamSection } from "@/components/TeamSection";
 
 interface AboutProps {
   onOpenAudit: () => void;
@@ -113,6 +114,9 @@ export const About: React.FC<AboutProps> = ({ onOpenAudit }) => {
           </div>
 
         </div>
+
+        {/* Who the client actually ends up talking to */}
+        <TeamSection />
 
         {/* CTA Section */}
         <div className="text-center bg-[#0B1B3D] text-white rounded-3xl p-10 sm:p-14 space-y-6 shadow-xl">
