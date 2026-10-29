@@ -24,6 +24,7 @@ import { BlogPost } from "@/pages/BlogPost";
 import { Contact } from "@/pages/Contact";
 import { Billing } from "@/pages/Billing";
 import { PersonalServices } from "@/pages/PersonalServices";
+import { Start } from "@/pages/Start";
 import { Privacy } from "@/pages/Privacy";
 import { Terms } from "@/pages/Terms";
 import NotFound from "@/pages/NotFound";
@@ -68,6 +69,7 @@ const AppContent = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/billing" element={<Billing />} />
           <Route path="/personal-services" element={<PersonalServices />} />
+          <Route path="/start" element={<Start />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />

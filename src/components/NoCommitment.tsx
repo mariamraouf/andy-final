@@ -2,17 +2,16 @@ import React from "react";
 import { ShieldCheck, XCircle, RotateCcw } from "lucide-react";
 
 /**
- * The seven-day guarantee, stated the same way wherever it appears.
+ * The offer, stated the same way wherever it appears.
  *
- * Three facts rather than a slogan: a window, a refund, and no contract.
- * They are the three objections that stop someone buying a retainer, and
- * every one of them is backed by the refund terms on /billing - nothing
- * here promises more than that page delivers.
+ * Three facts rather than a slogan: no money now, work starting anyway,
+ * and no contract. Every one of them is backed by the terms on /billing -
+ * nothing here promises more than that page delivers.
  */
 
 const POINTS = [
-  { icon: ShieldCheck, text: "7 days to change your mind" },
-  { icon: RotateCcw, text: "Full refund, setup fee included" },
+  { icon: ShieldCheck, text: "Nothing to pay for 7 days" },
+  { icon: RotateCcw, text: "We start work straight away" },
   { icon: XCircle, text: "No long-term contract" },
 ];
 
@@ -29,7 +28,7 @@ export const NoCommitment: React.FC<Props> = ({ tone = "light", className = "" }
   return (
     <ul
       className={`flex flex-wrap items-center gap-x-5 gap-y-2 ${className}`}
-      aria-label="Our guarantee"
+      aria-label="How it starts"
     >
       {POINTS.map(({ icon: Icon, text }) => (
         <li key={text} className={`flex items-center gap-1.5 text-[13px] font-semibold ${label}`}>
@@ -52,6 +51,6 @@ export const NoCommitmentLine: React.FC<{ tone?: "dark" | "light"; className?: s
     } ${className}`}
   >
     <ShieldCheck className="w-3.5 h-3.5 shrink-0 mt-px" />
-    <span>7 days to change your mind — full refund, no contract</span>
+    <span>Start today, pay in 7 days — no contract</span>
   </p>
 );

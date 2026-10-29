@@ -4,24 +4,24 @@ import { LegalLayout, LegalSection, LegalList } from "@/components/LegalLayout";
 import { Link } from "react-router-dom";
 
 const ROWS = [
-  { name: "Business Boost", monthly: "—", setup: "—", total: "$399 one-time" },
-  { name: "Visibility", monthly: "$750 / month", setup: "$500 one-time", total: "$1,250 to start" },
-  { name: "Growth", monthly: "$1,500 / month", setup: "$1,000 one-time", total: "$2,500 to start" },
-  { name: "Dominance", monthly: "From $3,000 / month", setup: "$1,500 one-time", total: "From $4,500 to start" },
+  { name: "Business Boost", monthly: "—", setup: "—", total: "$399, paid up front" },
+  { name: "Visibility", monthly: "$750 / month", setup: "$500 one-time", total: "$1,250, due day 7" },
+  { name: "Growth", monthly: "$1,500 / month", setup: "$1,000 one-time", total: "$2,500, due day 7" },
+  { name: "Dominance", monthly: "From $3,000 / month", setup: "$1,500 one-time", total: "From $4,500, due day 7" },
 ];
 
 export const Billing: React.FC = () => (
   <>
     <SEO
       title="Billing, Cancellation & Refund Terms | Cruzian"
-      description="How Cruzian bills: setup fee and first month upfront, monthly recurring thereafter, setup charged once. Cancellation, refunds, and what happens if a payment fails."
+      description="How Cruzian bills: nothing for the first seven days, then setup fee and first month on one invoice, monthly recurring thereafter. Cancellation, refunds, and what happens if a payment fails."
       canonical="https://www.thecruzian.com/billing"
     />
     <LegalLayout
       eyebrow="Billing"
       title="What you pay, when you pay it, and how to stop."
       updated="12 October 2026"
-      intro="No surprises. This page sets out every charge, when it is taken, what happens if a payment fails, and how to cancel. Read it before you pay — if anything here is unclear, ask us first."
+      intro="No surprises. This page sets out every charge, when it falls due, what happens if a payment fails, and how to cancel. Nothing is taken when you sign up — read this before your first invoice, and if anything here is unclear, ask us first."
     >
       <LegalSection heading="What each package costs">
         <div className="overflow-x-auto border border-slate-200 rounded-xl">
@@ -31,7 +31,7 @@ export const Billing: React.FC = () => (
                 <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Package</th>
                 <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Monthly</th>
                 <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Setup fee</th>
-                <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">First payment</th>
+                <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">First invoice</th>
               </tr>
             </thead>
             <tbody>
@@ -56,7 +56,8 @@ export const Billing: React.FC = () => (
         <p>
           Monthly packages carry a one-time setup fee. It covers onboarding, gathering and configuring
           account access, installing tracking and reporting, and the first build of your campaigns —
-          the work that happens before anything can run.
+          the work that happens before anything can run. It appears on your first invoice, due on day
+          seven, and never again.
         </p>
         <p>
           It is billed one time, together with your first month, and never again for as long as the
@@ -94,7 +95,7 @@ export const Billing: React.FC = () => (
         <LegalList
           items={[
             "We email you the same day, and the payment is automatically retried over the following few days.",
-            "You have seven days from the original due date to resolve it. Work continues normally during that window.",
+            "You have seven days from the due date to resolve it. Work continues normally during that window.",
             "After seven days past due, work pauses. Live campaigns are left running where possible so you do not lose momentum, but new work stops.",
             "After thirty days past due, we may close the engagement. Restarting later means a new setup fee.",
           ]}
@@ -118,17 +119,28 @@ export const Billing: React.FC = () => (
         </p>
       </LegalSection>
 
-      <LegalSection heading="Refunds">
+      <LegalSection heading="Your first seven days">
         <p>
-          <strong>The first seven days are risk-free.</strong> If you start a monthly package and
-          decide within seven days of that first payment that it is not right, tell us and we refund
-          it in full &mdash; the first month and the setup fee. No questions, no notice period, and
-          we hand over anything we have already built. After those seven days the terms below apply.
+          <strong>Nothing is charged when you start a monthly package.</strong> No card is taken at
+          sign-up. We begin work the same week, and your first invoice &mdash; the setup fee and the
+          first month together &mdash; falls due seven days after you start.
         </p>
+        <p>
+          If it is not right, tell us before that invoice falls due. We cancel it, you pay nothing and
+          owe nothing, and we hand over anything we have already built. You do not need a reason and
+          there is no notice period. That is the whole of it: there is no refund to chase, because
+          there was no payment.
+        </p>
+        <p>
+          Once the first invoice is paid, the engagement is running and the terms below apply.
+        </p>
+      </LegalSection>
+
+      <LegalSection heading="Refunds">
         <LegalList
           items={[
-            <><strong>Setup fee:</strong> covered by the seven-day guarantee above. After that it is non-refundable, because the work has been done.</>,
-            <><strong>Monthly fees:</strong> outside the first seven days, the current month is non-refundable once it has started. We do not pro-rate part-months, and we do not charge for months you have cancelled out of.</>,
+            <><strong>Setup fee:</strong> non-refundable once the first invoice is paid, because the work has been done. Before that point there is nothing to refund &mdash; see the seven days above.</>,
+            <><strong>Monthly fees:</strong> the current month is non-refundable once it has started. We do not pro-rate part-months, and we do not charge for months you have cancelled out of.</>,
             <><strong>Business Boost:</strong> refundable in full any time before the strategy session takes place. After the session, it is non-refundable — the audit and action plan are yours to keep.</>,
             <><strong>Advertising spend:</strong> paid to the platforms, not to us, so refunds are governed by their policies, not ours.</>,
           ]}
