@@ -25,6 +25,7 @@ import { Contact } from "@/pages/Contact";
 import { Billing } from "@/pages/Billing";
 import { PersonalServices } from "@/pages/PersonalServices";
 import { Start } from "@/pages/Start";
+import { OfferPopup } from "@/components/OfferPopup";
 import { Privacy } from "@/pages/Privacy";
 import { Terms } from "@/pages/Terms";
 import NotFound from "@/pages/NotFound";
@@ -53,6 +54,7 @@ const AppContent = () => {
       <ScrollToTop />
       {/* Contact bar + header */}
       <TopBar />
+      <OfferPopup />
       <Navbar onOpenAudit={() => handleOpenAudit()} />
 
       {/* Route Content Pages */}

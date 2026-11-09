@@ -3,6 +3,7 @@ import { Check, ArrowRight, Zap, Star, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { NoCommitment } from "@/components/NoCommitment";
+import { OFFER, offerReady, planFor, money } from "@/config/offer";
 
 // Business Boost is a one-time project and is bought outright, so it keeps its
 // checkout link. The three monthly tiers start before anything is charged, so
@@ -17,10 +18,10 @@ export const packagesData = [
   {
     name: "Business Boost",
     payLater: false,
-    payNow: "$399",
+    payNow: "$199",
     paySlug: "business-boost",
     badge: "One-Time Jumpstart",
-    price: "$399",
+    price: "$199",
     billing: "One-Time",
     setup: null,
     description: "Perfect for businesses that need a quick jumpstart.",
@@ -176,21 +177,54 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
                 </div>
 
                 <div className="pt-2 border-t border-slate-200/40">
-                  <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-black font-mono tracking-tight">
-                      {pkg.price}
-                    </span>
-                    <span className={`text-xs font-semibold ${
-                      pkg.popular ? "text-slate-300" : "text-slate-500"
-                    }`}>
-                      {pkg.billing}
-                    </span>
-                  </div>
-                  <p className={`mt-1.5 text-[11px] font-mono font-bold uppercase tracking-wider ${
-                    pkg.popular ? "text-amber-400" : "text-amber-700"
-                  }`}>
-                    {pkg.setup ? `+ ${pkg.setup} one-time setup` : "No setup fee"}
-                  </p>
+                  {(() => {
+                    const offer = offerReady() ? planFor(pkg.name) : undefined;
+                    const struck = pkg.popular ? "text-slate-400" : "text-slate-400";
+                    const accent = pkg.popular ? "text-amber-400" : "text-amber-700";
+                    const quiet = pkg.popular ? "text-slate-300" : "text-slate-500";
+
+                    if (!offer) {
+                      return (
+                        <>
+                          <div className="flex items-baseline gap-1">
+                            <span className="text-4xl font-black font-mono tracking-tight">{pkg.price}</span>
+                            <span className={`text-xs font-semibold ${quiet}`}>{pkg.billing}</span>
+                          </div>
+                          <p className={`mt-1.5 text-[11px] font-mono font-bold uppercase tracking-wider ${accent}`}>
+                            {pkg.setup ? `+ ${pkg.setup} one-time setup` : "No setup fee"}
+                          </p>
+                        </>
+                      );
+                    }
+
+                    return (
+                      <>
+                        <div className="flex items-baseline gap-2 flex-wrap">
+                          <span className={`text-base line-through ${struck}`}>{money(offer.regular)}</span>
+                          <span className="text-4xl font-black font-mono tracking-tight">
+                            {money(offer.intro as number)}
+                          </span>
+                          <span className={`text-xs font-semibold ${quiet}`}>{pkg.billing}</span>
+                        </div>
+                        <p className={`mt-1 text-[11px] ${quiet}`}>
+                          for your first {OFFER.introMonths} paid months
+                        </p>
+                        <p className="mt-2 flex items-baseline gap-2 flex-wrap text-[11px] font-mono font-bold uppercase tracking-wider">
+                          <span className={`line-through ${struck}`}>{money(offer.setup)} setup</span>
+                          <span className={accent}>$0 upfront</span>
+                        </p>
+                        <p className={`mt-0.5 text-[11px] ${quiet}`}>
+                          deferred to paid month {OFFER.stepUpMonth}
+                        </p>
+                        <div className={`mt-2.5 pt-2 border-t text-[11px] leading-relaxed ${
+                          pkg.popular ? "border-white/10 text-slate-400" : "border-slate-200 text-slate-500"
+                        }`}>
+                          <p>Month {OFFER.stepUpMonth}: {money(offer.regular)} + {money(offer.setup)} setup</p>
+                          <p>Month {OFFER.stepUpMonth + 1} onward: {money(offer.regular)} / month</p>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
 
                 <div className="space-y-2.5 pt-3">

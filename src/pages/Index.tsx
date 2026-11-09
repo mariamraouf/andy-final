@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SEO } from "@/components/SEO";
 import { HeroSection } from "@/components/HeroSection";
+import { YearEndOffer } from "@/components/YearEndOffer";
 import { ClearNextStep } from "@/components/ClearNextStep";
 import { ServicesSection } from "@/components/ServicesSection";
 import { OurProcessSection } from "@/components/OurProcessSection";
@@ -38,6 +39,9 @@ const Index: React.FC = () => {
         description="We help overlooked businesses become impossible to ignore. Predictable lead pipelines, modern websites, and paid ads in Jacksonville, FL."
         canonical="https://www.thecruzian.com/"
       />
+
+      {/* The year-end offer, before anything else on the page */}
+      <YearEndOffer />
 
       {/* Hero Section with Interactive Desk */}
       <HeroSection
