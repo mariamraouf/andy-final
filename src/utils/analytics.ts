@@ -29,8 +29,26 @@ declare global {
   interface Window {
     dataLayer?: any[];
     gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
   }
 }
+
+/**
+ * The Meta Pixel, where one is loaded.
+ *
+ * index.html only defines fbq on the production host, so this is a no-op on
+ * staging, on previews and in development. Every call goes through here so
+ * that a missing pixel can never throw into a click handler and swallow the
+ * navigation the visitor was actually trying to make.
+ */
+export const trackMeta = (event: string, params?: Record<string, unknown>) => {
+  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  try {
+    window.fbq("track", event, params);
+  } catch {
+    /* an ad pixel is never worth breaking a page over */
+  }
+};
 
 const hasGtag = () => typeof window !== "undefined" && typeof window.gtag === "function";
 
@@ -64,6 +82,25 @@ export const trackLeadGeneration = (location: string) => {
   trackEvent("generate_lead", {
     form_location: location,
     value: 0,
+    currency: "USD",
+  });
+  // Meta's standard name for the same thing. Matching the standard event
+  // rather than inventing one is what lets Meta optimise delivery for it.
+  trackMeta("Lead", { content_name: location });
+};
+
+/**
+ * Someone clicked through to a Stripe checkout.
+ *
+ * Checkout happens on buy.stripe.com, which the pixel cannot reach, so this
+ * click is the last thing we can see. It is the signal Meta optimises toward
+ * until the Conversions API is wired up to report the completed sale.
+ */
+export const trackCheckoutStart = (packageName: string, value: number) => {
+  trackEvent("begin_checkout", { items: [{ item_name: packageName }], value, currency: "USD" });
+  trackMeta("InitiateCheckout", {
+    content_name: packageName,
+    value,
     currency: "USD",
   });
 };

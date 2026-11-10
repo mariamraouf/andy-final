@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CalendarClock, CreditCard, Tag, XCircle } from "lucide-react";
 import { OFFER, offerReady, money } from "@/config/offer";
+import { trackCheckoutStart } from "@/utils/analytics";
 
 /**
  * The offer, straight under the hero.
@@ -95,6 +96,7 @@ export const YearEndOffer: React.FC = () => {
               {p.link ? (
                 <a
                   href={p.link}
+                  onClick={() => trackCheckoutStart(p.name, p.intro as number)}
                   className="mt-5 block text-center bg-amber-500 hover:bg-amber-400 text-[#0B1B3D] font-black text-sm py-3 rounded-md shadow-sm transition-colors"
                 >
                   Start {p.name} free
@@ -129,6 +131,7 @@ export const YearEndOffer: React.FC = () => {
           </div>
           <a
             href={OFFER.boost.link}
+            onClick={() => trackCheckoutStart(OFFER.boost.name, OFFER.boost.price)}
             className="bg-[#0B1B3D] hover:bg-[#13295a] text-white font-bold text-sm px-6 py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors whitespace-nowrap"
           >
             Get {OFFER.boost.name}

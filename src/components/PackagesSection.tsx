@@ -4,11 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { NoCommitment } from "@/components/NoCommitment";
 import { OFFER, offerReady, planFor, money } from "@/config/offer";
-
-// Business Boost is a one-time project and is bought outright, so it keeps its
-// checkout link. The three monthly tiers start before anything is charged, so
-// they go to the sign-up form instead and are invoiced on day seven.
-const PAY_BASE = "https://6485926f-23fe-4f60-9256-f96a24d10999.paylinks.godaddy.com";
+import { trackCheckoutStart } from "@/utils/analytics";
 
 interface PackagesProps {
   onOpenAudit: (packageName?: string) => void;
@@ -186,10 +182,10 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
                     if (!offer) {
                       return (
                         <>
-                          <div className="flex items-baseline gap-1">
-                            <span className="text-4xl font-black font-mono tracking-tight">{pkg.price}</span>
-                            <span className={`text-xs font-semibold ${quiet}`}>{pkg.billing}</span>
+                          <div className="flex items-baseline gap-2 min-h-[2.75rem]">
+                            <span className="text-4xl font-black tracking-tight tabular-nums">{pkg.price}</span>
                           </div>
+                          <p className={`text-xs font-semibold ${quiet}`}>{pkg.billing}</p>
                           <p className={`mt-1.5 text-[11px] font-mono font-bold uppercase tracking-wider ${accent}`}>
                             {pkg.setup ? `+ ${pkg.setup} one-time setup` : "No setup fee"}
                           </p>
@@ -199,17 +195,23 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
 
                     return (
                       <>
-                        <div className="flex items-baseline gap-2 flex-wrap">
-                          <span className={`text-base line-through ${struck}`}>{money(offer.regular)}</span>
-                          <span className="text-4xl font-black font-mono tracking-tight">
+                        {/* struck rate and new rate on one line, the billing
+                            period always on its own, so a four-figure price
+                            cannot shunt the label onto a second line in one
+                            card and not the next */}
+                        <div className="flex items-baseline gap-2 min-h-[2.75rem]">
+                          <span className={`text-base line-through tabular-nums ${struck}`}>
+                            {money(offer.regular)}
+                          </span>
+                          <span className="text-4xl font-black tracking-tight tabular-nums">
                             {money(offer.intro as number)}
                           </span>
-                          <span className={`text-xs font-semibold ${quiet}`}>{pkg.billing}</span>
                         </div>
+                        <p className={`text-xs font-semibold ${quiet}`}>{pkg.billing}</p>
                         <p className={`mt-1 text-[11px] ${quiet}`}>
                           for your first {OFFER.introMonths} paid months
                         </p>
-                        <p className="mt-2 flex items-baseline gap-2 flex-wrap text-[11px] font-mono font-bold uppercase tracking-wider">
+                        <p className="mt-2 flex items-baseline gap-2 text-[11px] font-mono font-bold uppercase tracking-wider">
                           <span className={`line-through ${struck}`}>{money(offer.setup)} setup</span>
                           <span className={accent}>$0 upfront</span>
                         </p>
@@ -249,33 +251,47 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
               </div>
 
               <div className="pt-6 space-y-2.5">
-                {/* The one-off is bought outright; the monthly tiers begin with
-                    nothing charged, so sending someone to a payment page would
-                    contradict the offer on the card above it. */}
-                {pkg.payLater ? (
-                  <Link
-                    to={`/start?package=${encodeURIComponent(pkg.name)}`}
-                    onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
-                    className={`w-full font-bold text-xs py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
-                      pkg.popular
-                        ? "bg-amber-500 hover:bg-amber-600 text-[#0B1B3D]"
-                        : "bg-[#0B1B3D] hover:bg-slate-800 text-white"
-                    }`}
-                  >
-                    <span>{pkg.cta} &mdash; nothing today</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                ) : (
-                  <a
-                    href={`${PAY_BASE}/${pkg.paySlug}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full font-bold text-xs py-4 rounded-xl transition-all flex items-center justify-center gap-2 bg-[#0B1B3D] hover:bg-slate-800 text-white"
-                  >
-                    <span>{pkg.cta} &mdash; {pkg.payNow}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                )}
+                {(() => {
+                  /* Business Boost is bought outright. Visibility and Growth
+                     start a seven-day trial at checkout. Dominance is quoted
+                     from $3,000, so there is no one price to charge and it
+                     stays a conversation. */
+                  const boost = pkg.name === OFFER.boost.name;
+                  const offer = offerReady() ? planFor(pkg.name) : undefined;
+                  const href = boost ? OFFER.boost.link : offer?.link ?? null;
+                  const label = boost
+                    ? `${pkg.cta} for ${money(OFFER.boost.price)}`
+                    : href
+                      ? `Start ${pkg.name} free`
+                      : `Discuss ${pkg.name}`;
+                  const classes = `w-full font-bold text-xs py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
+                    pkg.popular
+                      ? "bg-amber-500 hover:bg-amber-600 text-[#0B1B3D]"
+                      : "bg-[#0B1B3D] hover:bg-slate-800 text-white"
+                  }`;
+
+                  const value = boost ? OFFER.boost.price : (offer?.intro as number);
+
+                  return href ? (
+                    <a
+                      href={href}
+                      onClick={() => trackCheckoutStart(pkg.name, value)}
+                      className={classes}
+                    >
+                      <span>{label}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={`/start?package=${encodeURIComponent(pkg.name)}`}
+                      onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                      className={classes}
+                    >
+                      <span>{label}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  );
+                })()}
 
                 <button
                   type="button"
@@ -289,16 +305,20 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
                   Not sure yet? Book a free call first
                 </button>
 
-                {pkg.payLater && (
-                  <p
-                    className={`flex items-start justify-center gap-1.5 text-center text-[11px] leading-snug pt-1 ${
-                      pkg.popular ? "text-amber-400" : "text-emerald-700"
-                    }`}
-                  >
-                    <ShieldCheck className="w-3.5 h-3.5 shrink-0 mt-px" />
-                    <span>Nothing today &mdash; first invoice due in 7 days</span>
-                  </p>
-                )}
+                {/* every card carries this line, so the buttons above it sit
+                    at the same height across the row */}
+                <p
+                  className={`flex items-start justify-center gap-1.5 text-center text-[11px] leading-snug pt-1 min-h-[2.25rem] ${
+                    pkg.popular ? "text-amber-400" : "text-emerald-700"
+                  }`}
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 shrink-0 mt-px" />
+                  <span>
+                    {pkg.name === OFFER.boost.name
+                      ? "One-time payment. No subscription."
+                      : `${OFFER.trialDays} days free. Nothing charged today.`}
+                  </span>
+                </p>
               </div>
             </div>
           ))}
@@ -310,12 +330,12 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
             <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-700">
               One-time setup fee
             </p>
-            <h4 className="text-base font-black text-[#0B1B3D]">Charged once, on your first invoice</h4>
+            <h4 className="text-base font-black text-[#0B1B3D]">Charged once, in paid month four</h4>
             <p className="text-slate-600 text-xs leading-relaxed">
               The setup fee covers onboarding, account and platform access, tracking and reporting
-              setup, and the first build of your campaigns. It is billed one time, on the invoice that
-              falls due seven days after you start, and never again. Business Boost is a one-time
-              project and has no setup fee.
+              setup, and the first build of your campaigns. You do not pay it to start: it is
+              deferred, lands once on your paid month four invoice, and never appears again.
+              Business Boost is a one-time project and has no setup fee.
             </p>
           </div>
 
@@ -337,10 +357,10 @@ export const PackagesSection: React.FC<PackagesProps> = ({ onOpenAudit }) => {
             </p>
             <h4 className="text-base font-black text-[#0B1B3D]">Nothing for seven days, then monthly</h4>
             <p className="text-slate-600 text-xs leading-relaxed">
-              Work begins as soon as you sign up, and nothing is charged. Your first invoice covers the
-              setup fee and the first month together, and falls due seven days later. Monthly billing
-              then recurs on that date, with your authorization, until you cancel. Tell us before day
-              seven and the invoice is cancelled &mdash; you pay nothing and owe nothing.
+              Work begins as soon as you sign up. Your card is taken to hold the slot and nothing is
+              charged for seven days. On day eight your first month is billed at the introductory
+              rate, and monthly from then on, until you cancel. Cancel inside those seven days and
+              you are not charged at all.
             </p>
             <Link
               to="/billing"

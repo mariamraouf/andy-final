@@ -24,6 +24,19 @@
         gtag('config', 'G-5LYS1V3QKB');
         // Google Ads — same gtag.js, its own account.
         gtag('config', 'AW-18436643903');
+
+        // Meta Pixel 1824003342179202 ("Cruzian Website"), ad account
+        // 451381342951705. Same production-only guard as the Google tags: a
+        // preview deployment firing Leads would poison the ad optimisation
+        // this pixel exists to feed.
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+        t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1824003342179202');
+        fbq('track', 'PageView');
       } else {
         // Staging / preview host. Flip the robots meta below to noindex so a
         // copy of the site can never compete with thecruzian.com in search or

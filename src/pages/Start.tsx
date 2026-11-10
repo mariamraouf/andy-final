@@ -4,7 +4,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import { CheckCircle2, Loader2, ArrowRight, CalendarClock, ShieldCheck, XCircle } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { FORM_ID } from "@/utils/forms";
-import { trackLeadGeneration } from "@/utils/analytics";
+import { trackLeadGeneration, trackCheckoutStart } from "@/utils/analytics";
 import { OFFER, offerReady, money } from "@/config/offer";
 
 const PACKAGES = ["Visibility", "Growth", "Dominance"];
@@ -120,6 +120,7 @@ export const Start: React.FC = () => {
                     {plan.link ? (
                       <a
                         href={plan.link}
+                        onClick={() => trackCheckoutStart(plan.name, plan.intro as number)}
                         className="shrink-0 bg-amber-500 hover:bg-amber-400 text-[#0B1B3D] font-bold text-sm px-5 py-2.5 rounded-md transition-colors"
                       >
                         Start free
@@ -143,6 +144,7 @@ export const Start: React.FC = () => {
                   </div>
                   <a
                     href={OFFER.boost.link}
+                    onClick={() => trackCheckoutStart(OFFER.boost.name, OFFER.boost.price)}
                     className="shrink-0 border border-slate-300 hover:border-[#0B1B3D] text-[#0B1B3D] font-bold text-sm px-5 py-2.5 rounded-md transition-colors"
                   >
                     Buy now

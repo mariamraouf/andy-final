@@ -4,7 +4,6 @@ import { Users } from "lucide-react";
 const TEAM = [
   { name: "Andy", role: "Managing Director", photo: "/team/andy.jpg" },
   { name: "Mariam", role: "Head of Client Services & Operations", photo: "/team/mariam.jpg" },
-  { name: "Marcy", role: "Client Care Lead", photo: "/team/marcy.jpg" },
 ];
 
 /**
@@ -29,7 +28,7 @@ export const TeamSection: React.FC = () => (
       </p>
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-12 max-w-3xl mx-auto">
       {TEAM.map((person) => (
         <div key={person.name} className="min-w-0 text-center">
           <img
