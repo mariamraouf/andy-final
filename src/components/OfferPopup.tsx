@@ -83,7 +83,7 @@ export const OfferPopup: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-black/70"
+      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-black/60"
       role="dialog"
       aria-modal="true"
       aria-labelledby="offer-title"
@@ -98,31 +98,34 @@ export const OfferPopup: React.FC = () => {
           type="button"
           onClick={close}
           aria-label="Close"
-          className="absolute top-3 right-3 p-2 rounded-full text-white/70 hover:text-white hover:bg-white/15 transition-colors"
+          className="absolute top-3 right-3 p-2 rounded-full text-slate-400 hover:text-[#0B1B3D] hover:bg-slate-100 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="bg-[#A1070F] bg-[radial-gradient(ellipse_at_top_left,#D11420_0%,#A1070F_45%,#6E040B_100%)] text-white px-6 py-8 sm:px-8">
-          <p className="flex w-fit items-center gap-2 bg-amber-400 text-[#6E040B] px-3 py-1 rounded-full text-[11px] font-mono font-black uppercase tracking-[.18em]">
+        <div className="h-1.5 bg-[#C8102E]" />
+
+        <div className="px-6 pt-7 pb-5 sm:px-8">
+          <p className="flex w-fit items-center gap-2 bg-[#C8102E] text-white px-3 py-1 rounded-full text-[11px] font-mono font-black uppercase tracking-[.18em]">
             <Tag className="w-3.5 h-3.5" />
             {OFFER.badge}
           </p>
           <h2
             id="offer-title"
-            className="mt-3 text-2xl sm:text-4xl font-black tracking-[-.03em] leading-[1.08] text-balance"
+            className="mt-3 text-2xl sm:text-3xl font-black tracking-[-.03em] leading-[1.1] text-balance text-[#0B1B3D]"
           >
-            {OFFER.trialDays} days free, then {money(cheapest.intro as number)} a month.
+            {OFFER.trialDays} days free, then{" "}
+            <span className="text-[#C8102E]">{money(cheapest.intro as number)}</span> a month.
           </h2>
-          <p className="mt-2 text-[13px] font-mono font-bold uppercase tracking-[.14em] text-amber-300">
+          <p className="mt-2 text-[12px] font-mono font-bold uppercase tracking-[.14em] text-slate-500">
             Closes {OFFER.closes}
           </p>
         </div>
 
-        <div className="px-6 py-6 sm:px-8 space-y-4">
+        <div className="px-6 pb-6 sm:px-8 space-y-4">
           <p className="text-[15px] text-slate-700 leading-relaxed">
             Marketing handled for your first {OFFER.introMonths} paid months at the introductory
-            rate, with <span className="font-bold text-[#A1070F]">$0 upfront</span> — the setup fee
+            rate, with <span className="font-bold text-[#C8102E]">$0 upfront</span> — the setup fee
             is deferred to paid month {OFFER.stepUpMonth}.
           </p>
 
@@ -136,7 +139,7 @@ export const OfferPopup: React.FC = () => {
             <button
               type="button"
               onClick={goToOffer}
-              className="flex-1 text-center bg-[#A1070F] hover:bg-[#C01722] text-white font-black text-sm py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors"
+              className="flex-1 text-center bg-[#C8102E] hover:bg-[#A50D25] text-white font-black text-sm py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors"
             >
               See the {OFFER.badge} offers
               <ArrowRight className="w-4 h-4" />
