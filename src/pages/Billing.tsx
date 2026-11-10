@@ -4,24 +4,24 @@ import { LegalLayout, LegalSection, LegalList } from "@/components/LegalLayout";
 import { Link } from "react-router-dom";
 
 const ROWS = [
-  { name: "Business Boost", monthly: "—", setup: "—", total: "$399, paid up front" },
-  { name: "Visibility", monthly: "$750 / month", setup: "$500 one-time", total: "$1,250, due day 7" },
-  { name: "Growth", monthly: "$1,500 / month", setup: "$1,000 one-time", total: "$2,500, due day 7" },
-  { name: "Dominance", monthly: "From $3,000 / month", setup: "$1,500 one-time", total: "From $4,500, due day 7" },
+  { name: "Business Boost", intro: "—", monthly: "—", setup: "—", total: "$199, paid up front" },
+  { name: "Visibility", intro: "$565 / month", monthly: "$750 / month", setup: "$500, deferred", total: "$0" },
+  { name: "Growth", intro: "$1,000 / month", monthly: "$1,500 / month", setup: "$1,000, deferred", total: "$0" },
+  { name: "Dominance", intro: "$2,500 / month", monthly: "From $3,000 / month", setup: "$1,500, deferred", total: "$0" },
 ];
 
 export const Billing: React.FC = () => (
   <>
     <SEO
       title="Billing, Cancellation & Refund Terms | Cruzian"
-      description="How Cruzian bills: nothing for the first seven days, then setup fee and first month on one invoice, monthly recurring thereafter. Cancellation, refunds, and what happens if a payment fails."
+      description="How Cruzian bills: seven days free, card at signup, first charge on day eight at the introductory rate, setup fee deferred to paid month four. Cancellation, refunds, and what happens if a payment fails."
       canonical="https://www.thecruzian.com/billing"
     />
     <LegalLayout
       eyebrow="Billing"
       title="What you pay, when you pay it, and how to stop."
-      updated="12 October 2026"
-      intro="No surprises. This page sets out every charge, when it falls due, what happens if a payment fails, and how to cancel. Nothing is taken when you sign up — read this before your first invoice, and if anything here is unclear, ask us first."
+      updated="10 November 2026"
+      intro="No surprises. This page sets out every charge, when it falls due, what happens if a payment fails, and how to cancel. Nothing is taken for the first seven days — read this before that week is up, and if anything here is unclear, ask us first."
     >
       <LegalSection heading="What each package costs">
         <div className="overflow-x-auto border border-slate-200 rounded-xl">
@@ -29,15 +29,17 @@ export const Billing: React.FC = () => (
             <thead>
               <tr className="bg-slate-50 text-left">
                 <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Package</th>
-                <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Monthly</th>
+                <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">First 3 months</th>
+                <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Month 5 onward</th>
                 <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Setup fee</th>
-                <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">First invoice</th>
+                <th className="px-4 py-3 font-mono text-[11px] uppercase tracking-wider text-slate-500 font-bold">Due today</th>
               </tr>
             </thead>
             <tbody>
               {ROWS.map((r) => (
                 <tr key={r.name} className="border-t border-slate-100">
                   <td className="px-4 py-3 font-bold text-[#0B1B3D]">{r.name}</td>
+                  <td className="px-4 py-3 font-mono text-slate-700">{r.intro}</td>
                   <td className="px-4 py-3 font-mono text-slate-700">{r.monthly}</td>
                   <td className="px-4 py-3 font-mono text-slate-700">{r.setup}</td>
                   <td className="px-4 py-3 font-mono font-bold text-[#0B1B3D]">{r.total}</td>
@@ -47,8 +49,12 @@ export const Billing: React.FC = () => (
           </table>
         </div>
         <p className="text-sm text-slate-600">
-          Prices are in US dollars and exclude any applicable sales tax. Add-on projects are quoted
-          separately and invoiced on their own terms, which we state in writing before work begins.
+          Prices are in US dollars and exclude any applicable sales tax. The introductory rate runs
+          for your first three paid months; month four carries the standard rate plus the deferred
+          setup fee, and month five onward is the standard rate alone. Clients who start with
+          Business Boost move onto a lower introductory rate &mdash; $400, $800 or $2,000 a month
+          respectively &mdash; for those same three months. Add-on projects are quoted separately and
+          invoiced on their own terms, which we state in writing before work begins.
         </p>
       </LegalSection>
 
@@ -56,12 +62,12 @@ export const Billing: React.FC = () => (
         <p>
           Monthly packages carry a one-time setup fee. It covers onboarding, gathering and configuring
           account access, installing tracking and reporting, and the first build of your campaigns —
-          the work that happens before anything can run. It appears on your first invoice, due on day
-          seven, and never again.
+          the work that happens before anything can run. You do not pay it to start: it is deferred,
+          and appears once on your paid month four invoice alongside that month&rsquo;s standard rate.
         </p>
         <p>
-          It is billed one time, together with your first month, and never again for as long as the
-          engagement continues without interruption. Business Boost is a single one-time project and
+          It is billed one time and never again for as long as the engagement continues without
+          interruption. Business Boost is a single one-time project and
           carries no setup fee. If an engagement is cancelled and later restarted, a new setup fee
           applies, because that work has to be done again.
         </p>
@@ -70,7 +76,9 @@ export const Billing: React.FC = () => (
       <LegalSection heading="When payments are taken">
         <LegalList
           items={[
-            <><strong>Before work begins:</strong> the setup fee and your first month are collected together. Nothing starts until this payment clears.</>,
+            <><strong>At signup:</strong> your card is authorized to hold the slot. Nothing is charged, and the seven free days begin.</>,
+            <><strong>Day eight:</strong> your first month is charged at the introductory rate, and monthly from then on.</>,
+            <><strong>Paid month four:</strong> the standard rate plus the deferred setup fee are charged together, once. Month five onward is the standard rate alone.</>,
             <><strong>Every month after:</strong> the monthly fee recurs automatically on the same date, with your authorization, until you cancel.</>,
             <><strong>Every charge:</strong> an invoice and a receipt are emailed to you. You will never be charged an amount you have not already seen in writing.</>,
             <><strong>Card details:</strong> payments are handled by a PCI-compliant payment processor. Cruzian never sees or stores your full card or bank numbers.</>,
@@ -121,27 +129,26 @@ export const Billing: React.FC = () => (
 
       <LegalSection heading="Your first seven days">
         <p>
-          <strong>Nothing is charged when you start a monthly package.</strong> No card is taken at
-          sign-up. We begin work the same week, and your first invoice &mdash; the setup fee and the
-          first month together &mdash; falls due seven days after you start.
+          <strong>Nothing is charged for seven days.</strong> We do take your card at signup, which
+          is what holds the slot and starts the work the same week &mdash; but no money moves until
+          the eighth day, and the setup fee does not arrive until paid month four.
         </p>
         <p>
-          If it is not right, tell us before that invoice falls due. We cancel it, you pay nothing and
-          owe nothing, and we hand over anything we have already built. You do not need a reason and
-          there is no notice period. That is the whole of it: there is no refund to chase, because
-          there was no payment.
+          If it is not right, cancel before the seventh day ends. You are not charged at all, you owe
+          nothing, and we hand over anything we have already built. You do not need a reason and
+          there is no notice period. There is no refund to chase, because there was no payment.
         </p>
         <p>
-          Once the first invoice is paid, the engagement is running and the terms below apply.
+          Once the first payment is taken, the engagement is running and the terms below apply.
         </p>
       </LegalSection>
 
       <LegalSection heading="Refunds">
         <LegalList
           items={[
-            <><strong>Setup fee:</strong> non-refundable once the first invoice is paid, because the work has been done. Before that point there is nothing to refund &mdash; see the seven days above.</>,
+            <><strong>Setup fee:</strong> not charged at all unless you reach paid month four, and non-refundable once it is, because the work has been done.</>,
             <><strong>Monthly fees:</strong> the current month is non-refundable once it has started. We do not pro-rate part-months, and we do not charge for months you have cancelled out of.</>,
-            <><strong>Business Boost:</strong> refundable in full any time before the strategy session takes place. After the session, it is non-refundable — the audit and action plan are yours to keep.</>,
+            <><strong>Business Boost:</strong> $199 one time, refundable in full any time before the strategy session takes place. After the session, it is non-refundable — the audit and action plan are yours to keep.</>,
             <><strong>Advertising spend:</strong> paid to the platforms, not to us, so refunds are governed by their policies, not ours.</>,
           ]}
         />

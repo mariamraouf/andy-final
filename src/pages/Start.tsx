@@ -5,6 +5,7 @@ import { CheckCircle2, Loader2, ArrowRight, CalendarClock, ShieldCheck, XCircle 
 import { SEO } from "@/components/SEO";
 import { FORM_ID } from "@/utils/forms";
 import { trackLeadGeneration } from "@/utils/analytics";
+import { OFFER, offerReady, money } from "@/config/offer";
 
 const PACKAGES = ["Visibility", "Growth", "Dominance"];
 const errorClass = "block mt-1 text-[12px] font-semibold text-red-600";
@@ -13,7 +14,7 @@ const STEPS = [
   {
     icon: ArrowRight,
     title: "Today",
-    body: "You tell us which package and a little about the business. Nothing is charged, and no card is asked for.",
+    body: "You pick a package and start the trial. Your card is held to reserve the slot, and nothing is charged.",
   },
   {
     icon: CalendarClock,
@@ -22,8 +23,8 @@ const STEPS = [
   },
   {
     icon: ShieldCheck,
-    title: "Day seven",
-    body: "Your first invoice falls due: the setup fee and first month together. Say stop before then and it is cancelled — you owe nothing.",
+    title: "Day eight",
+    body: "Your first month bills at the introductory rate. Cancel inside the seven days and you are not charged at all. The setup fee waits until paid month four.",
   },
 ];
 
@@ -59,7 +60,7 @@ export const Start: React.FC = () => {
     <>
       <SEO
         title="Start with Cruzian | Pay Nothing for Seven Days"
-        description="Pick a package and we start work straight away. No card at sign-up, no charge for seven days, and no long-term contract."
+        description="Pick a package and we start work straight away. Seven days free, nothing charged until day eight, and no long-term contract."
         canonical="https://www.thecruzian.com/start"
       />
 
@@ -67,14 +68,14 @@ export const Start: React.FC = () => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
           <p className="flex w-fit items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-[.18em] text-amber-400">
             <XCircle className="w-3.5 h-3.5" />
-            No card &middot; No contract
+            {OFFER.trialDays} days free &middot; Cancel anytime
           </p>
           <h1 className="mt-3 text-3xl sm:text-5xl font-black tracking-[-.035em] leading-[1.05] text-balance">
-            Start today. Pay in seven days.
+            Start today. Pay nothing for seven days.
           </h1>
           <p className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
             We begin the work before you are charged anything. If it isn't right by day seven,
-            tell us and the invoice is cancelled — you pay nothing and owe nothing.
+            cancel and you are not charged at all — no invoice, nothing owed.
           </p>
         </div>
       </header>
@@ -93,6 +94,67 @@ export const Start: React.FC = () => {
               );
             })}
           </div>
+
+          {offerReady() && (
+            <div className="mt-10 border border-slate-200 rounded-lg overflow-hidden">
+              <div className="bg-[#07122A] text-white px-5 py-4">
+                <h2 className="text-lg font-black tracking-[-.02em]">Start it now</h2>
+                <p className="mt-1 text-[13px] text-slate-300">
+                  {OFFER.trialDays} days free, then your introductory rate for{" "}
+                  {OFFER.introMonths} months. Nothing is charged today.
+                </p>
+              </div>
+              <ul className="divide-y divide-slate-200">
+                {OFFER.plans.map((plan) => (
+                  <li
+                    key={plan.name}
+                    className="px-5 py-4 flex flex-wrap items-center justify-between gap-3"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-black text-[#0B1B3D]">{plan.name}</p>
+                      <p className="text-[13px] text-slate-600">
+                        {money(plan.intro as number)} / month for your first {OFFER.introMonths}{" "}
+                        paid months, then {money(plan.regular)}
+                      </p>
+                    </div>
+                    {plan.link ? (
+                      <a
+                        href={plan.link}
+                        className="shrink-0 bg-amber-500 hover:bg-amber-400 text-[#0B1B3D] font-bold text-sm px-5 py-2.5 rounded-md transition-colors"
+                      >
+                        Start free
+                      </a>
+                    ) : (
+                      <a
+                        href="#signup"
+                        className="shrink-0 border border-slate-300 hover:border-[#0B1B3D] text-[#0B1B3D] font-bold text-sm px-5 py-2.5 rounded-md transition-colors"
+                      >
+                        Talk to us
+                      </a>
+                    )}
+                  </li>
+                ))}
+                <li className="px-5 py-4 flex flex-wrap items-center justify-between gap-3 bg-slate-50">
+                  <div className="min-w-0">
+                    <p className="font-black text-[#0B1B3D]">{OFFER.boost.name}</p>
+                    <p className="text-[13px] text-slate-600">
+                      {money(OFFER.boost.price)} once. {OFFER.boost.note}
+                    </p>
+                  </div>
+                  <a
+                    href={OFFER.boost.link}
+                    className="shrink-0 border border-slate-300 hover:border-[#0B1B3D] text-[#0B1B3D] font-bold text-sm px-5 py-2.5 rounded-md transition-colors"
+                  >
+                    Buy now
+                  </a>
+                </li>
+              </ul>
+              <p className="px-5 py-3 text-[12px] text-slate-500 border-t border-slate-200">
+                Card taken at signup to hold your slot. Cancel inside the {OFFER.trialDays} days
+                and you are not charged. Setup fee is deferred to paid month {OFFER.stepUpMonth}.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -105,9 +167,9 @@ export const Start: React.FC = () => {
               </div>
               <h2 className="text-2xl font-black text-[#0B1B3D]">You're in — nothing to pay.</h2>
               <p className="text-slate-600 text-sm leading-relaxed max-w-md mx-auto">
-                We'll be in touch today to get started. Your first invoice arrives by email and
-                falls due in seven days. If you change your mind before then, reply to it and it
-                is cancelled.
+                We'll be in touch today to get started and send you the checkout link for your
+                package. Your {OFFER.trialDays} free days begin when you start it, and nothing is
+                charged until they are up.
               </p>
               <p className="text-slate-600 text-sm">
                 Anything urgent:{" "}

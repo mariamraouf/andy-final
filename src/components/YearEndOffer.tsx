@@ -68,15 +68,29 @@ export const YearEndOffer: React.FC = () => {
                 <p>
                   Month {OFFER.stepUpMonth + 1} onward: {money(p.regular)} / month
                 </p>
+                {typeof p.upgrade === "number" && (
+                  <p className="text-amber-400/80">
+                    Came from {OFFER.boost.name}? {money(p.upgrade)} / month instead
+                  </p>
+                )}
               </div>
 
-              <Link
-                to={`/start?package=${encodeURIComponent(p.name)}`}
-                onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
-                className="mt-5 block text-center bg-amber-500 hover:bg-amber-400 text-[#0B1B3D] font-bold text-sm py-3 rounded-md transition-colors"
-              >
-                Start {p.name}
-              </Link>
+              {p.link ? (
+                <a
+                  href={p.link}
+                  className="mt-5 block text-center bg-amber-500 hover:bg-amber-400 text-[#0B1B3D] font-bold text-sm py-3 rounded-md transition-colors"
+                >
+                  Start {p.name} free
+                </a>
+              ) : (
+                <Link
+                  to={`/start?package=${encodeURIComponent(p.name)}`}
+                  onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+                  className="mt-5 block text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm py-3 rounded-md transition-colors"
+                >
+                  Discuss {p.name}
+                </Link>
+              )}
             </div>
           ))}
         </div>
@@ -94,14 +108,13 @@ export const YearEndOffer: React.FC = () => {
             </p>
             <p className="mt-1 text-[12.5px] text-slate-400">{OFFER.boost.note}</p>
           </div>
-          <Link
-            to="/start?package=Business%20Boost"
-            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+          <a
+            href={OFFER.boost.link}
             className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-sm px-6 py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors whitespace-nowrap"
           >
-            Get Business Boost
+            Get {OFFER.boost.name}
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
 
         {/* The terms people would otherwise find out about at month four */}
