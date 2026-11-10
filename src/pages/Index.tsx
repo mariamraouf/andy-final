@@ -40,14 +40,15 @@ const Index: React.FC = () => {
         canonical="https://www.thecruzian.com/"
       />
 
-      {/* The year-end offer, before anything else on the page */}
-      <YearEndOffer />
-
       {/* Hero Section with Interactive Desk */}
       <HeroSection
         onOpenAudit={() => handleOpenAudit()}
         onExploreSolutions={scrollToServices}
       />
+
+      {/* The offer, straight under the hero: the first thing after the pitch,
+          not before it. The popup scrolls people here. */}
+      <YearEndOffer />
 
       {/* The three priorities a visitor usually arrives with */}
       <ClearNextStep />

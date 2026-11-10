@@ -1,25 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import { X, ArrowRight } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { X, ArrowRight, Tag } from "lucide-react";
 import { OFFER, offerReady, money } from "@/config/offer";
 
 const DISMISSED = "cruzian.offerDismissed";
 
 /**
- * The offer, once per visit.
+ * The offer, announced once per visit.
  *
  * `sessionStorage` is exactly the right store here: it is cleared when the
  * browser session ends, so a visitor who dismisses the popup does not see it
  * again while they browse, and does see it when they come back another day.
  * That is the behaviour asked for, without tracking anyone.
  *
- * It waits a moment before appearing so it lands after the page has drawn
- * rather than on top of a blank screen, and it can always be closed with
- * Escape, the cross, or the backdrop.
+ * Its button does not sell anything by itself — it closes and takes them to the
+ * offer section on the homepage, where the actual numbers are. A popup that
+ * tried to be the offer would be a popup people close.
  */
 export const OfferPopup: React.FC = () => {
   const [open, setOpen] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (!offerReady()) return;
@@ -43,6 +45,26 @@ export const OfferPopup: React.FC = () => {
     }
   };
 
+  /**
+   * Take them to the offer. If they are already on the homepage that is a
+   * scroll; from anywhere else the route has to render first, so the scroll
+   * waits a frame or two for the section to exist.
+   */
+  const goToOffer = () => {
+    close();
+    const scroll = () =>
+      document
+        .getElementById(OFFER.anchor)
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    if (location.pathname === "/") {
+      window.setTimeout(scroll, 60);
+      return;
+    }
+    navigate("/");
+    window.setTimeout(scroll, 320);
+  };
+
   useEffect(() => {
     if (!open) return;
     closeRef.current?.focus();
@@ -61,7 +83,7 @@ export const OfferPopup: React.FC = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-black/60"
+      className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4 bg-black/70"
       role="dialog"
       aria-modal="true"
       aria-labelledby="offer-title"
@@ -76,27 +98,32 @@ export const OfferPopup: React.FC = () => {
           type="button"
           onClick={close}
           aria-label="Close"
-          className="absolute top-3 right-3 p-2 rounded-full text-slate-500 hover:text-[#0B1B3D] hover:bg-slate-100 transition-colors"
+          className="absolute top-3 right-3 p-2 rounded-full text-white/70 hover:text-white hover:bg-white/15 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="bg-[#07122A] text-white px-6 py-7 sm:px-8">
-          <p className="text-[11px] font-mono font-bold uppercase tracking-[.18em] text-amber-400">
-            Enrollment closes {OFFER.closes}
+        <div className="bg-[#A1070F] bg-[radial-gradient(ellipse_at_top_left,#D11420_0%,#A1070F_45%,#6E040B_100%)] text-white px-6 py-8 sm:px-8">
+          <p className="flex w-fit items-center gap-2 bg-amber-400 text-[#6E040B] px-3 py-1 rounded-full text-[11px] font-mono font-black uppercase tracking-[.18em]">
+            <Tag className="w-3.5 h-3.5" />
+            {OFFER.badge}
           </p>
-          <h2 id="offer-title" className="mt-2 text-2xl sm:text-3xl font-black tracking-[-.03em] leading-tight text-balance">
-            {OFFER.tagline}
+          <h2
+            id="offer-title"
+            className="mt-3 text-2xl sm:text-4xl font-black tracking-[-.03em] leading-[1.08] text-balance"
+          >
+            {OFFER.trialDays} days free, then {money(cheapest.intro as number)} a month.
           </h2>
+          <p className="mt-2 text-[13px] font-mono font-bold uppercase tracking-[.14em] text-amber-300">
+            Closes {OFFER.closes}
+          </p>
         </div>
 
         <div className="px-6 py-6 sm:px-8 space-y-4">
           <p className="text-[15px] text-slate-700 leading-relaxed">
-            {OFFER.trialDays} days free, then from{" "}
-            <span className="font-black text-[#0B1B3D]">{money(cheapest.intro as number)}</span> a
-            month for your first {OFFER.introMonths} paid months.{" "}
-            <span className="font-bold text-[#0B1B3D]">$0 upfront</span>, with the setup fee deferred
-            to paid month {OFFER.stepUpMonth}.
+            Marketing handled for your first {OFFER.introMonths} paid months at the introductory
+            rate, with <span className="font-bold text-[#A1070F]">$0 upfront</span> — the setup fee
+            is deferred to paid month {OFFER.stepUpMonth}.
           </p>
 
           <ul className="text-[13.5px] text-slate-600 space-y-1.5">
@@ -106,14 +133,14 @@ export const OfferPopup: React.FC = () => {
           </ul>
 
           <div className="flex flex-col sm:flex-row gap-3 pt-1">
-            <Link
-              to="/start"
-              onClick={close}
-              className="flex-1 text-center bg-amber-500 hover:bg-amber-400 text-[#0B1B3D] font-bold text-sm py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors"
+            <button
+              type="button"
+              onClick={goToOffer}
+              className="flex-1 text-center bg-[#A1070F] hover:bg-[#C01722] text-white font-black text-sm py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors"
             >
-              See the offer
+              See the {OFFER.badge} offers
               <ArrowRight className="w-4 h-4" />
-            </Link>
+            </button>
             <button
               type="button"
               onClick={close}

@@ -30,8 +30,12 @@ export const OFFER = {
   /** The one switch that takes the offer off the site. */
   enabled: true,
 
+  /** The campaign name, on the popup and the band. */
+  badge: "Black Friday",
   closes: "December 31, 2026",
   tagline: "You run your business. We handle the marketing.",
+  /** The id the popup scrolls to. */
+  anchor: "offer",
 
   trialDays: 7,
   /** Paid months at the introductory rate before the price steps up. */
