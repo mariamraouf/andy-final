@@ -110,12 +110,27 @@ export const OfferPopup: React.FC = () => {
             <Tag className="w-3.5 h-3.5" />
             {OFFER.badge}
           </p>
+          {/* The free week is the whole pitch, so it is the whole headline.
+              What it costs afterwards belongs underneath it, where someone who
+              has decided to read on will find it. */}
           <h2
             id="offer-title"
-            className="mt-3 text-2xl sm:text-3xl font-black tracking-[-.03em] leading-[1.1] text-balance text-[#0B1B3D]"
+            className="mt-3 text-4xl sm:text-5xl font-black tracking-[-.035em] leading-[1] text-[#0B1B3D]"
           >
-            {OFFER.trialDays} days free, then {money(cheapest.intro as number)} a month.
+            {OFFER.trialDays} days{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">free</span>
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-[.14em] h-[.26em] bg-amber-400/70 rounded-sm"
+              />
+            </span>
+            .
           </h2>
+          <p className="mt-3 text-[15px] font-semibold text-[#0B1B3D]">
+            Nothing charged today. Cancel any time before day {OFFER.trialDays + 1} and you pay
+            nothing at all.
+          </p>
           <p className="mt-2 text-[12px] font-mono font-bold uppercase tracking-[.14em] text-[#D7263D]">
             Closes {OFFER.closes}
           </p>
@@ -123,14 +138,15 @@ export const OfferPopup: React.FC = () => {
 
         <div className="px-6 pb-6 sm:px-8 space-y-4">
           <p className="text-[15px] text-slate-700 leading-relaxed">
-            Marketing handled for your first {OFFER.introMonths} paid months at the introductory
-            rate, with <span className="font-bold text-amber-700">$0 upfront</span> — the setup fee
-            is deferred to paid month {OFFER.stepUpMonth}.
+            After that, from {money(cheapest.intro as number)} a month, held for your first{" "}
+            {OFFER.introMonths} paid months, with{" "}
+            <span className="font-bold text-amber-700">$0 upfront</span>. The setup fee is deferred
+            to paid month {OFFER.stepUpMonth}.
           </p>
 
           <ul className="text-[13.5px] text-slate-600 space-y-1.5">
-            <li>Card at signup. Nothing is charged during the {OFFER.trialDays} days.</li>
-            <li>Cancel inside the trial and you are not charged at all.</li>
+            <li>We start work the same week, before you have paid anything.</li>
+            <li>Your card is taken at signup only to hold the slot.</li>
             <li>{OFFER.boost.name} is {money(OFFER.boost.price)} one time, with no subscription.</li>
           </ul>
 
