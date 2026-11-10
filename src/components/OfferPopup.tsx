@@ -103,10 +103,10 @@ export const OfferPopup: React.FC = () => {
           <X className="w-5 h-5" />
         </button>
 
-        <div className="h-1.5 bg-[#C8102E]" />
+        <div className="h-1.5 bg-[#D7263D]" />
 
         <div className="px-6 pt-7 pb-5 sm:px-8">
-          <p className="flex w-fit items-center gap-2 bg-[#C8102E] text-white px-3 py-1 rounded-full text-[11px] font-mono font-black uppercase tracking-[.18em]">
+          <p className="flex w-fit items-center gap-2 bg-[#D7263D] text-white px-3 py-1 rounded-full text-[11px] font-mono font-black uppercase tracking-[.18em]">
             <Tag className="w-3.5 h-3.5" />
             {OFFER.badge}
           </p>
@@ -114,10 +114,9 @@ export const OfferPopup: React.FC = () => {
             id="offer-title"
             className="mt-3 text-2xl sm:text-3xl font-black tracking-[-.03em] leading-[1.1] text-balance text-[#0B1B3D]"
           >
-            {OFFER.trialDays} days free, then{" "}
-            <span className="text-[#C8102E]">{money(cheapest.intro as number)}</span> a month.
+            {OFFER.trialDays} days free, then {money(cheapest.intro as number)} a month.
           </h2>
-          <p className="mt-2 text-[12px] font-mono font-bold uppercase tracking-[.14em] text-slate-500">
+          <p className="mt-2 text-[12px] font-mono font-bold uppercase tracking-[.14em] text-[#D7263D]">
             Closes {OFFER.closes}
           </p>
         </div>
@@ -125,7 +124,7 @@ export const OfferPopup: React.FC = () => {
         <div className="px-6 pb-6 sm:px-8 space-y-4">
           <p className="text-[15px] text-slate-700 leading-relaxed">
             Marketing handled for your first {OFFER.introMonths} paid months at the introductory
-            rate, with <span className="font-bold text-[#C8102E]">$0 upfront</span> — the setup fee
+            rate, with <span className="font-bold text-amber-700">$0 upfront</span> — the setup fee
             is deferred to paid month {OFFER.stepUpMonth}.
           </p>
 
@@ -139,7 +138,7 @@ export const OfferPopup: React.FC = () => {
             <button
               type="button"
               onClick={goToOffer}
-              className="flex-1 text-center bg-[#C8102E] hover:bg-[#A50D25] text-white font-black text-sm py-3.5 rounded-md inline-flex items-center justify-center gap-2 transition-colors"
+              className="flex-1 text-center bg-amber-500 hover:bg-amber-400 text-[#0B1B3D] font-black text-sm py-3.5 rounded-md shadow-sm inline-flex items-center justify-center gap-2 transition-colors"
             >
               See the {OFFER.badge} offers
               <ArrowRight className="w-4 h-4" />
