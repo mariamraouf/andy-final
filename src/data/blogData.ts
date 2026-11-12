@@ -317,4 +317,181 @@ export const blogPostsData: BlogPostItem[] = [
         "Stop at the click and you are optimising the cheapest version of not knowing. Connect the spend to the CRM and the reporting stops being reassuring and starts being useful.",
     },
   },
+  {
+    id: "florida-workers-comp-first-employee-construction",
+    title: "Florida Makes You Carry Workers' Comp From Your First Employee. Most Contractors Think It Is Four.",
+    category: "Florida Payroll & Compliance",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Operations Team",
+    image: "https://images.unsplash.com/photo-1524749292158-7540c2494485?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Nearly every Florida business owner has heard the four employee rule. It is real, and it does not apply to you if you are in construction. The threshold there is one.",
+    content: {
+      introduction:
+        "There is a number most Florida owners carry around in their heads: you need workers' compensation once you have four employees. It is in the statute, it is widely repeated, and for a restaurant or an accounting practice it is correct. For construction it is wrong by three employees, and the state defines construction far more broadly than most owners expect.",
+      sections: [
+        {
+          heading: "1. Three Thresholds, Not One",
+          body: [
+            "Chapter 440 of the Florida Statutes sets different coverage requirements depending on what your business does. The four employee figure is the one for ordinary private businesses, and it is the one everyone remembers.",
+            "Part time employees count toward the total. So do corporate officers and LLC members who own at least ten percent, unless they have filed an exemption.",
+          ],
+          bulletPoints: [
+            "Construction: coverage required at one or more employees.",
+            "Most other private businesses: four or more.",
+            "Agriculture: six regular employees, or twelve seasonal workers for more than thirty days.",
+          ],
+        },
+        {
+          heading: "2. The Definition of Construction Is Wider Than You Think",
+          body: [
+            "Florida's Division of Workers' Compensation defines the construction industry by classification code, and the list runs well past the obvious trades. Plumbing, electrical, HVAC, roofing, concrete, framing and painting all sit inside it. So does landscaping once tree work is involved.",
+            "If any part of what your business does falls under those codes, you are a construction employer for workers' compensation purposes, and the one employee threshold is the one that applies to you.",
+          ],
+        },
+        {
+          heading: "3. What Happens When You Are Not Covered",
+          body: [
+            "Enforcement in Florida is fast and it does not start with a warning letter. Under section 440.107, the Division can issue a stop work order on the spot, and it can demand your business records with a twenty one day deadline attached.",
+            "The financial penalty is twice the premium you avoided, or one thousand dollars, whichever is greater. Keep trading under the order and that becomes a thousand dollars a day on top. Willful or repeat non compliance can be charged as a third degree felony, and the Division does make criminal referrals in construction.",
+          ],
+        },
+        {
+          heading: "4. Owner Exemptions Cover the Owner, Nobody Else",
+          body: [
+            "Corporate officers and LLC members holding at least ten percent can apply for a certificate of exemption. In construction no more than three officers per corporation can be exempt at once, and the certificate costs fifty dollars.",
+            "The point people miss is what an exemption does not do. It covers the owner who filed it. The moment that business hires one employee, that employee has to be covered. Exemptions also expire, so the renewal date belongs in a calendar rather than a drawer.",
+          ],
+        },
+        {
+          heading: "5. Where This Catches People Out",
+          body: [
+            "The pattern we see most often is a business that grew past the owner without anyone revisiting the insurance. Two years of paying a couple of helpers cash or by bank transfer, no policy, no payroll, nothing filed, and no incident to force the question.",
+            "It stays invisible right up until an injury, an audit, or a general contractor asking for a certificate of insurance before letting you on site. By then the penalty is calculated on everything that came before.",
+          ],
+        },
+      ],
+      conclusion:
+        "If you are in a trade and you have anyone working for you, the threshold that matters is one, not four. Checking takes an afternoon. Finding out from an inspector costs considerably more than that.",
+    },
+  },
+  {
+    id: "florida-construction-no-1099-contractors",
+    title: "You Cannot Have 1099 Contractors on a Florida Construction Crew. The State Is Explicit About It.",
+    category: "Florida Payroll & Compliance",
+    date: "November 2026",
+    readTime: "5 min read",
+    author: "Cruzian Operations Team",
+    image: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Paying the crew on 1099s to avoid payroll is common, and in Florida construction it does not work. The Division's own wording leaves no room: the person is either a business owner or an employee.",
+    content: {
+      introduction:
+        "Classifying workers as independent contractors is the most common way small construction firms try to stay out of payroll and out of workers' compensation premiums. In most industries there is at least an argument to have about control, tools and who sets the hours. In Florida construction there is not.",
+      sections: [
+        {
+          heading: "1. What the Division Actually Says",
+          body: [
+            "Florida's Division of Workers' Compensation answers this question directly in its own guidance. Its position is that Florida's workers' compensation law does not allow for independent contractors in the construction industry, and that the person is either a business owner or an employee of a business.",
+            "That is not an interpretation or a test to be weighed. In construction there is no third category. Outside construction, section 440.02(18) does set criteria that can establish independent contractor status, which is why the rule feels unfamiliar to owners who have run other kinds of business.",
+          ],
+        },
+        {
+          heading: "2. A 1099 Is Not a Shield",
+          body: [
+            "Issuing someone a 1099 records how you paid them. It does not determine their status, and it does not transfer your obligations to them. An inspector looking at a job site is interested in who is doing the work and under whose direction, not what form arrives in January.",
+            "If the people on your crew do not own registered businesses of their own, the state will treat them as your employees, whatever the paperwork says.",
+          ],
+        },
+        {
+          heading: "3. Subcontractors Become Your Employees If They Are Uninsured",
+          body: [
+            "This is the part that reaches beyond your own crew. A construction contractor who subcontracts work must make sure every subcontractor carries the required coverage before they start.",
+            "Where a subcontractor does not have it, their employees become your statutory employees for workers' compensation purposes. If one of them is hurt on your job, you are responsible for the benefits. The Division maintains a proof of coverage database and a construction policy tracking tool precisely so contractors can check this.",
+          ],
+          bulletPoints: [
+            "Collect a certificate of insurance from every subcontractor, every time.",
+            "Verify it against the Division's proof of coverage database rather than taking the document at face value.",
+            "Register for policy tracking so you are notified if a sub's coverage lapses mid job.",
+          ],
+        },
+        {
+          heading: "4. The Cost of Getting It Wrong Is Calculated Backwards",
+          body: [
+            "Penalties for failing to secure coverage are set at twice the premium that should have been paid, or one thousand dollars, whichever is greater. That calculation looks at the payroll you ran, not the payroll you declared.",
+            "A crew paid on 1099s for two years is two years of premium to reconstruct and double. This is why the problem is far cheaper to fix while it is still a question about next month's payroll.",
+          ],
+        },
+      ],
+      conclusion:
+        "If you run a construction business in Florida and you are paying people on 1099s, the question worth asking is not whether they pass an independent contractor test. It is whether each of them owns a registered business. If the answer is no, they are employees, and the sooner that is true on paper the cheaper it is.",
+    },
+  },
+  {
+    id: "florida-hiring-deadlines-first-employee",
+    title: "Four Clocks Start the Day You Hire Someone in Florida. Three of Them Run Out in Under a Month.",
+    category: "Florida Payroll & Compliance",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Operations Team",
+    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Most first time employers in Florida know they need a W-4. Far fewer know about the three day I-9 deadline, the twenty day new hire report, or the quarterly return that is due whether or not anyone was paid.",
+    content: {
+      introduction:
+        "Hiring your first employee in Florida is administratively simpler than in most states, because there is no state income tax and therefore no state withholding to set up. That simplicity hides the parts that do have deadlines, and the deadlines are shorter than people expect.",
+      sections: [
+        {
+          heading: "1. The I-9, Within Three Business Days",
+          body: [
+            "Every employer must complete Form I-9 for every new hire. The employee fills in Section 1 on or before their first day. You complete Section 2, having examined their original documents, within three business days of the hire date.",
+            "If someone starts on a Monday, Section 2 is due by Thursday. If the job will last less than three days, both sections have to be done on the first day. Keep the form for three years after the hire date or one year after employment ends, whichever is later.",
+          ],
+        },
+        {
+          heading: "2. E-Verify, Also Within Three Business Days",
+          body: [
+            "Florida layers its own requirement on top of the federal one. Employment eligibility must be verified through E-Verify within three business days of the employee starting, and employers certify compliance on their reemployment tax returns.",
+            "Enforcement is graduated rather than instant. The Department of Commerce gives thirty days to correct a violation, but three violations inside any twenty four month period trigger a thousand dollar a day fine until you demonstrate compliance, and the state can suspend your business licences.",
+          ],
+        },
+        {
+          heading: "3. The New Hire Report, Within Twenty Days",
+          body: [
+            "Every new or rehired employee has to be reported to the Florida New Hire Reporting Center within twenty days of their hire date, which Florida defines as the first day of work for which the employee is owed income. It is filed online through the Department of Revenue.",
+            "Florida goes further than the federal baseline here. Independent contractors paid six hundred dollars or more in a calendar year also have to be reported, within twenty days of the contract start or the first payment, whichever comes first.",
+          ],
+          bulletPoints: [
+            "Employee name, address, Social Security number and date of hire.",
+            "Your business name, address and federal employer identification number.",
+            "Rehires count if the person was separated for sixty or more consecutive days.",
+          ],
+        },
+        {
+          heading: "4. Reemployment Tax Registration, Before the First Filing",
+          body: [
+            "Florida's version of state unemployment tax is called reemployment tax. You register with the Department of Revenue, which issues a reemployment tax number, and new employers start at a rate of 2.7 percent.",
+            "The account number comes from the state rather than from you, which means it is the one part of setting up payroll you cannot simply decide to do faster. Starting the registration before you need it is the only lever you have.",
+          ],
+        },
+        {
+          heading: "5. The Quarterly Return That Is Due Even When Nothing Happened",
+          body: [
+            "Once you are registered, Form RT-6 is due by the end of the month following each quarter's end. This one catches seasonal businesses and anyone who pauses hiring.",
+            "The return is required for every quarter after registration, including quarters with no employees and no wages. A nil return still has to be filed, and a missed one still generates a penalty.",
+          ],
+        },
+        {
+          heading: "6. And the One With No Deadline, Because It Applies Immediately",
+          body: [
+            "Workers' compensation is not on a clock in the same way, because the obligation exists from the moment you meet the threshold. For construction that is one employee, for most other businesses four, for agriculture six regular workers.",
+            "There is no grace period to arrange it after the fact. The cover either exists on the day someone starts work or it does not.",
+          ],
+        },
+      ],
+      conclusion:
+        "None of these are difficult individually. The reason first time employers get caught is that all of them start on the same day, three of them run out inside a month, and the only one that feels urgent at the time is the one about paying people.",
+    },
+  },
 ];
