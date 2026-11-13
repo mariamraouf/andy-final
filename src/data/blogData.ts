@@ -494,4 +494,628 @@ export const blogPostsData: BlogPostItem[] = [
         "None of these are difficult individually. The reason first time employers get caught is that all of them start on the same day, three of them run out inside a month, and the only one that feels urgent at the time is the one about paying people.",
     },
   },
+  {
+    id: "florida-sales-tax-on-services-what-is-taxable",
+    title: "Florida Does Not Tax Most Services. It Taxes a Short List, and One of Them Might Be Yours.",
+    category: "Florida Payroll & Compliance",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Cleaning an office is taxable. Cleaning a house is not. Spraying a warehouse is taxable. Spraying a garden is not. The Florida list is short, specific, and easy to cross without noticing.",
+    content: {
+      introduction:
+        "Florida does not have a general sales tax on services. Most of what a service business sells is not taxed under Chapter 212 at all, which is why so many owners assume none of it is. The state does tax a short, named list, and the list is counter-intuitive enough that businesses walk onto it without realising. Cleaning an office is taxable. Cleaning a house is not. Spraying a warehouse for termites is taxable. Spraying a lawn is not. Same crew, same van, same chemicals, different tax treatment.",
+      sections: [
+        {
+          heading: "1. It Is a List, Not a Principle",
+          body: [
+            "This is the part that trips people up. There is no rule you can reason from, no test about whether the work is skilled or physical or sold to a business. There is a statutory list, and if your service is not named on it, Chapter 212 does not reach it.",
+            "The services the state names include these.",
+          ],
+          bulletPoints: [
+            "Nonresidential cleaning, meaning janitorial work at offices, warehouses, restaurants and retail stores.",
+            "Commercial pest control at nonresidential buildings.",
+            "Security and alarm services, which does include residential alarm monitoring.",
+            "Detective, investigation, guard and armored car services.",
+            "Transient rentals of six months or less, parking and boat docking, admissions, and taxable service warranties sold alongside goods.",
+          ],
+        },
+        {
+          heading: "2. Residential or Not Is Usually the Whole Question",
+          body: [
+            "For the two categories most small Florida businesses fall into, cleaning and pest control, the entire question is what kind of building you were standing in. Nonresidential is taxable. Residential is not.",
+            "A few neighbouring services sit outside the list entirely. Carpet cleaning is classified separately and is not on it. General landscaping and lawn mowing are not on it. Post-construction cleanup is usually treated as part of the construction activity rather than as cleaning.",
+            "Security is the exception to the residential logic. Alarm monitoring is taxable whether the alarm is on a shop or a house.",
+          ],
+        },
+        {
+          heading: "3. The Rate Is Not Six Percent Here",
+          body: [
+            "The state rate is 6 percent. Counties add a discretionary surtax on top, and in Duval County that brings the combined rate to 7.5 percent.",
+            "That gap matters if you quote jobs across county lines, which plenty of Jacksonville firms do. Nassau, Clay, St. Johns and Baker set their own surtax, and a quote built on a flat 7.5 percent will be wrong somewhere. The Florida Department of Revenue publishes the current county rates, and they change.",
+          ],
+        },
+        {
+          heading: "4. Two Things Changed Recently",
+          body: [
+            "House Bill 7031 repealed the state tax on commercial real property rentals with effect from 1 October 2025, ending the 2 percent charge that commercial tenants had been paying. If you are still seeing that line on a lease invoice, it is worth a conversation with the landlord.",
+            "Parking, boat docking and aircraft tie-down fees were not repealed. They moved sections and remain taxable.",
+            "Separately, since July 2023 there has been a narrow exemption for very small private investigative agencies: licensed under section 493.6201, three or fewer employees, and under $150,000 in investigation charges the previous year. It does not apply in the agency's first calendar year.",
+          ],
+        },
+        {
+          heading: "5. What This Changes About How You Quote",
+          body: [
+            "If you are on the list, the number on your website and the number on your invoice are not the same number, and the difference is yours to explain. Businesses that quote tax-exclusive and then add it at the end generate a predictable stream of awkward phone calls.",
+            "If you work on both sides of the residential line, your invoicing has to split the job rather than averaging it. A cleaning firm that does offices on weekdays and houses on Saturdays has two tax treatments running through one business, and the only place that can be resolved cleanly is on the invoice.",
+          ],
+          bulletPoints: [
+            "Decide now whether your advertised prices include tax, and say which on the page.",
+            "Split mixed residential and commercial work on the invoice rather than at year end.",
+            "Check the surtax for the county the work is performed in, not the county you are based in.",
+          ],
+        },
+      ],
+      conclusion:
+        "None of this is complicated once you know which list you are on. The expensive version is finding out three years in, during an audit, that a category of your work was taxable the whole time. This is a summary written for business owners, not tax advice: confirm your own position with the Florida Department of Revenue or your CPA before you change an invoice.",
+    },
+  },
+  {
+    id: "florida-contractor-certified-vs-registered",
+    title: "Certified or Registered: The Licence Choice That Decides How Far You Can Chase Work",
+    category: "Florida Payroll & Compliance",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "A registered licence lets you work where the local board that issued it says you can. A certified licence works anywhere in Florida. That single difference quietly sets the ceiling on your marketing.",
+    content: {
+      introduction:
+        "Florida issues construction licences in two flavours, and the difference between them is not quality or seniority. It is geography. A state-certified contractor can work anywhere in Florida. A state-registered contractor can work only where the local government that issued the underlying certificate of competency says they can. For a business spending money to be found, that distinction decides how wide you are allowed to cast the net.",
+      sections: [
+        {
+          heading: "1. What the Two Actually Are",
+          body: [
+            "A certified contractor holds a certificate of competency issued by the Florida Department of Business and Professional Regulation. Under section 489.105(8) that licence is good statewide, and the holder does not have to satisfy local competency requirements wherever they go.",
+            "A registered contractor did it the other way round. They earned a certificate of competency from a city or county, then registered that local credential with the DBPR. Section 489.105(10) limits them to the jurisdictions that issued it.",
+            "Both routes require the same unglamorous paperwork: proof of financial responsibility, a credit report, fingerprints and a background check, public liability and property damage insurance, workers' compensation, and a fee.",
+          ],
+        },
+        {
+          heading: "2. The Registered Route, Locally",
+          body: [
+            "Duval County sets its own requirements for the local certificate, and they are specific. A local examination, a written summary of education, training and experience, evidence of financial responsibility, a sworn statement covering felony convictions or charges in the last five years, insurance, a Tax Collector receipt for the application fee, and a named agent for service of process.",
+            "Neighbouring counties run their own versions. That is the whole point of the registered route, and also its whole limitation: the credential belongs to the jurisdiction that granted it.",
+          ],
+        },
+        {
+          heading: "3. The Certified Route Costs More Up Front",
+          body: [
+            "The state route asks for four years of experience, or a documented combination of college and experience, or qualifying military experience. It also asks you to sit and pass the state construction examination, with a narrow exception for the Swimming Pool Specialty licence.",
+            "That is a real investment of time. It is also the only version that removes geography as a constraint.",
+          ],
+        },
+        {
+          heading: "4. Why This Is a Marketing Question, Not Just a Compliance One",
+          body: [
+            "Jacksonville sits at the meeting point of five counties. A contractor advertising across the whole metro is advertising into Duval, Clay, St. Johns, Nassau and Baker, and a registered licence from one of them does not cover the others.",
+            "This has practical consequences for money you have already spent. Paid search bought on a radius around Jacksonville will reach all five. A Google Business Profile service area drawn generously will do the same. Every enquiry from outside your jurisdiction is a lead you pay for and then have to turn down.",
+          ],
+          bulletPoints: [
+            "If you are registered, draw your service area to match the licence, not the map.",
+            "Set paid campaign targeting by county rather than by distance from the shop.",
+            "If you are turning away work from a neighbouring county every month, price that against what certification would have cost.",
+          ],
+        },
+      ],
+      conclusion:
+        "Plenty of good contractors run profitable businesses on a registered licence for a decade. The mistake is advertising like a certified one and absorbing the wasted spend without ever counting it. Confirm your own licence status and local requirements with the DBPR and your county licensing office before you widen a campaign.",
+    },
+  },
+  {
+    id: "florida-reemployment-tax-new-employer",
+    title: "Seven Thousand Dollars Is the Number That Sets Your Florida Payroll Tax Bill",
+    category: "Florida Payroll & Compliance",
+    date: "November 2026",
+    readTime: "5 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Florida reemployment tax is charged on the first $7,000 each employee earns in a year, and nothing after it. That one fact explains why the bill looks enormous in January and disappears by summer.",
+    content: {
+      introduction:
+        "Florida has no state income tax, which leads a lot of first-time employers to assume there is no state payroll tax either. There is one. It is called reemployment tax, it funds unemployment benefits, and it is paid entirely by the employer. It is also structured in a way that surprises people in their first year: the bill is front-loaded, and then it stops.",
+      sections: [
+        {
+          heading: "1. The Wage Base Is the Whole Mechanism",
+          body: [
+            "Reemployment tax is charged on the first $7,000 of each employee's wages in a calendar year. Not the first $7,000 of your payroll, the first $7,000 per person, every year, reset each January.",
+            "Once an employee has earned $7,000, you owe nothing further on that employee until the following year. This is why the tax looks alarming in the first quarter and then quietly vanishes, and why a business that hires in October pays very little on that person for the year.",
+          ],
+        },
+        {
+          heading: "2. New Employers Pay a Fixed Rate for a Long Time",
+          body: [
+            "A new employer is assigned an initial rate of 2.7 percent. That rate stays in place until the business has reported for ten quarters, which is two and a half years, at which point the state calculates an experience rate based on how much has actually been paid out in benefits to former employees.",
+            "At 2.7 percent on a $7,000 wage base, the maximum you pay per employee per year is $189 while you are on the initial rate.",
+          ],
+        },
+        {
+          heading: "3. After That, Your Own History Sets the Rate",
+          body: [
+            "For wages paid in 2026 the rate floor is 0.1 percent, which works out at $7 per employee for the year. The ceiling is 5.4 percent, which is $378 per employee.",
+            "The gap between those two numbers is entirely about turnover and how separations are handled. An employer with stable staff drifts toward the floor. An employer with constant churn, and particularly one that loses contested claims, drifts toward the ceiling. Across a crew of twenty that spread is the difference between $140 and $7,560 a year.",
+          ],
+          bulletPoints: [
+            "Respond to every claim notice, on time, with documentation. Unanswered claims are decided without you.",
+            "Keep written records of performance issues and voluntary resignations.",
+            "Treat your rate notice as a scorecard, not a bill. It is reporting on decisions you made two years ago.",
+          ],
+        },
+        {
+          heading: "4. When You Have to Register",
+          body: [
+            "Liability is triggered by crossing thresholds on wages paid or employees retained, and the test differs for agricultural and nonprofit employers. Rather than guess, register with the Florida Department of Revenue as soon as you take on your first employee and let the department determine liability.",
+            "The cost of registering slightly early is an afternoon of paperwork. The cost of registering late is penalties and interest on everything you should already have paid.",
+          ],
+        },
+      ],
+      conclusion:
+        "Reemployment tax is one of the few business costs where the amount is set by how you behave rather than how much you sell. Ten quarters from now, the rate you are paying will be a direct report card on how you handled separations. Figures here are for wages paid in 2026 and change year to year: check the Florida Department of Revenue for your current rate notice.",
+    },
+  },
+  {
+    id: "jseb-certification-jacksonville",
+    title: "Jacksonville Sets Work Aside for Local Small Businesses. Here Is Exactly Who Qualifies.",
+    category: "Jacksonville Local Growth",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "The City of Jacksonville runs a certification that opens up municipal work to small local firms. The bar is lower than most owners assume, and the clock on it is shorter.",
+    content: {
+      introduction:
+        "The City of Jacksonville operates a programme called JSEB, for Jacksonville Small and Emerging Business. Certified firms get access to city contracting opportunities that are structured to favour them. Most small business owners in Duval either have not heard of it or assume they are too small, too new, or too unconnected to qualify. The actual requirements are more generous than that, and they are published.",
+      sections: [
+        {
+          heading: "1. You Have to Be From Here, Specifically",
+          body: [
+            "There are two ways to satisfy the local requirement, and they are alternatives rather than a combined test.",
+            "Either an owner has lived in Duval County for at least twelve consecutive months before applying, or the business has had its principal place of operations in Duval County for eighteen consecutive months and the owner has a year of residency within the five-county area of Duval, St. Johns, Nassau, Baker or Clay.",
+          ],
+        },
+        {
+          heading: "2. The Size Limit Is Higher Than People Expect",
+          body: [
+            "Average annual gross revenue over the three years before application must not exceed $12,000,000. That is not a micro-business threshold. A great many established Jacksonville contractors, suppliers and service firms sit comfortably underneath it and never apply because they assume the programme is aimed at someone smaller.",
+            "The threshold is reviewed annually by the JSEB Administrator with the Monitoring Committee, so it is worth checking the current figure rather than working from a number you heard once.",
+          ],
+        },
+        {
+          heading: "3. Ownership and Control Have to Be Real",
+          body: [
+            "The programme is explicit that it is looking for genuine small businesses, not arrangements built to qualify for one.",
+          ],
+          bulletPoints: [
+            "Qualifying owners must hold at least 51 percent of the business and actually control operations, management and policy.",
+            "Those ownership interests must have been held for at least a year.",
+            "The owner must hold whatever licence the work requires and have the industry expertise normally expected.",
+            "The business must be for-profit, independent of non-JSEB firms, and not a front or pass-through.",
+            "Owners must be US citizens or lawful permanent residents.",
+            "The business must have existed for at least one year.",
+          ],
+        },
+        {
+          heading: "4. There Is a Clock, and It Starts Later Than You Think",
+          body: [
+            "A firm generally cannot participate in the programme for more than nine years. Importantly, that count does not begin at certification. It begins at your first City contract, as either a prime or a subcontractor, with the JSEB Administrator able to grant two one-year extensions for good cause.",
+            "That changes the calculus. Getting certified and then sitting on it costs you nothing in programme years. Getting certified and winning a small subcontract immediately starts a nine-year window that you should be planning to exploit, not drift through.",
+            "Certification also carries an ongoing obligation: participation in at least one training, education or mentoring programme in every twenty-four month period afterwards, and financial statements prepared by a CPA.",
+          ],
+        },
+        {
+          heading: "5. What to Do With It Once You Have It",
+          body: [
+            "Certification is a door, not a pipeline. The firms that get value from it treat it as a credential to market rather than a listing to wait inside.",
+          ],
+          bulletPoints: [
+            "Put the certification on your website, your proposals and your email signature, not only in the city's directory.",
+            "Approach prime contractors directly. Primes bidding city work need certified subs and frequently struggle to find ones who answer the phone.",
+            "Track the city's procurement listings on a schedule rather than when you remember.",
+          ],
+        },
+      ],
+      conclusion:
+        "JSEB is one of the few genuine advantages available to a small Jacksonville firm that costs paperwork rather than money. Requirements and thresholds are set by the city and do change, so verify the current rules with the JSEB office before you build a bid strategy on them.",
+    },
+  },
+  {
+    id: "ftc-review-rule-local-business",
+    title: "The Rules on Asking for Reviews Changed in 2024. Most Local Businesses Still Do It the Old Way.",
+    category: "Local SEO & Visibility",
+    date: "November 2026",
+    readTime: "7 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "A federal rule on fake and incentivised reviews took effect in October 2024. Several standard local marketing habits are now on the wrong side of it, including one almost every agency recommends.",
+    content: {
+      introduction:
+        "The Federal Trade Commission's rule on consumer reviews and testimonials took effect on 21 October 2024. It is aimed at review farms and fake testimonial mills, but it is written broadly enough to catch ordinary local businesses doing things their marketing software actively encourages. The good news is that most of what you want to do remains perfectly legal. The useful part is knowing where the line now sits.",
+      sections: [
+        {
+          heading: "1. What Is Clearly Prohibited",
+          body: [
+            "Writing, buying or selling fake reviews is banned, which surprises nobody. What is worth noting is that you can be liable for reviews you bought if you knew or should have known they were false, so pleading ignorance about a cheap review package does not help.",
+          ],
+          bulletPoints: [
+            "Reviews written by you, your staff or your relatives, unless the relationship is clearly disclosed in a way the reader cannot miss.",
+            "Paying for positive reviews, even if a disclosure is attached.",
+            "Incentives conditioned on a particular sentiment. A gift card for a five-star review is out.",
+            "Using intimidation, unfounded legal threats or knowingly false accusations to get a negative review removed.",
+            "Presenting a review site you control as though it were independent.",
+          ],
+        },
+        {
+          heading: "2. Review Gating Is the One Everybody Is Still Doing",
+          body: [
+            "The common pattern looks like this. You text every customer a one-question survey. Happy ones get routed to your Google review link. Unhappy ones get routed to a private feedback form that goes to the owner.",
+            "Half a dozen reputation tools sell exactly this flow as a feature. The FTC rule does not explicitly ban it, but FTC staff have said the practice could violate the FTC Act. That is not a comfortable place to be, and it is not a hard habit to fix.",
+            "The compliant version is simpler and, in practice, works about as well: ask everybody, route everybody to the same place, and deal with the bad ones in public like a business with nothing to hide.",
+          ],
+        },
+        {
+          heading: "3. What You Are Still Allowed to Do",
+          body: [
+            "This is the part that gets lost in the alarm. The rule leaves almost all legitimate review activity intact.",
+          ],
+          bulletPoints: [
+            "Ask every customer for a review. Prompt them, remind them, make it easy.",
+            "Offer an incentive, as long as it goes to everyone who posts and does not depend on what they say.",
+            "Display your reviews and star ratings without screening them.",
+            "Reply publicly to a negative review, as long as you are not making false accusations.",
+            "Contact an unhappy customer privately, fix the problem, and ask them to update their review afterwards.",
+            "Decline reviews that are off-topic or about the wrong business, provided you apply that policy to everyone.",
+          ],
+        },
+        {
+          heading: "4. The Employee Review Problem",
+          body: [
+            "Small businesses do this constantly and almost never maliciously. A new location opens with no reviews, and the team leaves a few to get it started. A supplier is asked to post something nice. A cousin writes one.",
+            "All of those need the relationship disclosed, clearly, where the reader will actually see it. The FTC's position is that a disclosure only counts if the consumer does not have to click or hover to find it. On most review platforms there is no practical way to meet that standard, which means the honest answer is not to post them.",
+          ],
+        },
+        {
+          heading: "5. A Short Audit You Can Run This Week",
+          body: [
+            "Most businesses find at least one of these when they look.",
+          ],
+          bulletPoints: [
+            "Does your review request tool route unhappy customers somewhere different? Turn that off.",
+            "Does any current promotion offer something for a positive review specifically? Reword it to reward any review.",
+            "Are there reviews from staff or family still live on your profiles? Decide what to do about them deliberately.",
+            "Does your website quote testimonials you cannot trace back to a real named customer? Remove them.",
+          ],
+        },
+      ],
+      conclusion:
+        "The businesses most exposed here are not the dishonest ones. They are the ones who bought a reputation tool in 2021, switched on the default settings, and have not looked at them since. An hour of review this week is cheaper than the alternative. This is a summary of FTC guidance for business owners, not legal advice.",
+    },
+  },
+  {
+    id: "google-business-profile-service-area-business",
+    title: "Your Google Business Profile Is a Map Pin, Not a Website. Stop Treating It Like One.",
+    category: "Local SEO & Visibility",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "For a business that travels to its customers, the profile is doing one job: deciding whether you appear in a map result at all. Almost everything owners fuss over does not affect that.",
+    content: {
+      introduction:
+        "Ask a local business owner about their Google Business Profile and they will usually talk about posts, photos and the description. Those are the parts you can see changing, so they feel like the work. For a service-area business, a firm that travels to the customer rather than the other way round, none of them is the thing that decides whether you show up in the map pack. A handful of less interesting settings do that, and they are usually wrong.",
+      sections: [
+        {
+          heading: "1. Decide Whether You Are Hiding Your Address, Properly",
+          body: [
+            "Google treats a business that serves customers at their location differently from one customers visit. If you do not have a storefront people walk into, the address should be hidden and the service areas set.",
+            "Half-doing this is worse than either option. A listed address that nobody staffs, with no signage and no opening hours anyone keeps, is the sort of thing that gets a profile suspended. If customers genuinely come to your unit, keep the address and keep real hours. If they do not, hide it.",
+          ],
+        },
+        {
+          heading: "2. The Primary Category Is Doing More Work Than the Other Ninety Percent",
+          body: [
+            "Your primary category is the single strongest lever on the profile. It is also the one owners pick in forty seconds during setup and never revisit.",
+            "Be specific rather than broad. A firm that mostly repipes houses is better served by the narrow plumbing category that matches that work than by a general contractor category chosen because it sounds bigger. Secondary categories exist for the rest of what you do, and they are weaker. Use them for genuine services, not aspirations.",
+          ],
+        },
+        {
+          heading: "3. Service Areas Are a Claim, Not a Wish",
+          body: [
+            "Set them to where you will actually drive on a Tuesday for an average-sized job. Not where you would go for an exceptional one.",
+            "Overstating this costs you twice. You pay for enquiries you decline, and declining them teaches Google that your profile is a poor match for that area anyway. For a licensed trade there is a harder limit on top: if your licence is a local registration rather than a state certification, the service area needs to follow the licence.",
+          ],
+        },
+        {
+          heading: "4. What Actually Moves a Service-Area Profile",
+          body: [
+            "In rough order of how much difference it makes for most local firms.",
+          ],
+          bulletPoints: [
+            "A correct, specific primary category.",
+            "A steady flow of recent reviews, with replies, rather than a burst two years ago.",
+            "Services listed individually, each with its own description, rather than one paragraph covering everything.",
+            "Name, address and phone number matching exactly across your website and the major directories.",
+            "Real photographs of real jobs, added regularly, rather than fifty uploaded on day one.",
+          ],
+        },
+        {
+          heading: "5. The Things That Feel Productive and Are Not",
+          body: [
+            "Posts expire and have little ranking effect. Keyword-stuffing the business name is against the guidelines and is one of the easiest things for a competitor to report. Rewriting the description monthly achieves nothing measurable.",
+            "If you have an hour a week for this, spend it asking customers for reviews and replying to the ones that arrive. That hour outperforms every other hour available to you.",
+          ],
+        },
+      ],
+      conclusion:
+        "A service-area profile is not a brochure and it will never read like one. It is a set of claims about who you are, what you do and where you will go, and it rewards being specific and honest about all three. Fix the category and the service area first, then leave it alone and go and collect reviews.",
+    },
+  },
+  {
+    id: "what-a-lead-is-actually-worth",
+    title: "Work Out What a Lead Is Worth Before You Agree to Buy One",
+    category: "Paid Advertising & SEO",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Most owners judge a cost per lead against a feeling. Four numbers you already have will tell you what you can afford to pay, and whether the quote in front of you is reasonable.",
+    content: {
+      introduction:
+        "A marketing company tells you leads will cost sixty dollars each. Is that good? Most owners answer that question against a vague sense of whether sixty dollars feels like a lot. It is the wrong comparison, and it is why businesses overpay for cheap leads and refuse expensive ones that would have been profitable. The right comparison is arithmetic, and you already have every number it needs.",
+      sections: [
+        {
+          heading: "1. The Four Numbers",
+          body: [
+            "Pull these from the last twelve months, not from memory. Memory is generous about close rates.",
+          ],
+          bulletPoints: [
+            "Average job value. What a typical completed job actually invoices, not your best one.",
+            "Gross margin. What is left after the labour and materials for that job, before overhead.",
+            "Close rate. Of the enquiries you spoke to, what share became paying work.",
+            "Repeat and referral value. What a new customer brings over the following two years beyond the first job.",
+          ],
+        },
+        {
+          heading: "2. Work Backwards From a Closed Job",
+          body: [
+            "Take a business with a $2,000 average job, 45 percent gross margin and a 25 percent close rate. The first job yields $900 of gross margin. At a 25 percent close rate, four enquiries produce one job, so four leads have to share that $900.",
+            "That is $225 of gross margin per lead. If you are willing to spend a third of margin on acquisition, you can pay up to $75 for a lead and still be ahead. Sixty dollars is a reasonable price. Had the close rate been 10 percent, the same maths gives you $90 of margin per lead, and sixty dollars is a bad deal.",
+            "This is the entire calculation. The close rate moves the answer more than anything else, which is the uncomfortable finding: lead cost is often a sales problem wearing a marketing costume.",
+          ],
+        },
+        {
+          heading: "3. Count the Second Job, Carefully",
+          body: [
+            "Most service businesses make their real money on the second and third job, not the first. A customer acquired this year who returns twice over two years is worth triple the margin you just calculated, and that changes what you can afford to pay.",
+            "Be honest about whether that actually happens in your business. If you have never measured repeat rate, do not assume one. The fastest way to destroy a marketing budget is to justify today's cost per lead with a lifetime value you have never observed.",
+          ],
+        },
+        {
+          heading: "4. What a Lead Is, and Is Not",
+          body: [
+            "Before comparing anyone's cost per lead, make sure you are comparing the same object. The word covers wildly different things.",
+          ],
+          bulletPoints: [
+            "A form fill from someone who typed their own phone number is a lead.",
+            "A phone call over thirty seconds is a lead.",
+            "A click is not a lead. Neither is an impression, a reach figure or a follower.",
+            "A shared lead sold to four of your competitors at the same time is a quarter of a lead, and should be priced that way.",
+          ],
+        },
+        {
+          heading: "5. The Number Nobody Quotes You",
+          body: [
+            "Cost per client is the figure that actually matters, and it is the one no proposal leads with. It is your cost per lead divided by your close rate.",
+            "At $60 a lead and a 25 percent close rate, a client costs you $240. Against $900 of first-job margin that is a business worth running. Write that number on the wall instead of the cost per lead, and most arguments about which channel is working answer themselves.",
+          ],
+        },
+      ],
+      conclusion:
+        "Anyone selling you leads should be able to talk about cost per client without flinching. If a proposal only ever discusses clicks, impressions and cost per lead, it is because those numbers are flattering and the one underneath is not. Run the arithmetic on your own figures before the next call.",
+    },
+  },
+  {
+    id: "three-pages-a-service-business-needs",
+    title: "A Service Business Needs Three Pages. Most Build Twelve and Convert on None.",
+    category: "Websites & Conversion",
+    date: "November 2026",
+    readTime: "5 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1524749292158-7540c2494485?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Pages are cheap to add and expensive to maintain. Three of them do nearly all the work, and the rest mostly give visitors somewhere else to go instead of calling.",
+    content: {
+      introduction:
+        "Website projects grow because adding a page feels like progress. Six months later there is a blog nobody writes, a team page with two former employees on it, a gallery of photographs from 2019, and an enquiry rate that has not moved. For a service business, three pages carry nearly all the weight. Everything else is either support for those three or a distraction from them.",
+      sections: [
+        {
+          heading: "1. The Page for the Thing They Searched For",
+          body: [
+            "Someone who typed emergency plumber jacksonville should land on a page about emergency plumbing in Jacksonville. Not a homepage that mentions it fourth in a list of services.",
+            "This is the page that earns the enquiry, and it needs one job, said once: what this specific service is, what it costs or what it depends on, why you, and how to start. One call to action, repeated, rather than four competing ones.",
+            "If you offer five services, that is five pages, each written properly. This is the only part of a website worth being generous about.",
+          ],
+        },
+        {
+          heading: "2. The Page That Answers Can I Trust You",
+          body: [
+            "Nobody hires a service business on the strength of a stock photograph. The trust page is where you put the things that are specifically and verifiably true about you: your licence number, how long you have traded, insurance, real photographs of real jobs with the town named, and reviews that read like a person wrote them.",
+            "Specificity is the whole mechanism. Serving Northeast Florida since 2011, licence number on the page, is worth more than any paragraph beginning with our mission.",
+          ],
+        },
+        {
+          heading: "3. The Page That Makes It Easy to Act",
+          body: [
+            "Contact, booking, quote request, whatever you call it. The failure mode here is almost always friction rather than design.",
+          ],
+          bulletPoints: [
+            "Ask for the fewest fields that let you call them back. Name and phone number will do.",
+            "Put the phone number in text, as a tappable link, not inside an image.",
+            "Say when they will hear from you, and then do that.",
+            "If you have a booking calendar, put it on the page rather than behind another click.",
+          ],
+        },
+        {
+          heading: "4. What the Other Pages Are Actually For",
+          body: [
+            "They are not useless, they are just not doing the job you think. A blog earns search visibility over months and feeds nothing directly. An about page reassures someone already close to deciding. Terms and privacy pages exist because you need them.",
+            "The honest test for any additional page is whether it answers a question that otherwise stops someone from enquiring. If it does not, it is giving a visitor somewhere to wander instead of calling.",
+          ],
+        },
+        {
+          heading: "5. The Check Worth Doing Once a Quarter",
+          body: [
+            "Open your own site on your phone, on mobile data, with the office wifi off. Try to contact yourself as a stranger would.",
+            "Nearly every site fails this in a small, fixable way: a phone number that is not tappable, a form that demands a company name from a homeowner, a page that takes eight seconds to appear. Those are not design problems. They are the reason the enquiry did not arrive.",
+          ],
+        },
+      ],
+      conclusion:
+        "Build the three pages properly before building anything else, and keep building service pages as you add services. A small site where every page has a job will out-earn a large one where most pages are there because somebody thought a website should have them.",
+    },
+  },
+  {
+    id: "jacksonville-home-services-marketing-calendar",
+    title: "The Jacksonville Year, for a Trade Business That Advertises",
+    category: "Industry Playbooks",
+    date: "November 2026",
+    readTime: "6 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Demand for home services in Northeast Florida is not flat, and neither is competition for the clicks. Knowing which part of the year you are in should change what you spend and what you say.",
+    content: {
+      introduction:
+        "A trade business in Jacksonville does not face the same market in February as it does in July. Hurricane season runs from 1 June to 30 November. Summers are long and hard on air conditioning. The occasional winter freeze arrives with no cultural preparation whatsoever. If your advertising says the same thing all year at the same budget, you are overpaying in the busy months and invisible in the ones where attention is cheap.",
+      sections: [
+        {
+          heading: "1. January to April: Attention Is Cheap, Use It",
+          body: [
+            "This is the quietest stretch for most trades and the best value for money you will see all year. Competitors cut budgets, which drops what you pay for the same visibility.",
+            "It is the wrong time to chase emergency work and the right time to build everything emergency work depends on. Reviews, photographs of completed jobs, service pages for the trades you want more of next season, a Google Business Profile that is actually finished.",
+            "Planned and deferrable work also sells well here, because homeowners have the time to think about it.",
+          ],
+        },
+        {
+          heading: "2. May: The Month Before",
+          body: [
+            "Hurricane season starts on 1 June, and the fortnight before it is when homeowners are receptive to preparation without being frightened yet.",
+            "This is a maintenance and inspection window: roof checks, generator servicing, drainage, tree work, anything where the argument is do it now rather than in a queue. It converts because it is being offered in advance rather than sold during an emergency.",
+          ],
+        },
+        {
+          heading: "3. June to November: The Season Itself",
+          body: [
+            "Two things happen at once. Air conditioning demand peaks and stays peaked, and storm risk sits in the background for six months.",
+            "Be careful with the tone. Advertising that leans on fear during an active storm reads badly and is remembered. Advertising that is simply available, clear about response times, and answers the phone will do better than anything clever.",
+          ],
+          bulletPoints: [
+            "Make sure your hours, response time and emergency availability are accurate everywhere they appear.",
+            "If you cannot answer every call, have something that captures the ones you miss. In this stretch, a missed call goes to a competitor within minutes.",
+            "Keep a budget reserve rather than spending evenly. Demand after a storm arrives in days, not weeks.",
+          ],
+        },
+        {
+          heading: "4. December: Short, Odd, and Worth Planning For",
+          body: [
+            "Attention is elsewhere and decision-making slows. It is a poor month for selling large projects and a reasonable one for anything small and immediate.",
+            "It is also the month to get next year's calendar written down while this year is still fresh, and to deal with the cold snap risk nobody in Florida plans for until the pipes are already frozen.",
+          ],
+        },
+        {
+          heading: "5. How to Actually Use This",
+          body: [
+            "The point is not to switch advertising on and off. It is to stop spending the same amount on the same message in two completely different markets.",
+          ],
+          bulletPoints: [
+            "Put your budget on a seasonal curve rather than a flat monthly figure.",
+            "Write the quiet months into the plan as build months with their own deliverables, not as a gap.",
+            "Change the message with the season. The same ad running in February and August is wrong in at least one of them.",
+            "Track enquiries by month this year so next year's plan is based on your numbers rather than this article.",
+          ],
+        },
+      ],
+      conclusion:
+        "Seasonality is one of the few advantages a local business has over a national competitor buying the same keywords. You know what March is like here and they do not. Spend accordingly.",
+    },
+  },
+  {
+    id: "marketing-a-regulated-practice-florida",
+    title: "Marketing a Law Firm or Medical Practice in Florida Without Tripping a Rule",
+    category: "Industry Playbooks",
+    date: "November 2026",
+    readTime: "7 min read",
+    author: "Cruzian Growth Strategy Team",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    excerpt:
+      "Regulated practices are told what they cannot say and left to work out the rest. The constraints are narrower than most firms assume, and the usual workarounds are weaker than what compliance actually allows.",
+    content: {
+      introduction:
+        "Professional practices tend to market timidly, and for an understandable reason: the downside of getting it wrong is a regulator rather than a wasted budget. So firms default to something inoffensive and forgettable, and compete on nothing. The rules are narrower than the caution they produce. Knowing precisely where the edges are is what lets you use all the room inside them.",
+      sections: [
+        {
+          heading: "1. Florida Lawyers: Advertisements Are Filed in Advance",
+          body: [
+            "Under Rule 4-7.19 of the Rules Regulating The Florida Bar, a lawyer who advertises must file a copy of each advertisement with the Bar at least twenty days before it first runs, using the Bar's posted filing method. Certain advertisements are exempt under Rule 4-7.20.",
+            "Websites are handled differently. A lawyer may not file an entire website for review. What you can do is request an advisory opinion on a specific page, provision, statement, illustration or photograph. That distinction matters for how you plan a site launch: you cannot get the whole thing blessed, so identify the few elements carrying risk and ask about those.",
+            "There is also a refiling fee, set by the Board of Governors and capped at $100, which applies where circumstances change in a way that could make an advertisement misleading.",
+          ],
+        },
+        {
+          heading: "2. Build the Filing Lead Time Into the Campaign",
+          body: [
+            "Twenty days is not long, but it is fatal if nobody told the marketing team about it. A campaign built around a date, a seasonal push, a new practice area, an event, has to start its clock three weeks before the creative is due to run.",
+            "The practical fix is a standing rule: every new advertisement enters a filing queue the day it is approved internally, not the day it is scheduled.",
+          ],
+        },
+        {
+          heading: "3. Medical Practices: Testimonials Are a Privacy Question First",
+          body: [
+            "The instinct is to treat patient stories as a marketing asset. Under HIPAA, a patient's identity in connection with their care is protected health information, and using it in marketing requires written authorisation from that patient first.",
+            "This catches things that do not feel like testimonials. Replying to a review in a way that confirms someone was a patient is a disclosure. So is a before-and-after photograph, a thank-you card photographed and posted, or a social post naming someone you treated.",
+            "The safe pattern for review replies is a response that thanks the reviewer without confirming or discussing any treatment, no matter what they have already said publicly themselves.",
+          ],
+        },
+        {
+          heading: "4. The Federal Review Rule Applies to You Too",
+          body: [
+            "The FTC rule on consumer reviews and testimonials, in force since October 2024, is not profession-specific. Incentivised reviews conditioned on sentiment, undisclosed reviews from staff or relatives, and suppressing negative reviews through legal threats are prohibited for a practice exactly as they are for a plumber.",
+            "The legal-threat point deserves attention in these professions specifically, because a firm with a lawyer on staff is more likely than most to reach for a demand letter over a bad review. An unfounded one is now its own violation.",
+          ],
+        },
+        {
+          heading: "5. What Regulated Practices Are Free to Do Well",
+          body: [
+            "Everything that actually distinguishes a practice sits comfortably inside the rules, and most firms underuse all of it.",
+          ],
+          bulletPoints: [
+            "Answer the questions prospective clients genuinely ask, in writing, in plain language. Nothing in any rule prevents being useful.",
+            "Be specific about what you do and do not take on. Narrow is more persuasive than comprehensive.",
+            "Publish verifiable facts: years in practice, admissions, credentials, languages spoken, locations served.",
+            "Respond fast. Response time is not regulated and is frequently the deciding factor between two firms a client is calling in the same hour.",
+            "Make the first step obvious and low commitment.",
+          ],
+        },
+      ],
+      conclusion:
+        "The constraint in regulated marketing is on claims, not on usefulness. Firms that accept that stop trying to find clever workarounds and start simply being clearer than their competitors, which is both compliant and more effective. Rules change and this is a summary for planning purposes: confirm the current requirements with The Florida Bar or your compliance counsel before anything runs.",
+    },
+  },
 ];
