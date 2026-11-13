@@ -38,6 +38,9 @@ export const OFFER = {
   anchor: "offer",
 
   trialDays: 7,
+  /** Hours before billing starts that the reminder email goes out. */
+  reminderHours: 48,
+  contactEmail: "hello@thecruzian.com",
   /** Paid months at the introductory rate before the price steps up. */
   introMonths: 3,
   /** The month the deferred setup fee and the regular rate both land. */
@@ -95,3 +98,19 @@ export const planFor = (name: string): OfferPlan | undefined =>
   OFFER.plans.find((p) => p.name === name);
 
 export const money = (n: number): string => `$${n.toLocaleString("en-US")}`;
+
+/**
+ * What the offer is worth, in money.
+ *
+ * Computed rather than typed in, so a saving can never contradict the prices
+ * sitting next to it. A hand-written "save $555" is one price edit away from
+ * being a lie, and on a page that takes card details that matters.
+ */
+export const savesOverIntro = (p: OfferPlan): number =>
+  (p.regular - (p.intro as number)) * OFFER.introMonths;
+
+/** What starting with Business Boost saves on top of the event price. */
+export const savesWithBoost = (p: OfferPlan): number =>
+  ((p.intro as number) - (p.upgrade as number)) * OFFER.introMonths;
+
+export const boostSaving = (): number => OFFER.boost.regular - OFFER.boost.price;
