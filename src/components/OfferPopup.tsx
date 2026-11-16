@@ -6,6 +6,15 @@ import { OFFER, offerReady, money, savesOverIntro, boostSaving } from "@/config/
 const DISMISSED = "cruzian.offerDismissed";
 
 /**
+ * Routes the business offer stays off.
+ *
+ * Personal Services is a different audience doing a different thing: someone
+ * booking a pressure wash has no use for a marketing retainer, and a popup
+ * about one lands as an interruption in the middle of asking for a quote.
+ */
+const QUIET_ROUTES = ["/personal-services"];
+
+/**
  * The offer, announced once per visit.
  *
  * It has to do two jobs that pull against each other: sell the free week in
@@ -24,8 +33,12 @@ export const OfferPopup: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const quiet = QUIET_ROUTES.some(
+    (r) => location.pathname === r || location.pathname.startsWith(`${r}/`),
+  );
+
   useEffect(() => {
-    if (!offerReady()) return;
+    if (!offerReady() || quiet) return;
     let dismissed = false;
     try {
       dismissed = window.sessionStorage.getItem(DISMISSED) === "1";
@@ -35,7 +48,12 @@ export const OfferPopup: React.FC = () => {
     if (dismissed) return;
     const t = window.setTimeout(() => setOpen(true), 1200);
     return () => window.clearTimeout(t);
-  }, []);
+  }, [quiet]);
+
+  // If they navigate onto a quiet route while it is showing, take it away.
+  useEffect(() => {
+    if (quiet) setOpen(false);
+  }, [quiet]);
 
   const close = () => {
     setOpen(false);
@@ -75,7 +93,7 @@ export const OfferPopup: React.FC = () => {
     return () => document.removeEventListener("keydown", onKey);
   }, [open]);
 
-  if (!open) return null;
+  if (!open || quiet) return null;
 
   return (
     <div

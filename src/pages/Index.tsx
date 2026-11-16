@@ -11,12 +11,20 @@ import { PersonalServicesBand } from "@/components/PersonalServicesBand";
 import { RevenueCalculator } from "@/components/RevenueCalculator";
 import { ComparisonSection } from "@/components/ComparisonSection";
 import { AuditBookingModal } from "@/components/AuditBookingModal";
+import { ServiceInquiryModal } from "@/components/ServiceInquiryModal";
 import { Button } from "@/components/ui/button";
 import { Sparkles, ArrowRight } from "lucide-react";
 
 const Index: React.FC = () => {
   const [isAuditOpen, setIsAuditOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | undefined>(undefined);
+  const [inquiryService, setInquiryService] = useState<string | undefined>(undefined);
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false);
+
+  const handleInquire = (service: string) => {
+    setInquiryService(service);
+    setIsInquiryOpen(true);
+  };
 
   const handleOpenAudit = (pkg?: string) => {
     if (pkg) {
@@ -57,7 +65,7 @@ const Index: React.FC = () => {
       <RevenueCalculator onOpenAudit={() => handleOpenAudit()} />
 
       {/* Complete 01-09 Cruzian Growth Services */}
-      <ServicesSection onOpenAudit={() => handleOpenAudit()} />
+      <ServicesSection onInquire={handleInquire} />
 
       {/* How We Deliver Results 4-Step Process */}
       <OurProcessSection onOpenAudit={() => handleOpenAudit()} />
@@ -107,6 +115,13 @@ const Index: React.FC = () => {
         isOpen={isAuditOpen}
         onClose={() => setIsAuditOpen(false)}
         preselectedIndustry={selectedPackage}
+      />
+
+      <ServiceInquiryModal
+        isOpen={isInquiryOpen}
+        onClose={() => setIsInquiryOpen(false)}
+        service={inquiryService}
+        onBookCall={() => handleOpenAudit(inquiryService)}
       />
     </div>
   );

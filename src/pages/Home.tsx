@@ -32,7 +32,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
               </h1>
 
               <p className="text-slate-300 text-lg sm:text-xl leading-relaxed">
-                No generic fluff. No ghost leads. <strong className="text-white">The Cruzian</strong> helps medical practices, contractors, restaurants, and local businesses capture high-ticket buyers, execute cold outreach, and outlast every competitor.
+                No generic fluff. No ghost leads. <strong className="text-white">Cruzian</strong> helps medical practices, contractors, restaurants, and local businesses capture high-ticket buyers, execute cold outreach, and outlast every competitor.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-3 pt-2">
@@ -114,7 +114,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
                 </div>
 
                 <div className="pt-2 text-xs text-slate-400 italic">
-                  "I play to win and I want to be the last one standing for our clients." — The Cruzian
+                  "I play to win and I want to be the last one standing for our clients." — Cruzian
                 </div>
 
               </div>
@@ -137,12 +137,12 @@ export const Home: React.FC<HomeProps> = ({ onOpenAudit }) => {
               "We treat your business like our own. No retainer burning, no junior handed-off accounts."
             </h2>
             <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
-              Most agencies take your monthly check, throw automated bot templates at your market, and give you excuses when sales don't move. At <strong>The Cruzian</strong>, we perform the hard human work: cold calling decision makers, verifying lead quality, and configuring smart missed-call text-backs.
+              Most agencies take your monthly check, throw automated bot templates at your market, and give you excuses when sales don't move. At <strong>Cruzian</strong>, we perform the hard human work: cold calling decision makers, verifying lead quality, and configuring smart missed-call text-backs.
             </p>
             <div>
               <Link to="/about">
                 <Button className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-4 rounded-xl flex items-center gap-2">
-                  <span>Read The Cruzian Story & Manifesto</span>
+                  <span>Read the Cruzian Story & Manifesto</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>

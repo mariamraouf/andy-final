@@ -26,7 +26,7 @@ export const About: React.FC<AboutProps> = ({ onOpenAudit }) => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 text-[#0B1B3D] font-mono text-xs uppercase tracking-widest bg-amber-100 px-3.5 py-1 rounded-full border border-amber-300">
             <Flame className="w-3.5 h-3.5 text-amber-700" />
-            <span>The Cruzian Mission</span>
+            <span>Cruzian Mission</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-black text-[#0B1B3D] tracking-tight">
             We Help Overlooked Businesses Become Impossible to Ignore.

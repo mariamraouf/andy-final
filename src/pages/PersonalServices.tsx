@@ -41,7 +41,7 @@ const SERVICES = [
 
 const HOW = [
   { n: "1", t: "Tell us what you need", d: "The form below takes under a minute. No account, no obligation." },
-  { n: "2", t: "We match a local provider", d: "Someone vetted, in your area, who actually does this work." },
+  { n: "2", t: "Cruzian Network", d: "We match you with a vetted provider in your area." },
   { n: "3", t: "You get a quote", d: "Usually the same day. You decide whether to go ahead." },
 ];
 
@@ -58,6 +58,21 @@ export const PersonalServices: React.FC = () => {
       trackLeadGeneration("home_services_quote");
     }
   }, [state.succeeded]);
+
+  /**
+   * Picking a service from a card should do the whole job: set the dropdown,
+   * move to the form, and put the cursor in the first field the visitor still
+   * has to fill in. Scrolling them to a form they then have to re-answer is
+   * the sort of thing that loses the enquiry.
+   */
+  const chooseService = (name: string) => {
+    setService(name);
+    const quote = document.getElementById("quote");
+    quote?.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.setTimeout(() => {
+      document.getElementById("hs-name")?.focus({ preventScroll: true });
+    }, 600);
+  };
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     if (botField) {
@@ -120,16 +135,23 @@ export const PersonalServices: React.FC = () => {
             {SERVICES.map((s) => {
               const Icon = s.icon;
               return (
-                <div
+                <button
                   key={s.name}
-                  className="border border-slate-200 rounded-lg p-5 hover:border-amber-400 transition-colors"
+                  type="button"
+                  onClick={() => chooseService(s.name)}
+                  aria-label={`Request a quote for ${s.name}`}
+                  className="text-left border border-slate-200 rounded-lg p-5 hover:border-amber-400 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 transition-all flex flex-col"
                 >
                   <span className="w-10 h-10 rounded-md bg-amber-100 border border-amber-200 grid place-items-center">
                     <Icon className="w-5 h-5 text-amber-700" />
                   </span>
                   <h3 className="mt-3.5 font-bold text-[#0B1B3D] text-[15px]">{s.name}</h3>
                   <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">{s.desc}</p>
-                </div>
+                  <span className="mt-3 inline-flex items-center gap-1.5 text-[13px] font-bold text-amber-700">
+                    Request a quote
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </button>
               );
             })}
           </div>
@@ -154,9 +176,7 @@ export const PersonalServices: React.FC = () => {
           <p className="mt-6 flex items-start gap-2 text-sm text-slate-600 max-w-2xl">
             <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
             <span>
-              Cruzian coordinates these services through vetted local providers rather than
-              carrying out the work itself. You will always know who is coming and what it costs
-              before anything is booked.
+              Cruzian coordinates these services through vetted providers in our network.
             </span>
           </p>
         </div>

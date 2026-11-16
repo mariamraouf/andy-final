@@ -41,7 +41,7 @@ export const ComparisonSection: React.FC = () => {
             <span>Unapologetic Comparison</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-[#0B1B3D] tracking-tight">
-            Why Business Owners Choose The Cruzian
+            Why Business Owners Choose Cruzian
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
             See why typical agencies fail small businesses and how our hands-on, competitive approach wins.
@@ -68,7 +68,7 @@ export const ComparisonSection: React.FC = () => {
                   {item.feature}
                 </div>
 
-                {/* The Cruzian Advantage */}
+                {/* Cruzian Advantage */}
                 <div className="col-span-4 sm:col-span-4 bg-amber-50 p-3 rounded-xl border border-amber-200 text-slate-900 font-semibold leading-relaxed flex items-start gap-2.5">
                   <div className="w-4 h-4 rounded-full bg-amber-500 text-[#0B1B3D] flex items-center justify-center shrink-0 mt-0.5 font-bold text-[10px]">
                     ✓

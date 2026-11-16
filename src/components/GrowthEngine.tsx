@@ -33,7 +33,7 @@ export const GrowthEngine: React.FC = () => {
             How It Works
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0B1B3D] tracking-tight">
-            The Cruzian Growth System
+            Cruzian Growth System
           </h2>
           <p className="text-slate-600 text-base">
             Three core pillars focused strictly on booked consultations and new revenue.

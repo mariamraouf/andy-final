@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
 import { CONTACT } from "@/config/site";
 import { SocialIcons } from "@/components/SocialIcons";
 import { trackPhoneClick, trackEmailClick } from "@/utils/analytics";
@@ -30,7 +30,7 @@ export const TopBar: React.FC = () => (
         </span>
       </a>
 
-      {/* Email + location */}
+      {/* Email */}
       <div className="hidden md:flex items-center gap-5 text-xs">
         <a
           href={CONTACT.emailHref}
@@ -40,10 +40,6 @@ export const TopBar: React.FC = () => (
           <Mail className="w-3.5 h-3.5 text-amber-400" />
           <span>{CONTACT.email}</span>
         </a>
-        <span className="hidden lg:flex items-center gap-1.5 text-slate-400">
-          <MapPin className="w-3.5 h-3.5 text-amber-400" />
-          <span>{CONTACT.location}</span>
-        </span>
       </div>
 
       {/* Socials */}

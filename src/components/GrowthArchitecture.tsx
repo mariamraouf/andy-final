@@ -110,7 +110,7 @@ export const GrowthArchitecture: React.FC = () => {
               The 8-Second Missed Call Rescue in Action
             </h3>
             <p className="text-slate-600 text-sm leading-relaxed font-medium">
-              When high-intent clients call and get voicemail, 74% will immediately dial your next competitor. The Cruzian stops the bleed instantly by texting them within seconds.
+              When high-intent clients call and get voicemail, 74% will immediately dial your next competitor. Cruzian stops the bleed instantly by texting them within seconds.
             </p>
           </div>
 

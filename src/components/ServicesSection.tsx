@@ -3,7 +3,17 @@ import { UserCheck, Workflow, Megaphone, ShieldCheck, LayoutTemplate, Search, Do
 import { Button } from "@/components/ui/button";
 
 interface ServicesSectionProps {
-  onOpenAudit: () => void;
+  /**
+   * Opens the short enquiry form for one service.
+   *
+   * This used to be `onOpenAudit` with no parameter, while the button was
+   * wired as `onClick={onOpenAudit}` — which handed React's click event in as
+   * the first argument. On the services page that argument was passed straight
+   * through as the selected package, so the modal received an event object
+   * where it expected a string and rendered empty. Naming the parameter and
+   * calling it explicitly is what stops that happening again.
+   */
+  onInquire: (service: string) => void;
 }
 
 export const servicesData = [
@@ -81,7 +91,7 @@ export const servicesData = [
   },
 ];
 
-export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenAudit }) => {
+export const ServicesSection: React.FC<ServicesSectionProps> = ({ onInquire }) => {
   return (
     <section id="services" className="py-24 bg-white text-slate-900 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -143,7 +153,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenAudit })
                 </div>
 
                 <Button
-                  onClick={onOpenAudit}
+                  onClick={() => onInquire(service.title)}
                   variant="outline"
                   className="w-full min-w-0 whitespace-normal h-auto bg-white border-slate-200 text-slate-800 hover:bg-[#0B1B3D] hover:text-amber-400 font-bold text-xs py-5 rounded-xl transition-colors flex items-center justify-center gap-2"
                 >

@@ -12,7 +12,7 @@ export const FounderManifesto: React.FC = () => {
           <div className="lg:col-span-6 bg-slate-50 rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-200 space-y-6">
             <Quote className="w-10 h-10 text-amber-500" />
             <blockquote className="text-lg sm:text-xl font-medium text-slate-800 leading-relaxed italic">
-              "A lot of agencies out there are just taking your retainer money and blowing it while treating client businesses like numbers. We started <span className="text-amber-700 font-bold not-italic">The Cruzian</span> because we genuinely care. We play to win, and we want to be the last one standing for our clients."
+              "A lot of agencies out there are just taking your retainer money and blowing it while treating client businesses like numbers. We started <span className="text-amber-700 font-bold not-italic">Cruzian</span> because we genuinely care. We play to win, and we want to be the last one standing for our clients."
             </blockquote>
 
             <div className="pt-4 border-t border-slate-200 flex items-center gap-4">
@@ -34,7 +34,7 @@ export const FounderManifesto: React.FC = () => {
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-black text-[#0B1B3D] tracking-tight">
-              Why We Call Ourselves "The Cruzian"
+              Why We Call Ourselves "Cruzian"
             </h2>
 
             <p className="text-slate-600 leading-relaxed text-base font-normal">
