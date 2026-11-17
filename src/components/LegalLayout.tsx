@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { trackPhoneClick, trackEmailClick } from "@/utils/analytics";
 
 interface LegalLayoutProps {
   eyebrow: string;
@@ -41,11 +42,11 @@ export const LegalLayout: React.FC<LegalLayoutProps> = ({
         <p className="font-bold text-[#0B1B3D]">Questions about any of this?</p>
         <p className="mt-1">
           Email{" "}
-          <a href="mailto:hello@thecruzian.com" className="text-amber-700 font-semibold underline underline-offset-4">
+          <a href="mailto:hello@thecruzian.com" onClick={trackEmailClick} className="text-amber-700 font-semibold underline underline-offset-4">
             hello@thecruzian.com
           </a>{" "}
           or call{" "}
-          <a href="tel:+18886193580" className="text-amber-700 font-semibold underline underline-offset-4">
+          <a href="tel:+18886193580" onClick={trackPhoneClick} className="text-amber-700 font-semibold underline underline-offset-4">
             +1 888-619-3580
           </a>
           . You can also{" "}

@@ -3,12 +3,16 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight, ArrowUp, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
+import { trackPhoneClick } from "@/utils/analytics";
 
 interface NavbarProps {
   onOpenAudit: () => void;
 }
 
 const HINT_SEEN = "cruzian.menuHintSeen";
+
+/** Pages where an interruption costs us a lead. */
+const QUIET_ROUTES = ["/personal-services"];
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -25,6 +29,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
    * help and becomes clutter.
    */
   useEffect(() => {
+    // Not on the pages people arrive at from an ad. The hint sits under the
+    // header and overlaps whatever is beneath it, which on /personal-services
+    // is the first field of the quote form — and it points away from that
+    // form to a menu. Same reasoning as the offer popup being quiet here.
+    if (QUIET_ROUTES.some((r) => location.pathname === r || location.pathname.startsWith(`${r}/`))) {
+      return;
+    }
+
     let seen = false;
     try {
       seen = window.localStorage.getItem(HINT_SEEN) === "1";
@@ -38,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
       window.clearTimeout(show);
       window.clearTimeout(hide);
     };
-  }, []);
+  }, [location.pathname]);
 
   const dismissHint = () => {
     setShowHint(false);
@@ -169,6 +181,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAudit }) => {
           <div className="pt-3 border-t border-slate-100 space-y-3">
             <a
               href="tel:18886193580"
+              onClick={trackPhoneClick}
               className="flex items-center gap-2 text-sm font-bold text-slate-800"
             >
               <Phone className="w-4 h-4 text-amber-600" />

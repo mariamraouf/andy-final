@@ -10,6 +10,7 @@ import { TopBar } from "@/components/TopBar";
 import { Footer } from "@/components/Footer";
 import { AuditBookingModal } from "@/components/AuditBookingModal";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { usePageTracking } from "@/hooks/usePageTracking";
 
 // Pages
@@ -80,6 +81,9 @@ const AppContent = () => {
 
       {/* Global Footer */}
       <Footer />
+
+      {/* Shown only to visitors whose region requires asking */}
+      <ConsentBanner />
 
       {/* Strategy Call Booking Dialog Modal */}
       <AuditBookingModal

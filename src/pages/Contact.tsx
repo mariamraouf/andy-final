@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { CalendlyEmbed } from "@/components/CalendlyEmbed";
 import { NoCommitment } from "@/components/NoCommitment";
 import { MessageForm } from "@/components/MessageForm";
+import { trackPhoneClick, trackEmailClick } from "@/utils/analytics";
 
 export const Contact: React.FC = () => {
 
@@ -49,7 +50,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-bold text-[#0B1B3D] text-sm">Direct Agency Line</p>
-                    <a href="tel:18886193580" className="text-sm font-mono text-slate-700 hover:text-amber-600 font-bold">
+                    <a href="tel:18886193580" onClick={trackPhoneClick} className="text-sm font-mono text-slate-700 hover:text-amber-600 font-bold">
                       +1 888-619-3580
                     </a>
                   </div>
@@ -61,7 +62,7 @@ export const Contact: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-bold text-[#0B1B3D] text-sm">Email Inquiries</p>
-                    <a href="mailto:hello@thecruzian.com" className="text-sm font-mono text-slate-700 hover:text-amber-600 font-bold">
+                    <a href="mailto:hello@thecruzian.com" onClick={trackEmailClick} className="text-sm font-mono text-slate-700 hover:text-amber-600 font-bold">
                       hello@thecruzian.com
                     </a>
                   </div>
@@ -146,7 +147,7 @@ export const Contact: React.FC = () => {
               <p className="mt-1.5 mb-5 text-sm text-slate-600 leading-relaxed">
                 Tell us roughly what you're after and we'll come back to you — no call needed
                 unless you want one. Or ring{" "}
-                <a href="tel:+18886193580" className="font-semibold text-amber-700 underline underline-offset-4">
+                <a href="tel:+18886193580" onClick={trackPhoneClick} className="font-semibold text-amber-700 underline underline-offset-4">
                   +1 888-619-3580
                 </a>
                 .

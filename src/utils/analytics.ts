@@ -123,6 +123,20 @@ export const trackEmailClick = () => {
   trackEvent("contact_click_email", { email_address: "hello@thecruzian.com" });
 };
 
+/**
+ * Someone joined the mailing list.
+ *
+ * Deliberately NOT generate_lead. A newsletter signup is worth a fraction of a
+ * quote request, and counting the two as the same conversion would teach Google
+ * Ads to buy whichever is cheaper to get — which is always the newsletter. This
+ * is imported as a Secondary conversion so it stays visible without steering
+ * the bidding.
+ */
+export const trackNewsletterSignup = (location: string) => {
+  trackEvent("newsletter_signup", { form_location: location });
+  trackMeta("Subscribe", { content_name: location });
+};
+
 // ─── Engagement (GA4 only, not a conversion) ────────────────────────────────
 
 export const trackCalculatorComplete = (projectedRevenue: number) => {

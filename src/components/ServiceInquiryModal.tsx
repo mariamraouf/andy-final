@@ -5,7 +5,7 @@ import {
 import { useForm, ValidationError } from "@formspree/react";
 import { CheckCircle2, Loader2, Send, CalendarClock } from "lucide-react";
 import { FORM_ID } from "@/utils/forms";
-import { trackLeadGeneration } from "@/utils/analytics";
+import { trackLeadGeneration, trackPhoneClick } from "@/utils/analytics";
 import { servicesData } from "@/components/ServicesSection";
 
 interface Props {
@@ -75,6 +75,7 @@ export const ServiceInquiryModal: React.FC<Props> = ({ isOpen, onClose, service,
               call{" "}
               <a
                 href="tel:+18886193580"
+                onClick={trackPhoneClick}
                 className="font-semibold text-amber-700 underline underline-offset-4"
               >
                 +1 888-619-3580

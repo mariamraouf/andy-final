@@ -4,7 +4,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import { CheckCircle2, Loader2, ArrowRight, CalendarClock, ShieldCheck, XCircle } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { FORM_ID } from "@/utils/forms";
-import { trackLeadGeneration, trackCheckoutStart } from "@/utils/analytics";
+import { trackLeadGeneration, trackCheckoutStart, trackPhoneClick } from "@/utils/analytics";
 import { OFFER, offerReady, money } from "@/config/offer";
 
 const PACKAGES = ["Visibility", "Growth", "Dominance"];
@@ -175,7 +175,7 @@ export const Start: React.FC = () => {
               </p>
               <p className="text-slate-600 text-sm">
                 Anything urgent:{" "}
-                <a href="tel:+18886193580" className="font-semibold text-amber-700 underline underline-offset-4">
+                <a href="tel:+18886193580" onClick={trackPhoneClick} className="font-semibold text-amber-700 underline underline-offset-4">
                   +1 888-619-3580
                 </a>
               </p>

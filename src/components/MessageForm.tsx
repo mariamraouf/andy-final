@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
 import { FORM_ID } from "@/utils/forms";
-import { trackLeadGeneration } from "@/utils/analytics";
+import { trackLeadGeneration, trackPhoneClick } from "@/utils/analytics";
 
 interface MessageFormProps {
   /** Passed to GA4 so enquiries can be told apart by where they came from. */
@@ -52,7 +52,7 @@ export const MessageForm: React.FC<MessageFormProps> = ({ location }) => {
         <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
           We read every one of these ourselves and usually reply the same working day. If it's
           urgent, call{" "}
-          <a href="tel:+18886193580" className="font-semibold text-amber-700 underline underline-offset-4">
+          <a href="tel:+18886193580" onClick={trackPhoneClick} className="font-semibold text-amber-700 underline underline-offset-4">
             +1 888-619-3580
           </a>
           .

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { SocialIcons } from "@/components/SocialIcons";
+import { trackPhoneClick, trackEmailClick } from "@/utils/analytics";
 
 export const Footer: React.FC = () => {
   const handleScrollTop = () => {
@@ -86,7 +87,7 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-sm text-slate-300">
               <div className="space-y-1">
                 <span className="text-xs text-slate-400 block font-mono">Email</span>
-                <a href="mailto:hello@thecruzian.com" className="font-bold text-white hover:text-amber-400 flex items-center gap-2">
+                <a href="mailto:hello@thecruzian.com" onClick={trackEmailClick} className="font-bold text-white hover:text-amber-400 flex items-center gap-2">
                   <Mail className="w-4 h-4 text-amber-400" />
                   <span>hello@thecruzian.com</span>
                 </a>
@@ -94,7 +95,7 @@ export const Footer: React.FC = () => {
 
               <div className="space-y-1">
                 <span className="text-xs text-slate-400 block font-mono">Phone</span>
-                <a href="tel:18886193580" className="font-bold text-white hover:text-amber-400 flex items-center gap-2">
+                <a href="tel:18886193580" onClick={trackPhoneClick} className="font-bold text-white hover:text-amber-400 flex items-center gap-2">
                   <Phone className="w-4 h-4 text-amber-400" />
                   <span>+1 888-619-3580</span>
                 </a>

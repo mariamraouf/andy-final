@@ -20,6 +20,60 @@
 
         window.dataLayer = window.dataLayer || [];
         window.gtag = function(){ dataLayer.push(arguments); };
+
+        // ── Consent Mode v2 ─────────────────────────────────────────────
+        // Must run before any config or event command, or the tags fire
+        // before they know what they are allowed to do.
+        //
+        // Google enforces the European list itself through the region
+        // parameter, so those visitors are denied until they choose and
+        // everyone else is granted. The most specific region wins regardless
+        // of call order. In practice this means Cruzian's Jacksonville
+        // traffic measures exactly as it did before.
+        var CRUZIAN_EU = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR',
+          'DE','GR','HU','IS','IE','IT','LV','LI','LT','LU','MT','NL','NO',
+          'PL','PT','RO','SK','SI','ES','SE','GB','CH'];
+
+        gtag('consent', 'default', {
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          analytics_storage: 'denied',
+          region: CRUZIAN_EU,
+          wait_for_update: 500
+        });
+        gtag('consent', 'default', {
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          analytics_storage: 'granted'
+        });
+
+        // A choice already made, replayed before anything fires.
+        var cruzianSaved = null;
+        try { cruzianSaved = localStorage.getItem('cruzian_consent'); } catch (e) {}
+        if (cruzianSaved === 'granted' || cruzianSaved === 'denied') {
+          gtag('consent', 'update', {
+            ad_storage: cruzianSaved,
+            ad_user_data: cruzianSaved,
+            ad_personalization: cruzianSaved,
+            analytics_storage: cruzianSaved
+          });
+        }
+
+        // Meta has no region parameter, so the decision has to be made here.
+        // Time zone is the signal: no third-party geo lookup, and nothing
+        // about the visitor leaves the page. Imperfect for travellers and
+        // VPNs, which is the right way round — it errs toward asking.
+        window.CRUZIAN_NEEDS_CONSENT = (function () {
+          if (cruzianSaved) return false;
+          try {
+            return /^Europe\//.test(
+              Intl.DateTimeFormat().resolvedOptions().timeZone || ''
+            );
+          } catch (e) { return false; }
+        })();
+
         gtag('js', new Date());
         gtag('config', 'G-5LYS1V3QKB');
         // Google Ads — same gtag.js, its own account.
@@ -35,6 +89,11 @@
         t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window,document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
+        // Paused for anyone who has not consented yet, or has declined.
+        // Meta requires this on every page load, before init.
+        if (window.CRUZIAN_NEEDS_CONSENT || cruzianSaved === 'denied') {
+          fbq('consent', 'revoke');
+        }
         fbq('init', '1824003342179202');
         fbq('track', 'PageView');
       } else {
