@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { trackBookCall, trackLeadGeneration } from "@/utils/analytics";
+import { trackBookCall, trackLeadGeneration, trackEmailClick } from "@/utils/analytics";
 
 const CALENDLY_URL = "https://calendly.com/thecruzian/cruzian-discovery-call";
 const WIDGET_SRC = "https://assets.calendly.com/assets/external/widget.js";
@@ -125,7 +125,7 @@ export const CalendlyEmbed: React.FC<CalendlyEmbedProps> = ({
           </a>
           <p className="text-slate-500">
             Or email{" "}
-            <a href="mailto:hello@thecruzian.com" className="underline underline-offset-4">
+            <a href="mailto:hello@thecruzian.com" onClick={trackEmailClick} className="underline underline-offset-4">
               hello@thecruzian.com
             </a>
           </p>

@@ -46,6 +46,7 @@ export const TopBar: React.FC = () => (
       <div className="flex items-center gap-3 shrink-0">
         <a
           href={CONTACT.emailHref}
+          onClick={trackEmailClick}
           aria-label="Email Cruzian"
           className="md:hidden text-slate-200 hover:text-amber-300"
         >

@@ -2,6 +2,7 @@ import React from "react";
 import { SEO } from "@/components/SEO";
 import { LegalLayout, LegalSection, LegalList } from "@/components/LegalLayout";
 import { Link } from "react-router-dom";
+import { trackEmailClick } from "@/utils/analytics";
 
 export const Privacy: React.FC = () => (
   <>
@@ -20,7 +21,7 @@ export const Privacy: React.FC = () => (
         <p>
           Cruzian is a B2B marketing and lead generation agency based in Jacksonville, Florida. For
           anything in this policy, contact us at{" "}
-          <a href="mailto:hello@thecruzian.com" className="text-amber-700 font-semibold underline underline-offset-4">
+          <a href="mailto:hello@thecruzian.com" onClick={trackEmailClick} className="text-amber-700 font-semibold underline underline-offset-4">
             hello@thecruzian.com
           </a>{" "}
           or +1 888-619-3580.
@@ -111,7 +112,7 @@ export const Privacy: React.FC = () => (
       <LegalSection heading="Your rights">
         <p>
           Email{" "}
-          <a href="mailto:hello@thecruzian.com" className="text-amber-700 font-semibold underline underline-offset-4">
+          <a href="mailto:hello@thecruzian.com" onClick={trackEmailClick} className="text-amber-700 font-semibold underline underline-offset-4">
             hello@thecruzian.com
           </a>{" "}
           and you can ask us to show you what we hold about you, correct anything wrong, or delete it.

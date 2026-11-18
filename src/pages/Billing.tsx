@@ -2,6 +2,7 @@ import React from "react";
 import { SEO } from "@/components/SEO";
 import { LegalLayout, LegalSection, LegalList } from "@/components/LegalLayout";
 import { Link } from "react-router-dom";
+import { trackEmailClick } from "@/utils/analytics";
 
 const ROWS = [
   { name: "Business Boost", intro: "—", monthly: "—", setup: "—", total: "$199, paid up front" },
@@ -114,7 +115,7 @@ export const Billing: React.FC = () => (
         <p>
           Monthly packages run month to month. There is no long-term contract and no cancellation
           penalty. To cancel, email{" "}
-          <a href="mailto:hello@thecruzian.com" className="text-amber-700 font-semibold underline underline-offset-4">
+          <a href="mailto:hello@thecruzian.com" onClick={trackEmailClick} className="text-amber-700 font-semibold underline underline-offset-4">
             hello@thecruzian.com
           </a>{" "}
           at least <strong>30 days before your next renewal date</strong>.
